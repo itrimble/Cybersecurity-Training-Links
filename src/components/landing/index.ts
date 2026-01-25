@@ -1,0 +1,11 @@
+export { HeroSection } from "./HeroSection";
+export { AboutSection } from "./AboutSection";
+export { TrainingSection } from "./TrainingSection";
+export { CareerQuiz } from "./CareerQuiz";
+export { CurriculumSection } from "./CurriculumSection";
+export { CertificationSection } from "./CertificationSection";
+export { InterviewSection } from "./InterviewSection";
+export { ToolsSection } from "./ToolsSection";
+export { BooksSection } from "./BooksSection";
+export { WaitlistSection } from "./WaitlistSection";
+export { Footer } from "./Footer";

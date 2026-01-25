@@ -1,256 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Career Pathways | Training & Certification Guide</title>
-    <meta name="description" content="Interactive guide for cybersecurity career paths, training resources, certifications, and hands-on labs. Choose your path from entry-level to expert.">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="hero">
-        <nav class="navbar">
-            <div class="nav-brand">
-                <span class="logo-icon">&#128274;</span>
-                <span class="logo-text">CyberPath</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#career-paths">Career Paths</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#free-training">Free Training</a></li>
-                <li><a href="#labs">Hands-on Labs</a></li>
-                <li><a href="#resources">Resources</a></li>
-            </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-        <div class="hero-content">
-            <h1>Your Cybersecurity Career Starts Here</h1>
-            <p class="hero-subtitle">Choose your path, build your skills, and launch your career in cybersecurity. From beginner to expert, we've got the resources you need.</p>
-            <div class="hero-cta">
-                <a href="#career-quiz" class="btn btn-primary">Find Your Path</a>
-                <a href="#career-paths" class="btn btn-secondary">Explore Careers</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">3.5M+</span>
-                    <span class="stat-label">Unfilled Jobs Globally</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">$100K+</span>
-                    <span class="stat-label">Average Salary</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">32%</span>
-                    <span class="stat-label">Job Growth Rate</span>
-                </div>
-            </div>
-        </div>
-    </header>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ffcc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'/></svg>" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Launch your cybersecurity career with expert-led training, hands-on labs, and personalized career guidance from Remnant Security." />
+    <meta name="keywords" content="cybersecurity, security training, SOC analyst, penetration testing, career path, certifications, CISSP, OSCP, Security+" />
+    <meta name="author" content="Remnant Security" />
 
-    <section id="career-quiz" class="quiz-section">
-        <div class="container">
-            <h2>Find Your Ideal Career Path</h2>
-            <p class="section-subtitle">Answer a few questions to discover which cybersecurity role matches your interests and skills.</p>
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Remnant Security - Cybersecurity Career Training" />
+    <meta property="og:description" content="Launch your cybersecurity career with expert-led training, hands-on labs, and personalized career guidance." />
+    <meta property="og:site_name" content="Remnant Security" />
 
-            <div class="quiz-container">
-                <div class="quiz-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="quizProgress"></div>
-                    </div>
-                    <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">5</span></span>
-                </div>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Remnant Security - Cybersecurity Career Training" />
+    <meta name="twitter:description" content="Launch your cybersecurity career with expert-led training, hands-on labs, and personalized career guidance." />
 
-                <div class="quiz-content" id="quizContent">
-                    <!-- Quiz questions will be inserted here by JavaScript -->
-                </div>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-                <div class="quiz-results hidden" id="quizResults">
-                    <!-- Results will be shown here -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="career-paths" class="career-section">
-        <div class="container">
-            <h2>Cybersecurity Career Paths</h2>
-            <p class="section-subtitle">Explore different specializations and find the path that's right for you.</p>
-
-            <div class="career-filter">
-                <button class="filter-btn active" data-filter="all">All Paths</button>
-                <button class="filter-btn" data-filter="entry">Entry Level</button>
-                <button class="filter-btn" data-filter="technical">Technical</button>
-                <button class="filter-btn" data-filter="management">Management</button>
-                <button class="filter-btn" data-filter="specialized">Specialized</button>
-            </div>
-
-            <div class="career-grid" id="careerGrid">
-                <!-- Career cards will be inserted by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <section id="certifications" class="cert-section">
-        <div class="container">
-            <h2>Certification Roadmap</h2>
-            <p class="section-subtitle">Navigate your certification journey from foundational to advanced credentials.</p>
-
-            <div class="cert-timeline">
-                <div class="cert-level" data-level="entry">
-                    <div class="level-header">
-                        <h3>Entry Level</h3>
-                        <span class="level-exp">0-2 Years Experience</span>
-                    </div>
-                    <div class="cert-cards" id="entryCerts">
-                        <!-- Certs inserted by JS -->
-                    </div>
-                </div>
-
-                <div class="cert-level" data-level="intermediate">
-                    <div class="level-header">
-                        <h3>Intermediate</h3>
-                        <span class="level-exp">2-5 Years Experience</span>
-                    </div>
-                    <div class="cert-cards" id="intermediateCerts">
-                        <!-- Certs inserted by JS -->
-                    </div>
-                </div>
-
-                <div class="cert-level" data-level="advanced">
-                    <div class="level-header">
-                        <h3>Advanced / Expert</h3>
-                        <span class="level-exp">5+ Years Experience</span>
-                    </div>
-                    <div class="cert-cards" id="advancedCerts">
-                        <!-- Certs inserted by JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="free-training" class="training-section">
-        <div class="container">
-            <h2>Free Training Resources</h2>
-            <p class="section-subtitle">Quality cybersecurity education doesn't have to cost a fortune. Start learning today with these free resources.</p>
-
-            <div class="training-tabs">
-                <button class="tab-btn active" data-tab="platforms">Learning Platforms</button>
-                <button class="tab-btn" data-tab="courses">Free Courses</button>
-                <button class="tab-btn" data-tab="youtube">YouTube Channels</button>
-                <button class="tab-btn" data-tab="reading">Reading Material</button>
-            </div>
-
-            <div class="training-content" id="trainingContent">
-                <!-- Content inserted by JS -->
-            </div>
-        </div>
-    </section>
-
-    <section id="labs" class="labs-section">
-        <div class="container">
-            <h2>Hands-on Labs & Practice</h2>
-            <p class="section-subtitle">Theory is important, but hands-on experience is essential. Practice your skills in safe, legal environments.</p>
-
-            <div class="labs-grid" id="labsGrid">
-                <!-- Labs inserted by JS -->
-            </div>
-        </div>
-    </section>
-
-    <section id="resources" class="resources-section">
-        <div class="container">
-            <h2>Additional Resources</h2>
-            <p class="section-subtitle">Tools, communities, and resources to support your cybersecurity journey.</p>
-
-            <div class="resources-categories">
-                <div class="resource-category">
-                    <h3>Communities & Forums</h3>
-                    <ul class="resource-list" id="communityResources">
-                        <!-- Inserted by JS -->
-                    </ul>
-                </div>
-
-                <div class="resource-category">
-                    <h3>News & Blogs</h3>
-                    <ul class="resource-list" id="newsResources">
-                        <!-- Inserted by JS -->
-                    </ul>
-                </div>
-
-                <div class="resource-category">
-                    <h3>Tools & Software</h3>
-                    <ul class="resource-list" id="toolResources">
-                        <!-- Inserted by JS -->
-                    </ul>
-                </div>
-
-                <div class="resource-category">
-                    <h3>Government Resources</h3>
-                    <ul class="resource-list" id="govResources">
-                        <!-- Inserted by JS -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="career-detail-modal hidden" id="careerModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <div class="modal-body" id="modalBody">
-                <!-- Career detail content inserted by JS -->
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo-icon">&#128274;</span>
-                    <span class="logo-text">CyberPath</span>
-                    <p>Your guide to a successful career in cybersecurity.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#career-paths">Career Paths</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
-                        <li><a href="#free-training">Free Training</a></li>
-                        <li><a href="#labs">Hands-on Labs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#resources">Communities</a></li>
-                        <li><a href="#resources">News & Blogs</a></li>
-                        <li><a href="#resources">Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contribute">
-                    <h4>Contribute</h4>
-                    <p>Found a broken link or want to suggest a resource?</p>
-                    <a href="https://github.com/itrimble/Cybersecurity-Training-Links/issues" class="btn btn-outline" target="_blank" rel="noopener">Submit on GitHub</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024-2026 CyberPath. Open source under GPL-3.0 License.</p>
-                <p>Last updated: January 2026</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script>
-</body>
+    <title>Remnant Security - Cybersecurity Career Training</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
