@@ -7,7 +7,7 @@ export default function PricingSection() {
     if (link.startsWith("#")) {
       document.getElementById(link.slice(1))?.scrollIntoView({ behavior: "smooth" });
     } else if (link.startsWith("mailto:")) {
-      window.location.href = link;
+      window.open(link, "_self");
     }
   };
 
