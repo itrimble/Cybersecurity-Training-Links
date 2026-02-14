@@ -1,13 +1,14 @@
 import {
   HeroSection,
-  AboutSection,
-  TrainingSection,
-  CareerQuiz,
-  CurriculumSection,
+  LeadMagnetSection,
+  ValuePropsSection,
+  CareerPathsSection,
   CertificationSection,
-  InterviewSection,
-  ToolsSection,
-  BooksSection,
+  ResourcesSection,
+  SocialProofSection,
+  CoursePreviewSection,
+  QuickSurveySection,
+  PricingSection,
   WaitlistSection,
   Footer,
 } from "@/components/landing";
@@ -16,14 +17,15 @@ export default function App() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
-      <AboutSection />
-      <TrainingSection />
-      <CareerQuiz />
-      <CurriculumSection />
+      <LeadMagnetSection />
+      <ValuePropsSection />
+      <CareerPathsSection />
       <CertificationSection />
-      <InterviewSection />
-      <ToolsSection />
-      <BooksSection />
+      <ResourcesSection />
+      <SocialProofSection />
+      <CoursePreviewSection />
+      <QuickSurveySection />
+      <PricingSection />
       <WaitlistSection />
       <Footer />
     </main>
