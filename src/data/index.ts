@@ -13,3 +13,4 @@ export * from './jobSearch';
 export * from './books';
 export * from './quiz';
 export * from './membership';
+export * from './courses';

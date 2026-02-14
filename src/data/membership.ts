@@ -109,6 +109,72 @@ export const audienceSegments: Record<string, AudienceSegment> = {
   }
 };
 
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: string;
+  priceNote?: string;
+  description: string;
+  features: string[];
+  highlight: boolean;
+  cta: string;
+  ctaLink: string;
+}
+
+export const pricingTiers: PricingTier[] = [
+  {
+    id: 'single-course',
+    name: 'Single Course',
+    price: 'Starting at $47',
+    description: 'Individual course access with lifetime updates',
+    features: [
+      'Full course access',
+      'Downloadable resources',
+      'Certificate of completion',
+      'Community access',
+      'Lifetime updates'
+    ],
+    highlight: false,
+    cta: 'Browse Courses',
+    ctaLink: '#courses'
+  },
+  {
+    id: 'course-bundle',
+    name: 'Course Bundle',
+    price: '$297',
+    priceNote: 'Save 40%',
+    description: 'Best value for serious career builders',
+    features: [
+      'Access to 3 courses of your choice',
+      'All downloadable resources',
+      'Certificates of completion',
+      'Priority community access',
+      '1 mentorship call (30 min)',
+      'Bonus: Interview prep guide'
+    ],
+    highlight: true,
+    cta: 'Join Waitlist',
+    ctaLink: '#waitlist'
+  },
+  {
+    id: 'team-training',
+    name: 'Team Training',
+    price: 'Custom',
+    description: 'Train your entire security team',
+    features: [
+      'Unlimited team seats',
+      'Custom learning paths',
+      'Progress tracking dashboard',
+      'Private team workspace',
+      'Dedicated account manager',
+      'Custom content options'
+    ],
+    highlight: false,
+    cta: 'Contact Us',
+    ctaLink: 'mailto:team@remnantsecurity.com'
+  }
+];
+
 export const curriculumTopics = [
   {
     icon: 'Monitor',

@@ -1,4 +1,4 @@
-import { Shield, Github, Linkedin, Twitter } from "lucide-react";
+import { Shield, Github, Linkedin, Twitter, ExternalLink } from "lucide-react";
 
 const footerLinks = [
   {
@@ -6,23 +6,14 @@ const footerLinks = [
     links: [
       { label: "Career Paths", href: "#careers" },
       { label: "Certifications", href: "#certifications" },
-      { label: "Interview Prep", href: "#interview" },
-      { label: "Tools", href: "#tools" },
+      { label: "Resources", href: "#resources" },
+      { label: "Pricing", href: "#pricing" },
     ],
   },
   {
-    title: "Training",
+    title: "External",
     links: [
-      { label: "Free Resources", href: "#training" },
-      { label: "Hands-on Labs", href: "#labs" },
-      { label: "Books", href: "#books" },
-      { label: "Career Quiz", href: "#quiz" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "#about" },
+      { label: "Start.me Collection", href: "https://start.me/p/nR1xwN/cybersecurity-resources", external: true },
       { label: "Contact", href: "mailto:hello@remnantsecurity.com" },
       { label: "Privacy", href: "#privacy" },
       { label: "Terms", href: "#terms" },
@@ -78,9 +69,11 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                        {...('external' in link && link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
                       >
                         {link.label}
+                        {'external' in link && link.external && <ExternalLink className="h-3 w-3" />}
                       </a>
                     </li>
                   ))}

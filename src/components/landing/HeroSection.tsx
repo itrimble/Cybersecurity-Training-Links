@@ -1,5 +1,6 @@
-import { Shield, ChevronRight, Award, Users, BookOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Shield, ChevronRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
@@ -36,42 +37,21 @@ export function HeroSection() {
             to help you break into the cybersecurity industry.
           </p>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button size="lg" className="cyber-button group">
-              Explore Career Paths
+          {/* CTA buttons - single clear action */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#careers"
+              className={cn(buttonVariants({ size: "lg" }), "cyber-button group")}
+            >
+              Find Your Path
               <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline">
-              Take Career Quiz
-            </Button>
-          </div>
-
-          {/* Stats grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="cyber-card p-6 text-center">
-              <div className="icon-box mx-auto mb-4">
-                <Award className="h-6 w-6 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-1">10+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
-            </div>
-
-            <div className="cyber-card p-6 text-center">
-              <div className="icon-box mx-auto mb-4">
-                <Users className="h-6 w-6 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-1">500+</div>
-              <div className="text-sm text-muted-foreground">Students Helped</div>
-            </div>
-
-            <div className="cyber-card p-6 text-center">
-              <div className="icon-box mx-auto mb-4">
-                <BookOpen className="h-6 w-6 text-primary" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-1">15+</div>
-              <div className="text-sm text-muted-foreground">Certifications</div>
-            </div>
+            </a>
+            <a
+              href="#pricing"
+              className={buttonVariants({ size: "lg", variant: "outline" })}
+            >
+              View Pricing
+            </a>
           </div>
         </div>
       </div>
