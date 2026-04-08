@@ -6,6 +6,7 @@ const footerLinks = [
     links: [
       { label: "Career Paths", href: "#careers" },
       { label: "Certifications", href: "#certifications" },
+      { label: "Lectern AI", href: "#lectern" },
       { label: "Resources", href: "#resources" },
       { label: "Pricing", href: "#pricing" },
     ],

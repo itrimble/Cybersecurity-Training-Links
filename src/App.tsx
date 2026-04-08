@@ -7,6 +7,7 @@ import {
   ResourcesSection,
   SocialProofSection,
   CoursePreviewSection,
+  LecternSection,
   QuickSurveySection,
   PricingSection,
   WaitlistSection,
@@ -24,6 +25,7 @@ export default function App() {
       <ResourcesSection />
       <SocialProofSection />
       <CoursePreviewSection />
+      <LecternSection />
       <QuickSurveySection />
       <PricingSection />
       <WaitlistSection />

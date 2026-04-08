@@ -6,6 +6,7 @@ export { CertificationSection } from "./CertificationSection";
 export { ResourcesSection } from "./ResourcesSection";
 export { SocialProofSection } from "./SocialProofSection";
 export { CoursePreviewSection } from "./CoursePreviewSection";
+export { LecternSection } from "./LecternSection";
 export { QuickSurveySection } from "./QuickSurveySection";
 export { default as PricingSection } from "./PricingSection";
 export { WaitlistSection } from "./WaitlistSection";
