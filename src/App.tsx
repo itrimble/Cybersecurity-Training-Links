@@ -11,6 +11,8 @@ import {
   QuickSurveySection,
   PricingSection,
   WaitlistSection,
+  SupportSection,
+  PrivacySection,
   Footer,
 } from "@/components/landing";
 
@@ -29,6 +31,8 @@ export default function App() {
       <QuickSurveySection />
       <PricingSection />
       <WaitlistSection />
+      <SupportSection />
+      <PrivacySection />
       <Footer />
     </main>
   );

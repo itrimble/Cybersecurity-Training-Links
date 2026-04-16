@@ -10,4 +10,6 @@ export { LecternSection } from "./LecternSection";
 export { QuickSurveySection } from "./QuickSurveySection";
 export { default as PricingSection } from "./PricingSection";
 export { WaitlistSection } from "./WaitlistSection";
+export { SupportSection } from "./SupportSection";
+export { PrivacySection } from "./PrivacySection";
 export { Footer } from "./Footer";
