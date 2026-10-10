@@ -1,4 +1,4 @@
-import { appSites, bookSites } from "@/data/sites";
+import { appSites, bookSites, gumroadLinks, gumroadStore } from "@/data/sites";
 import { Shield, Github, Linkedin, Twitter, ExternalLink } from "lucide-react";
 
 const footerLinks = [
@@ -18,7 +18,11 @@ const footerLinks = [
   },
   {
     title: "Books",
-    links: bookSites.map((s) => ({ label: s.name, href: s.href })),
+    links: [
+      ...bookSites.map((s) => ({ label: s.name, href: s.href })),
+      ...gumroadLinks.map((b) => ({ label: b.label, href: b.href, external: true })),
+      { label: "Gumroad store", href: gumroadStore, external: true },
+    ],
   },
   {
     title: "External",

@@ -5,7 +5,8 @@ function Cards({ items }: { items: SiteLink[] }) {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {items.map((s) => (
-        <a key={s.href} href={s.href} className="block border border-border p-5 hover:border-primary/50 transition-colors group">
+        <div key={s.href} className="border border-border p-5 hover:border-primary/50 transition-colors group">
+        <a href={s.href} className="block">
           <div className="flex items-start justify-between gap-2 mb-1">
             <h4 className="font-semibold group-hover:text-primary">{s.name}</h4>
             <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary flex-shrink-0" />
@@ -13,6 +14,14 @@ function Cards({ items }: { items: SiteLink[] }) {
           <div className="text-xs text-primary mb-2">{s.tag}</div>
           <p className="text-sm text-muted-foreground">{s.blurb}</p>
         </a>
+        {s.buy && (
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+            {s.buy.map((b) => (
+              <a key={b.href} href={b.href} target="_blank" rel="noopener" className="text-xs text-muted-foreground underline hover:text-primary">{b.label}</a>
+            ))}
+          </div>
+        )}
+        </div>
       ))}
     </div>
   );
