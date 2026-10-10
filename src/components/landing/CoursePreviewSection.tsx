@@ -78,15 +78,14 @@ function CourseCard({ course }: { course: CoursePreview }) {
 
 export function CoursePreviewSection() {
   return (
-    <section className="py-20 md:py-32 relative" id="courses">
+    <section className=" relative" id="courses">
       <div className="container px-4">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <span className="section-label">[ COURSES ]</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Practical <span className="text-primary">Training</span> That Works
+        <div className="mb-12 max-w-2xl">
+          <h2 className="font-bold mt-2">
+            Practical Training That Works
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl">
             Courses designed by practitioners, for practitioners. No fluff, just the skills
             you need to advance your career.
           </p>

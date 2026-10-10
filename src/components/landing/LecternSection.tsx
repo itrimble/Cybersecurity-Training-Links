@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -60,21 +59,18 @@ const subjects = [
 export function LecternSection() {
   return (
     <section
-      className="py-20 md:py-32 relative border-y border-border bg-card/20"
+      className=" relative border-y border-border bg-card/20"
       id="lectern"
     >
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 cyber-grid opacity-20" />
 
       <div className="container px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <span className="section-label">[ OUR APP ]</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-2 tracking-tight">
-              Meet <span className="text-primary text-glow">Lectern AI</span>
+          <div className="mb-12 max-w-2xl">
+            <h2 className="font-bold mt-2 tracking-tight">
+              Meet Lectern AI
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-2xl">
               Turn any PowerPoint or PDF into professional instructor talk
               tracks in minutes — powered by AI.
             </p>
@@ -88,7 +84,7 @@ export function LecternSection() {
           <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
             {/* Left: Pitch */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <h3 className="font-bold mb-4">
                 Hours of prep work,{" "}
                 <span className="text-primary">done in minutes</span>
               </h3>
@@ -233,20 +229,17 @@ export function LecternSection() {
             </div>
             <div className="mt-6 pt-6 border-t border-border text-center">
               <p className="text-xs text-muted-foreground mb-3">
-                Coming soon to the Mac App Store
+                Available now on the Mac App Store
               </p>
-              <Button
-                size="lg"
-                className="cyber-button"
-                onClick={() => {
-                  document
-                    .getElementById("waitlist")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
+              <a
+                href="https://apps.apple.com/us/app/lectern-ai/id6761786041?mt=12"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(buttonVariants({ size: "lg" }))}
               >
-                Join the Launch List
+                Get Lectern AI
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              </a>
             </div>
           </div>
         </div>

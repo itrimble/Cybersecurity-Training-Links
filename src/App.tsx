@@ -5,7 +5,6 @@ import {
   CareerPathsSection,
   CertificationSection,
   ResourcesSection,
-  SocialProofSection,
   CoursePreviewSection,
   LecternSection,
   QuickSurveySection,
@@ -18,26 +17,29 @@ import {
   AppsBooksSection,
 } from "@/components/landing";
 
+// SocialProofSection (unverified stats + testimonials) is intentionally not rendered; see PR notes.
 export default function App() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
+      <a href="#main" className="skip-link">Skip to content</a>
       <SiteNav />
-      <HeroSection />
-      <LeadMagnetSection />
-      <ValuePropsSection />
-      <CareerPathsSection />
-      <CertificationSection />
-      <ResourcesSection />
-      <SocialProofSection />
-      <CoursePreviewSection />
-      <LecternSection />
-      <QuickSurveySection />
-      <PricingSection />
-      <AppsBooksSection />
-      <WaitlistSection />
-      <SupportSection />
-      <PrivacySection />
+      <main id="main" tabIndex={-1}>
+        <HeroSection />
+        <ValuePropsSection />
+        <CareerPathsSection />
+        <CertificationSection />
+        <LeadMagnetSection />
+        <ResourcesSection />
+        <CoursePreviewSection />
+        <QuickSurveySection />
+        <PricingSection />
+        <WaitlistSection />
+        <AppsBooksSection />
+        <LecternSection />
+        <SupportSection />
+        <PrivacySection />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

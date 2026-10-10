@@ -333,7 +333,6 @@ export const careers: Career[] = [
     ],
     certifications: ['CISSP', 'CISM', 'CCISO', 'MBA', 'CGEIT'],
     resources: [
-      { name: 'CISO Executive Network', url: 'https://www.cisoexecnetwork.com/' },
       { name: 'SANS Security Leadership', url: 'https://www.sans.org/cyber-security-courses/security-leadership-essentials-managers/' },
       { name: 'ISACA CISM', url: 'https://www.isaca.org/credentialing/cism' }
     ],

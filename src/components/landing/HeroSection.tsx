@@ -1,63 +1,55 @@
-import { Shield, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { certifications } from "@/data/certifications";
+
+const ladder = [
+  { level: "Entry", certs: certifications.entry.slice(0, 3) },
+  { level: "Intermediate", certs: certifications.intermediate.slice(0, 3) },
+  { level: "Advanced", certs: certifications.advanced.slice(0, 3) },
+];
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 cyber-grid opacity-50" />
-
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-
-      <div className="container relative z-10 px-4 py-20 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Logo */}
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="icon-box">
-              <Shield className="h-8 w-8 text-primary" />
-            </div>
-            <span className="text-2xl font-bold tracking-tight">Remnant Security</span>
-          </div>
-
-          {/* Section label */}
-          <span className="section-label">[ CAREER TRAINING ]</span>
-
-          {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-            Launch Your{" "}
-            <span className="text-primary text-glow">Cybersecurity</span>
-            {" "}Career Today
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden">
+      <div className="container grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+        <div className="hero-settle">
+          <h1 id="hero-title" className="max-w-[14ch] text-[clamp(2.75rem,1.6rem+4.6vw,5.25rem)] font-bold leading-[1.02] tracking-[-0.03em]">
+            Find your way into cybersecurity.
           </h1>
-
-          {/* Subheading */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Expert-led training, hands-on labs, and personalized career guidance
-            to help you break into the cybersecurity industry.
+          <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Career-path roadmaps, a certification ladder, and courses in the works from Remnant
+            Security. Start with the role you want and see what it takes to get there.
           </p>
-
-          {/* CTA buttons - single clear action */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#careers"
-              className={cn(buttonVariants({ size: "lg" }), "cyber-button group")}
-            >
-              Find Your Path
-              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#careers" className={cn(buttonVariants({ size: "lg" }), "group")}>
+              Explore career paths
+              <ArrowRight aria-hidden className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
-            <a
-              href="#pricing"
-              className={buttonVariants({ size: "lg", variant: "outline" })}
-            >
-              View Pricing
+            <a href="#roadmap" className={buttonVariants({ size: "lg", variant: "outline" })}>
+              Get the free roadmap
             </a>
           </div>
         </div>
-      </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        <figure aria-label="Certification ladder, entry to advanced" className="rounded-[16px] border border-border bg-card p-6 md:p-8">
+          <figcaption className="mb-6 flex items-baseline justify-between gap-4">
+            <span className="font-display text-lg font-semibold">The certification ladder</span>
+            <a href="#certifications" className="text-sm text-primary underline">Full roadmap</a>
+          </figcaption>
+          <ol className="relative space-y-6">
+            {ladder.map((rung, i) => (
+              <li key={rung.level} className="grid grid-cols-[1.75rem_1fr] gap-4">
+                <span className="tabular flex h-7 w-7 items-center justify-center rounded-full border border-primary/60 text-sm font-semibold text-primary">{i + 1}</span>
+                <div>
+                  <p className="font-semibold">{rung.level}</p>
+                  <p className="mt-1 text-[0.9375rem] text-muted-foreground">{rung.certs.map((c) => c.name.replace(/\s*\(.*\)$/, "")).join(" · ")}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </figure>
+      </div>
     </section>
   );
 }

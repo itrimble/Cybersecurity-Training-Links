@@ -1,69 +1,105 @@
-import { useState } from "react";
-import { Shield, ChevronDown, Menu, X } from "lucide-react";
-import { appSites, bookSites, type SiteLink } from "@/data/sites";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { appSites, bookSites, contactHref, type SiteLink } from "@/data/sites";
+import { Mark } from "./Mark";
 
 function Dropdown({ label, items }: { label: string; items: SiteLink[] }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onClick = (e: MouseEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => { document.removeEventListener("keydown", onKey); document.removeEventListener("mousedown", onClick); };
+  }, [open]);
+  const id = `menu-${label.toLowerCase()}`;
   return (
-    <div className="relative group">
-      <button className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors py-2" aria-haspopup="true">
-        {label} <ChevronDown className="h-3 w-3" />
+    <div ref={ref} className="relative" onMouseLeave={() => setOpen(false)}>
+      <button
+        type="button"
+        className="inline-flex items-center gap-1 rounded-md px-1 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground aria-expanded:text-foreground"
+        aria-expanded={open}
+        aria-controls={id}
+        onClick={() => setOpen((v) => !v)}
+        onMouseEnter={() => setOpen(true)}
+      >
+        {label} <ChevronDown aria-hidden className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
-      <div className="absolute right-0 top-full hidden group-hover:block group-focus-within:block min-w-64 bg-background border border-border p-2 shadow-lg">
-        {items.map((s) => (
-          <div key={s.href}>
-            <a href={s.href} className="block px-3 py-2 text-sm hover:text-primary hover:bg-primary/5">
-              <span className="font-medium">{s.name}</span>
-              <span className="block text-xs text-muted-foreground">{s.tag}</span>
-            </a>
-            {s.buy?.map((b) => (
-              <a key={b.href} href={b.href} target="_blank" rel="noopener" className="block pl-6 pr-3 py-1 text-xs text-muted-foreground hover:text-primary">
-                Buy on Gumroad: {b.label.replace(" on Gumroad", "")}
+      <div
+        id={id}
+        hidden={!open}
+        className="absolute right-0 top-full z-50 w-80 pt-2"
+      >
+        <ul className="rounded-[14px] border border-border bg-card p-2 shadow-[0_18px_40px_-12px_oklch(0_0_0/0.6)]">
+          {items.map((s) => (
+            <li key={s.href}>
+              <a href={s.href} className="block rounded-[10px] px-3 py-2.5 transition-colors hover:bg-secondary">
+                <span className="block font-medium text-foreground">{s.name}</span>
+                <span className="block text-sm text-muted-foreground">{s.tag}</span>
               </a>
-            ))}
-          </div>
-        ))}
+              {s.buy?.map((b) => (
+                <a key={b.href} href={b.href} target="_blank" rel="noopener" className="block rounded-[10px] py-1.5 pl-6 pr-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+                  {b.label}
+                </a>
+              ))}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 }
 
+const primaryLinks = [
+  { label: "Career paths", href: "#careers" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Courses", href: "#courses" },
+  { label: "Pricing", href: "#pricing" },
+];
+
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <nav className="container px-4 h-14 flex items-center justify-between max-w-6xl mx-auto">
-        <a href="#" className="flex items-center gap-2 font-bold">
-          <Shield className="h-5 w-5 text-primary" /> Remnant Security
+    <header className="sticky top-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
+      <nav aria-label="Main" className="container flex h-16 items-center justify-between gap-6">
+        <a href="#top" className="flex items-center gap-2.5 font-display text-[1.0625rem] font-semibold tracking-tight">
+          <Mark className="h-6 w-6 text-primary" /> Remnant Security
         </a>
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#careers" className="text-sm text-muted-foreground hover:text-primary">Training</a>
-          <a href="#certifications" className="text-sm text-muted-foreground hover:text-primary">Certifications</a>
+        <div className="hidden items-center gap-6 lg:flex">
+          {primaryLinks.map((l) => (
+            <a key={l.href} href={l.href} className="text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground">{l.label}</a>
+          ))}
           <Dropdown label="Apps" items={appSites} />
           <Dropdown label="Books" items={bookSites} />
-          <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary">Pricing</a>
+          <a href={contactHref} className="rounded-[10px] border border-input px-3.5 py-1.5 text-[0.9375rem] font-medium transition-colors hover:border-primary hover:text-primary">Contact</a>
         </div>
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+        <button className="rounded-md p-2 lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu">
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
       {open && (
-        <div className="md:hidden border-t border-border px-4 py-3 space-y-3 bg-background">
-          <a href="#careers" onClick={() => setOpen(false)} className="block text-sm">Training</a>
-          <a href="#certifications" onClick={() => setOpen(false)} className="block text-sm">Certifications</a>
-          <div>
-            <div className="text-xs font-semibold text-primary mb-1">APPS</div>
-            {appSites.map((s) => <a key={s.href} href={s.href} className="block text-sm py-1 text-muted-foreground">{s.name}</a>)}
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-primary mb-1">BOOKS</div>
-            {bookSites.map((s) => (
-              <div key={s.href}>
-                <a href={s.href} className="block text-sm py-1 text-muted-foreground">{s.name}</a>
-                {s.buy?.map((b) => <a key={b.href} href={b.href} target="_blank" rel="noopener" className="block text-xs py-1 pl-4 text-muted-foreground">{b.label}</a>)}
-              </div>
+        <div id="mobile-menu" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background px-5 pb-6 pt-4 lg:hidden">
+          <ul className="space-y-1">
+            {primaryLinks.map((l) => (
+              <li key={l.href}><a href={l.href} onClick={() => setOpen(false)} className="block py-2 text-lg font-medium">{l.label}</a></li>
             ))}
-          </div>
-          <a href="#pricing" onClick={() => setOpen(false)} className="block text-sm">Pricing</a>
+          </ul>
+          {[{ t: "Apps", items: appSites }, { t: "Books", items: bookSites }].map(({ t, items }) => (
+            <div key={t} className="mt-5">
+              <p className="mb-1 text-sm font-semibold text-muted-foreground">{t}</p>
+              <ul>
+                {items.map((s) => (
+                  <li key={s.href}>
+                    <a href={s.href} className="block py-1.5">{s.name}</a>
+                    {s.buy?.map((b) => <a key={b.href} href={b.href} target="_blank" rel="noopener" className="block py-1 pl-4 text-sm text-muted-foreground">{b.label}</a>)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <a href={contactHref} className="mt-6 block rounded-[10px] bg-primary px-4 py-3 text-center font-semibold text-primary-foreground">Email Ian</a>
         </div>
       )}
     </header>

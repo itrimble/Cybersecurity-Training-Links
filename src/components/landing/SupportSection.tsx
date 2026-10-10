@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "What file formats are supported?",
-    a: "Lectern AI supports .pptx (PowerPoint 2007+) and .pdf presentations. Simply drag and drop your file into the app.",
+    a: "Lectern AI 1.2 imports PowerPoint, PDF, Word, Excel, OpenDocument, RTF, EPUB, and CSV files. Drag and drop a file into the app.",
   },
   {
     q: "How do subscriptions work?",
@@ -21,14 +21,13 @@ const faqs = [
 
 export function SupportSection() {
   return (
-    <section className="py-20 md:py-32 relative" id="support">
+    <section className=" relative" id="support">
       <div className="container px-4">
-        <div className="text-center mb-12">
-          <span className="section-label">[ SUPPORT ]</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            We're Here to <span className="text-primary">Help</span>
+        <div className="mb-12 max-w-2xl">
+          <h2 className="font-bold mt-2">
+            We're Here to Help
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl">
             Have a question about Lectern AI? Check the FAQ below or reach out
             directly.
           </p>
@@ -40,20 +39,18 @@ export function SupportSection() {
             <h3 className="text-xl font-bold mb-6">Contact Us</h3>
             <div className="space-y-4">
               <a
-                href="mailto:support@remnantsecurity.com"
+                href="mailto:iantrimble@remnantsecurity.com?subject=Lectern%20AI%20support"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5 text-primary" />
-                support@remnantsecurity.com
+                iantrimble@remnantsecurity.com
               </a>
               <a
-                href="https://github.com/itrimble/slideprocessor/issues"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:iantrimble@remnantsecurity.com?subject=Lectern%20AI%20bug%20report"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <MessageCircle className="h-5 w-5 text-primary" />
-                Report an issue on GitHub
+                Report a bug by email
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <BookOpen className="h-5 w-5 text-primary" />
@@ -76,7 +73,7 @@ export function SupportSection() {
                   <summary className="cursor-pointer font-medium text-sm hover:text-primary transition-colors">
                     {faq.q}
                   </summary>
-                  <p className="mt-2 text-sm text-muted-foreground pl-4 border-l-2 border-primary/30">
+                  <p className="mt-2 text-sm text-muted-foreground">
                     {faq.a}
                   </p>
                 </details>

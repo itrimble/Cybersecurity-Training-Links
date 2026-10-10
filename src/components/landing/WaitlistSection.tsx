@@ -72,7 +72,7 @@ export function WaitlistSection() {
 
   if (isSubmitted) {
     return (
-      <section className="py-20 md:py-32 relative bg-card/50" id="waitlist">
+      <section className=" relative bg-card/50" id="waitlist">
         <div className="container px-4">
           <div className="max-w-md mx-auto text-center">
             <div className="cyber-card p-8">
@@ -92,14 +92,13 @@ export function WaitlistSection() {
   }
 
   return (
-    <section className="py-20 md:py-32 relative bg-card/50" id="waitlist">
+    <section className=" relative bg-card/50" id="waitlist">
       <div className="container px-4">
         <div className="max-w-lg mx-auto">
           {/* Section header */}
           <div className="text-center mb-8">
-            <span className="section-label">[ JOIN WAITLIST ]</span>
-            <h2 className="text-2xl md:text-3xl font-bold mt-2">
-              Get <span className="text-primary">Early Access</span>
+            <h2 className="font-bold mt-2">
+              Get Early Access
             </h2>
             <p className="text-muted-foreground mt-2">
               Be the first to know when courses launch. Tell us what interests

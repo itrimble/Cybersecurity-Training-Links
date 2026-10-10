@@ -1,93 +1,60 @@
-import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { pricingTiers } from "@/data/membership";
 
 export default function PricingSection() {
-  const handleCtaClick = (link: string) => {
-    if (link.startsWith("#")) {
-      document.getElementById(link.slice(1))?.scrollIntoView({ behavior: "smooth" });
-    } else if (link.startsWith("mailto:")) {
-      window.open(link, "_self");
-    }
-  };
-
   return (
-    <section id="pricing" className="py-20 md:py-32 container px-4 mx-auto">
-      <div className="text-center mb-16">
-        <span className="section-label">[ PRICING ]</span>
-        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-          Invest in Your <span className="text-primary">Career</span>
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Practical training at prices that make sense. No subscriptions, no hidden fees.
-        </p>
-      </div>
+    <section id="pricing" aria-labelledby="pricing-title">
+      <div className="container">
+        <div className="mb-14 max-w-2xl">
+          <h2 id="pricing-title" className="font-bold">Pricing</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            One-time prices, no subscriptions. Courses are in development; join the waitlist to hear
+            when each one opens.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {pricingTiers.map((tier) => (
-          <div
-            key={tier.id}
-            className={`rounded-2xl p-8 flex flex-col ${
-              tier.highlight
-                ? "border-2 border-primary relative bg-card/50 shadow-lg shadow-primary/10"
-                : "border border-border bg-card"
-            }`}
-          >
-            {tier.highlight && (
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                Best Value
-              </div>
-            )}
-
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-3xl font-bold">{tier.price}</span>
-                {tier.priceNote && (
-                  <span className="text-sm text-primary font-medium">
-                    {tier.priceNote}
-                  </span>
-                )}
-              </div>
-              <p className="text-muted-foreground text-sm">{tier.description}</p>
-            </div>
-
-            <ul className="mb-8 space-y-3 flex-grow">
-              {tier.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Button
-              variant={tier.highlight ? "default" : "outline"}
-              className={`w-full group ${tier.highlight ? "cyber-button" : ""}`}
-              onClick={() => handleCtaClick(tier.ctaLink)}
+        <div className="grid gap-6 md:grid-cols-3">
+          {pricingTiers.map((tier) => (
+            <article
+              key={tier.id}
+              aria-labelledby={`tier-${tier.id}`}
+              className={cn(
+                "flex flex-col rounded-[14px] border p-7",
+                tier.highlight ? "border-primary bg-card" : "border-border",
+              )}
             >
-              {tier.cta}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
-        ))}
-      </div>
+              <h3 id={`tier-${tier.id}`} className="text-xl font-semibold">{tier.name}</h3>
+              <p className="tabular mt-4 font-display text-3xl font-bold tracking-tight">
+                {tier.price}
+                {tier.priceNote && <span className="ml-2 align-middle text-sm font-medium text-primary">{tier.priceNote}</span>}
+              </p>
+              <p className="mt-2 text-muted-foreground">{tier.description}</p>
+              <ul className="mb-8 mt-6 flex-grow space-y-2.5">
+                {tier.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-[0.9375rem]">
+                    <Check aria-hidden className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={tier.ctaLink}
+                className={cn(buttonVariants({ variant: tier.highlight ? "default" : "outline" }), "group w-full")}
+              >
+                {tier.cta}
+                <ArrowRight aria-hidden className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </article>
+          ))}
+        </div>
 
-      <div className="mt-16 text-center max-w-2xl mx-auto">
-        <p className="text-muted-foreground mb-6">
-          All courses include lifetime access and future updates. Not sure which
-          option is right for you?
+        <p className="mt-12 text-muted-foreground">
+          Not sure where to start?{" "}
+          <a href="#survey" className="font-medium text-primary underline">Take the two-minute path quiz</a>
+          {" "}for a recommendation.
         </p>
-        <Button
-          variant="link"
-          className="text-primary"
-          onClick={() => {
-            document.getElementById("survey")?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          Take our quick quiz to get a personalized recommendation
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
       </div>
     </section>
   );

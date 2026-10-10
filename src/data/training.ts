@@ -345,7 +345,7 @@ export const labs: Lab[] = [
   },
   {
     name: 'Offensive Security Proving Grounds',
-    url: 'https://www.offsec.com/labs/',
+    url: 'https://www.offsec.com/products/proving-grounds/',
     type: 'Practice Labs',
     description: 'Practice environment for OSCP preparation with real-world vulnerable machines.',
     features: ['OSCP prep', 'Real machines', 'Practice', 'Play tier free'],

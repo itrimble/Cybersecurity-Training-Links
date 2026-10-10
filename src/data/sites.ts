@@ -23,3 +23,7 @@ export const bookSites: SiteLink[] = [
   { name: "The Max Mercer Series", href: "https://books.remnantsecurity.com/max-mercer/", tag: "Trilogy", blurb: "Bay Enclave, 2043. Start with The Halcyon Key. Then The Obsidian Protocol and The Lazarus Directive.", buy: gumroadLinks },
   { name: "The Unfiltered Future — sample", href: "https://books.remnantsecurity.com/the-unfiltered-future/sample.html", tag: "Free sample", blurb: "The AI doesn't lie. That's what makes it dangerous. Read the opening." },
 ];
+
+// Single contact address for the apex site (training, teams, Lectern support, general).
+export const contactEmail = "iantrimble@remnantsecurity.com";
+export const contactHref = `mailto:${contactEmail}`;
