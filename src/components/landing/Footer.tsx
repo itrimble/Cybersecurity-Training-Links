@@ -1,3 +1,4 @@
+import { appSites, bookSites, gumroadLinks, gumroadStore } from "@/data/sites";
 import { Shield, Github, Linkedin, Twitter, ExternalLink } from "lucide-react";
 
 const footerLinks = [
@@ -6,9 +7,21 @@ const footerLinks = [
     links: [
       { label: "Career Paths", href: "#careers" },
       { label: "Certifications", href: "#certifications" },
-      { label: "Lectern AI", href: "#lectern" },
+      { label: "Lectern AI", href: "https://lectern.remnantsecurity.com/" },
       { label: "Resources", href: "#resources" },
       { label: "Pricing", href: "#pricing" },
+    ],
+  },
+  {
+    title: "Apps",
+    links: appSites.map((s) => ({ label: s.name, href: s.href })),
+  },
+  {
+    title: "Books",
+    links: [
+      ...bookSites.map((s) => ({ label: s.name, href: s.href })),
+      ...gumroadLinks.map((b) => ({ label: b.label, href: b.href, external: true })),
+      { label: "Gumroad store", href: gumroadStore, external: true },
     ],
   },
   {
@@ -33,7 +46,7 @@ export function Footer() {
     <footer className="py-12 border-t border-border">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-4">

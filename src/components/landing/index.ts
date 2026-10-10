@@ -13,3 +13,5 @@ export { WaitlistSection } from "./WaitlistSection";
 export { SupportSection } from "./SupportSection";
 export { PrivacySection } from "./PrivacySection";
 export { Footer } from "./Footer";
+export { SiteNav } from "./SiteNav";
+export { AppsBooksSection } from "./AppsBooksSection";
