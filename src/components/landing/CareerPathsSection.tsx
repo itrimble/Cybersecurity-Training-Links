@@ -131,9 +131,6 @@ export function CareerPathsSection() {
                             )}
                           </div>
                           <h4 className="font-semibold">{result.career?.title}</h4>
-                          <p className="text-sm text-primary mt-1">
-                            {result.career?.salaryRange}
-                          </p>
                         </div>
                       </div>
                     </div>
@@ -257,7 +254,7 @@ export function CareerPathsSection() {
                   {career.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-primary">{career.salaryRange}</span>
+                  <span className="text-xs text-muted-foreground">View path</span>
                   <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
               </button>
@@ -293,9 +290,7 @@ export function CareerPathsSection() {
                       <CareerIcon glyph={selectedCareer.icon} />
                       <div>
                         <DialogTitle className="text-xl">{selectedCareer.title}</DialogTitle>
-                        <DialogDescription className="text-primary">
-                          {selectedCareer.salaryRange}
-                        </DialogDescription>
+                        <DialogDescription>{selectedCareer.level}</DialogDescription>
                       </div>
                     </div>
                   </DialogHeader>

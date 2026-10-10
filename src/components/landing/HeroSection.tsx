@@ -18,17 +18,15 @@ export function HeroSection() {
             Find your way into cybersecurity.
           </h1>
           <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Career-path roadmaps, a certification ladder, and courses in the works from Remnant
-            Security. Start with the role you want and see what it takes to get there.
+            Cybersecurity career roadmaps, apps, and books by Ian Trimble, Insider Threat Manager at
+            Google. Start with the free roadmap for the role you want.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#careers" className={cn(buttonVariants({ size: "lg" }), "group")}>
-              Explore career paths
+          <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <a href="#roadmap" className={cn(buttonVariants({ size: "lg" }), "group")}>
+              Get the free roadmap
               <ArrowRight aria-hidden className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
-            <a href="#roadmap" className={buttonVariants({ size: "lg", variant: "outline" })}>
-              Get the free roadmap
-            </a>
+            <a href="#careers" className="font-medium text-primary underline">Explore career paths</a>
           </div>
         </div>
 

@@ -196,9 +196,7 @@ export function QuickSurveySection() {
                       {recommendation.course.subtitle}
                     </p>
                   </div>
-                  <span className="text-2xl font-bold">
-                    ${recommendation.course.price}
-                  </span>
+                  <span className="text-sm font-medium text-primary">Coming soon</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
                   {recommendation.course.description}

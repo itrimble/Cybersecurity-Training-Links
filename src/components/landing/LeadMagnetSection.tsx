@@ -49,7 +49,6 @@ export function LeadMagnetSection() {
   const guideFeatures = [
     "Career path comparison chart",
     "Certification roadmap by role",
-    "Salary benchmarks 2025",
     "Skills gap assessment",
     "30-day action plan",
   ];

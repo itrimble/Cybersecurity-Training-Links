@@ -68,8 +68,7 @@ export const coursePreviews: CoursePreview[] = [
       'Real-world case studies',
       'Certificate of completion'
     ],
-    status: 'waitlist',
-    badge: 'Popular'
+    status: 'waitlist'
   },
   {
     id: 'insider-threat',
@@ -103,8 +102,7 @@ export const coursePreviews: CoursePreview[] = [
       'Tool comparison guides',
       'Hands-on labs'
     ],
-    status: 'waitlist',
-    badge: 'Best Value'
+    status: 'waitlist'
   },
   {
     id: 'career-jumpstart',
