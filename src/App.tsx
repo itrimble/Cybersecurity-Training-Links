@@ -14,11 +14,14 @@ import {
   SupportSection,
   PrivacySection,
   Footer,
+  SiteNav,
+  AppsBooksSection,
 } from "@/components/landing";
 
 export default function App() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <SiteNav />
       <HeroSection />
       <LeadMagnetSection />
       <ValuePropsSection />
@@ -30,6 +33,7 @@ export default function App() {
       <LecternSection />
       <QuickSurveySection />
       <PricingSection />
+      <AppsBooksSection />
       <WaitlistSection />
       <SupportSection />
       <PrivacySection />

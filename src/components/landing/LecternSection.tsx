@@ -126,19 +126,19 @@ export function LecternSection() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#lectern-waitlist"
+                  href="https://lectern.remnantsecurity.com/"
                   className={cn(buttonVariants({ size: "lg" }), "cyber-button group")}
                 >
-                  Get Notified at Launch
+                  Visit Lectern AI
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="https://github.com/itrimble/slideprocessor"
+                  href="https://apps.apple.com/us/app/lectern-ai/id6761786041?mt=12"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={buttonVariants({ size: "lg", variant: "outline" })}
                 >
-                  View on GitHub
+                  Mac App Store
                 </a>
               </div>
             </div>
