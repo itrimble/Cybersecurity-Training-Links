@@ -1,6 +1,5 @@
 import { Clock, GraduationCap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { coursePreviews, type CoursePreview } from "@/data/courses";
 
 function CourseCard({ course }: { course: CoursePreview }) {
@@ -12,17 +11,6 @@ function CourseCard({ course }: { course: CoursePreview }) {
 
   return (
     <div className="cyber-card p-6 flex flex-col h-full relative">
-      {/* Badge */}
-      {course.badge && (
-        <div className="absolute -top-3 right-4">
-          <Badge
-            variant="default"
-            className="bg-primary text-primary-foreground"
-          >
-            {course.badge}
-          </Badge>
-        </div>
-      )}
 
       {/* Header */}
       <div className="mb-4">
@@ -56,10 +44,7 @@ function CourseCard({ course }: { course: CoursePreview }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
-        <div>
-          <span className="text-2xl font-bold">${course.price}</span>
-          <span className="text-sm text-muted-foreground ml-1">USD</span>
-        </div>
+        <span className="text-sm font-medium text-primary">Coming soon</span>
         <Button
           variant="outline"
           size="sm"
@@ -68,7 +53,7 @@ function CourseCard({ course }: { course: CoursePreview }) {
             document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          Join Waitlist
+          Join the waitlist
           <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
@@ -101,8 +86,7 @@ export function CoursePreviewSection() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
-            All courses are in development. Join the waitlist to get notified when they launch
-            and receive early-bird pricing.
+            All courses are in development. Join the waitlist to hear when each one opens.
           </p>
           <Button
             size="lg"
@@ -111,7 +95,7 @@ export function CoursePreviewSection() {
               document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Get Early Access
+            Join the waitlist
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>

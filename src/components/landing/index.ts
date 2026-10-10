@@ -15,3 +15,5 @@ export { PrivacySection } from "./PrivacySection";
 export { Footer } from "./Footer";
 export { SiteNav } from "./SiteNav";
 export { AppsBooksSection } from "./AppsBooksSection";
+export { BuiltStrip } from "./BuiltStrip";
+export { AboutSection } from "./AboutSection";

@@ -15,6 +15,8 @@ import {
   Footer,
   SiteNav,
   AppsBooksSection,
+  BuiltStrip,
+  AboutSection,
 } from "@/components/landing";
 
 // SocialProofSection (unverified stats + testimonials) is intentionally not rendered; see PR notes.
@@ -25,6 +27,8 @@ export default function App() {
       <SiteNav />
       <main id="main" tabIndex={-1}>
         <HeroSection />
+        <BuiltStrip />
+        <AboutSection />
         <ValuePropsSection />
         <CareerPathsSection />
         <CertificationSection />

@@ -10,8 +10,8 @@ export default function PricingSection() {
         <div className="mb-14 max-w-2xl">
           <h2 id="pricing-title" className="font-bold">Pricing</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            One-time prices, no subscriptions. Courses are in development; join the waitlist to hear
-            when each one opens.
+            Courses are in development and not for sale yet. Join the waitlist to hear when each one
+            opens. Team training is available by email.
           </p>
         </div>
 
@@ -26,9 +26,8 @@ export default function PricingSection() {
               )}
             >
               <h3 id={`tier-${tier.id}`} className="text-xl font-semibold">{tier.name}</h3>
-              <p className="tabular mt-4 font-display text-3xl font-bold tracking-tight">
+              <p className="mt-4 font-display text-xl font-semibold text-primary">
                 {tier.price}
-                {tier.priceNote && <span className="ml-2 align-middle text-sm font-medium text-primary">{tier.priceNote}</span>}
               </p>
               <p className="mt-2 text-muted-foreground">{tier.description}</p>
               <ul className="mb-8 mt-6 flex-grow space-y-2.5">

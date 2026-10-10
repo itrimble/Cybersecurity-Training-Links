@@ -125,7 +125,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: 'single-course',
     name: 'Single Course',
-    price: 'Starting at $47',
+    price: 'Coming soon',
     description: 'Individual course access with lifetime updates',
     features: [
       'Full course access',
@@ -135,15 +135,14 @@ export const pricingTiers: PricingTier[] = [
       'Lifetime updates'
     ],
     highlight: false,
-    cta: 'See upcoming courses',
-    ctaLink: '#courses'
+    cta: 'Join the waitlist',
+    ctaLink: '#waitlist'
   },
   {
     id: 'course-bundle',
     name: 'Course Bundle',
-    price: '$297',
-    priceNote: 'Save 40%',
-    description: 'Best value for serious career builders',
+    price: 'Coming soon',
+    description: 'Three courses of your choice in one package',
     features: [
       'Access to 3 courses of your choice',
       'All downloadable resources',
@@ -152,14 +151,14 @@ export const pricingTiers: PricingTier[] = [
       '1 mentorship call (30 min)',
       'Bonus: Interview prep guide'
     ],
-    highlight: true,
-    cta: 'Join Waitlist',
+    highlight: false,
+    cta: 'Join the waitlist',
     ctaLink: '#waitlist'
   },
   {
     id: 'team-training',
     name: 'Team Training',
-    price: 'Custom',
+    price: 'Custom quote',
     description: 'Train your entire security team',
     features: [
       'Unlimited team seats',

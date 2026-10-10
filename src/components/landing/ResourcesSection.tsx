@@ -1,149 +1,36 @@
-import { useState } from "react";
-import { Wrench, Book, MessageSquare, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { essentialTools } from "@/data/tools";
-import { books } from "@/data/books";
-import { interviewQuestions } from "@/data/interviewQuestions";
+import { ExternalLink } from "lucide-react";
 
-type TabKey = "tools" | "books" | "interview";
-
-const tabs = [
-  { key: "tools" as TabKey, label: "Tools", icon: Wrench },
-  { key: "books" as TabKey, label: "Books", icon: Book },
-  { key: "interview" as TabKey, label: "Interview Prep", icon: MessageSquare },
-];
-
-const featuredTools = essentialTools.slice(0, 6);
-const featuredBooks = books.slice(0, 4);
-const sampleQuestions = [
-  "What is the CIA Triad and why is it important?",
-  "Explain the difference between IDS and IPS.",
-  "How do you approach a security incident investigation?",
-  "What tools have you used for log analysis?",
-  "Describe your experience with SIEM platforms.",
+// A short, curated set of free, current starting points. Each link verified in the PR link crawl.
+const resources = [
+  { name: "Kali Linux", note: "Penetration-testing distribution", href: "https://www.kali.org/" },
+  { name: "Wireshark", note: "Network protocol analyzer", href: "https://www.wireshark.org/" },
+  { name: "Nmap", note: "Network discovery and scanning", href: "https://nmap.org/" },
+  { name: "Burp Suite Community", note: "Web application testing", href: "https://portswigger.net/burp/communitydownload" },
+  { name: "OWASP ZAP", note: "Open-source web app scanner", href: "https://www.zaproxy.org/" },
+  { name: "Ghidra", note: "NSA's reverse-engineering suite", href: "https://ghidra-sre.org/" },
+  { name: "Autopsy", note: "Digital forensics platform", href: "https://www.autopsy.com/" },
+  { name: "Metasploit Framework", note: "Exploitation framework", href: "https://www.metasploit.com/" },
 ];
 
 export function ResourcesSection() {
-  const [activeTab, setActiveTab] = useState<TabKey>("tools");
-
   return (
-    <section className=" relative" id="resources">
-      <div className="container px-4">
-        <div className="max-w-5xl mx-auto">
-          {/* Section header */}
-          <div className="mb-12 max-w-2xl">
-            <h2 className="font-bold mb-4">
-              Essential Security Resources
-            </h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Tools, books, and interview prep to accelerate your security career.
-            </p>
-          </div>
-
-          {/* Tab buttons */}
-          <div className="flex justify-center gap-2 mb-8">
-            {tabs.map((tab) => (
-              <Button
-                key={tab.key}
-                variant={activeTab === tab.key ? "default" : "outline"}
-                onClick={() => setActiveTab(tab.key)}
-                className="gap-2"
-              >
-                <tab.icon className="h-4 w-4" />
-                {tab.label}
-              </Button>
-            ))}
-          </div>
-
-          {/* Tab content */}
-          <div className="cyber-card p-8">
-            {activeTab === "tools" && (
-              <div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                  {featuredTools.map((tool) => (
-                    <a
-                      key={tool.name}
-                      href={tool.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 border border-border hover:border-primary/50 transition-colors group"
-                    >
-                      <div className="icon-box shrink-0">
-                        <Wrench className="h-4 w-4 text-primary" />
-                      </div>
-                      <span className="font-medium text-sm group-hover:text-primary transition-colors">
-                        {tool.name}
-                      </span>
-                      <ExternalLink className="h-3 w-3 text-muted-foreground ml-auto" />
-                    </a>
-                  ))}
-                </div>
-                <p className="text-center text-sm text-muted-foreground">
-                  100+ tools organized by role including DFIR, pentesting, SOC, and DevSecOps
-                </p>
-              </div>
-            )}
-
-            {activeTab === "books" && (
-              <div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                  {featuredBooks.map((book) => (
-                    <a
-                      key={book.isbn}
-                      href={book.amazonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 border border-border hover:border-primary/50 transition-colors group"
-                    >
-                      <div className="aspect-[3/4] relative mb-3 bg-secondary/50 flex items-center justify-center">
-                        <img
-                          src={book.image}
-                          alt={book.title}
-                          className="max-h-full max-w-full object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                          }}
-                        />
-                        <Book className="h-8 w-8 text-muted-foreground absolute" />
-                      </div>
-                      <span className="text-[10px] text-primary uppercase">
-                        {book.category}
-                      </span>
-                      <h3 className="font-semibold text-sm mt-1 line-clamp-2 group-hover:text-primary transition-colors">
-                        {book.title}
-                      </h3>
-                    </a>
-                  ))}
-                </div>
-                <p className="text-center text-sm text-muted-foreground">
-                  14+ recommended security books across DFIR, pentesting, and more
-                </p>
-              </div>
-            )}
-
-            {activeTab === "interview" && (
-              <div>
-                <div className="space-y-3 mb-6">
-                  {sampleQuestions.map((question, index) => (
-                    <div
-                      key={index}
-                      className="p-4 border border-border flex items-start gap-3"
-                    >
-                      <span className="text-primary text-sm">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <p className="text-sm">{question}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-center text-sm text-muted-foreground">
-                  300+ interview questions across {Object.keys(interviewQuestions.roleSpecific).length} specialty areas
-                </p>
-              </div>
-            )}
-          </div>
+    <section id="resources" aria-labelledby="resources-title">
+      <div className="container">
+        <div className="mb-10 max-w-2xl">
+          <h2 id="resources-title" className="font-bold">Start with these tools</h2>
+          <p className="mt-4 text-lg text-muted-foreground">Eight free tools worth learning first, whichever path you choose.</p>
         </div>
+        <ul className="grid gap-x-10 border-t border-border sm:grid-cols-2">
+          {resources.map((r) => (
+            <li key={r.href} className="border-b border-border">
+              <a href={r.href} target="_blank" rel="noopener noreferrer" className="group flex items-baseline gap-3 py-4">
+                <span className="font-semibold transition-colors group-hover:text-primary">{r.name}</span>
+                <span className="text-sm text-muted-foreground">{r.note}</span>
+                <ExternalLink aria-hidden className="ml-auto h-3.5 w-3.5 self-center text-muted-foreground" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
