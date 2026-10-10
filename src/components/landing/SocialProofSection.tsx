@@ -47,7 +47,7 @@ export function SocialProofSection() {
                 </p>
                 <div>
                   <p className="font-semibold text-sm">{testimonial.author}</p>
-                  <p className="text-xs text-primary font-mono">{testimonial.role}</p>
+                  <p className="text-xs text-primary">{testimonial.role}</p>
                 </div>
               </div>
             ))}

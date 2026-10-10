@@ -135,7 +135,7 @@ export const pricingTiers: PricingTier[] = [
       'Lifetime updates'
     ],
     highlight: false,
-    cta: 'Browse Courses',
+    cta: 'See upcoming courses',
     ctaLink: '#courses'
   },
   {
@@ -170,8 +170,8 @@ export const pricingTiers: PricingTier[] = [
       'Custom content options'
     ],
     highlight: false,
-    cta: 'Contact Us',
-    ctaLink: 'mailto:team@remnantsecurity.com'
+    cta: 'Email about team training',
+    ctaLink: 'mailto:iantrimble@remnantsecurity.com?subject=Team%20training'
   }
 ];
 

@@ -30,16 +30,15 @@ export function CertificationSection() {
   const [activeLevel, setActiveLevel] = useState<CertLevel>("entry");
 
   return (
-    <section className="py-20 md:py-32 relative bg-card/50" id="certifications">
+    <section className=" relative bg-card/50" id="certifications">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-12">
-            <span className="section-label">[ CERTIFICATIONS ]</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Certification <span className="text-primary">Roadmap</span>
+          <div className="mb-12 max-w-2xl">
+            <h2 className="font-bold mb-4">
+              Certification Roadmap
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl">
               Industry-recognized certifications organized by experience level
               to guide your professional development.
             </p>
@@ -86,7 +85,7 @@ export function CertificationSection() {
                       {cert.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-1.5 py-0.5 text-[10px] font-mono bg-secondary text-secondary-foreground"
+                          className="px-1.5 py-0.5 text-[10px] bg-secondary text-secondary-foreground"
                         >
                           {tag}
                         </span>
@@ -110,7 +109,7 @@ export function CertificationSection() {
                   <h4 className="font-semibold mb-2">{outcome.title}</h4>
                   <div className="flex items-center justify-center gap-2 mb-3">
                     <TrendingUp className="h-4 w-4 text-green-500" />
-                    <span className="text-sm text-green-500 font-mono">{outcome.growth} growth</span>
+                    <span className="text-sm text-green-500">{outcome.growth} growth</span>
                   </div>
                   <p className="text-2xl font-bold text-primary mb-2">{outcome.avgSalary}</p>
                   <p className="text-xs text-muted-foreground">

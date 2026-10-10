@@ -173,14 +173,14 @@ export function QuickSurveySection() {
     const recommendation = getRecommendation(answers);
 
     return (
-      <section className="py-20 md:py-32 relative bg-card/30" id="survey">
+      <section className=" relative bg-card/30" id="survey">
         <div className="container px-4">
           <div className="max-w-2xl mx-auto">
             <div className="cyber-card p-8 text-center">
               <div className="icon-box mx-auto mb-6">
                 <Sparkles className="h-8 w-8 text-primary" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              <h2 className="font-bold mb-2">
                 Your Recommended Course
               </h2>
               <p className="text-muted-foreground mb-8">{recommendation.reason}</p>
@@ -241,14 +241,13 @@ export function QuickSurveySection() {
   const progress = ((currentStep + 1) / surveySteps.length) * 100;
 
   return (
-    <section className="py-20 md:py-32 relative bg-card/30" id="survey">
+    <section className=" relative bg-card/30" id="survey">
       <div className="container px-4">
         <div className="max-w-2xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-8">
-            <span className="section-label">[ FIND YOUR PATH ]</span>
-            <h2 className="text-2xl md:text-3xl font-bold mt-2">
-              Get a <span className="text-primary">Personalized</span> Recommendation
+            <h2 className="font-bold mt-2">
+              Get a Personalized Recommendation
             </h2>
             <p className="text-muted-foreground mt-2">
               Answer 3 quick questions to find the right course for you.

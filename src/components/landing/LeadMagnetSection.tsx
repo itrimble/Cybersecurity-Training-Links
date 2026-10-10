@@ -56,7 +56,7 @@ export function LeadMagnetSection() {
 
   if (isSubmitted) {
     return (
-      <section className="py-16 md:py-24 relative bg-gradient-to-b from-primary/5 to-transparent">
+      <section id="roadmap" className="relative">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto">
             <div className="cyber-card p-8 text-center">
@@ -84,19 +84,16 @@ export function LeadMagnetSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 relative bg-gradient-to-b from-primary/5 to-transparent">
+    <section id="roadmap" className="relative">
       <div className="container px-4">
         <div className="max-w-3xl mx-auto">
           <div className="cyber-card p-8 md:p-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left side - Content */}
               <div>
-                <span className="section-label mb-4 inline-block">
-                  [ FREE GUIDE ]
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                <h2 className="font-bold mb-4">
                   Cybersecurity Career Roadmap{" "}
-                  <span className="text-primary">2025</span>
+                  2025
                 </h2>
                 <p className="text-muted-foreground mb-6">
                   Navigate your path into cybersecurity with our comprehensive

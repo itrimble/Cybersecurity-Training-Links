@@ -2,14 +2,13 @@ import { Shield, Lock, Eye, Server } from "lucide-react";
 
 export function PrivacySection() {
   return (
-    <section className="py-20 md:py-32 relative border-t border-border" id="privacy">
+    <section className=" relative border-t border-border" id="privacy">
       <div className="container px-4">
-        <div className="text-center mb-12">
-          <span className="section-label">[ PRIVACY POLICY ]</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Your Data Stays on <span className="text-primary">Your Mac</span>
+        <div className="mb-12 max-w-2xl">
+          <h2 className="font-bold mt-2">
+            Your Data Stays on Your Mac
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl">
             Lectern AI is built with privacy as a core principle. We collect
             zero data.
           </p>
@@ -64,7 +63,7 @@ export function PrivacySection() {
               <br />
               <strong>Developer:</strong> Remnant Security Group LLC
               <br />
-              <strong>Contact:</strong> support@remnantsecurity.com
+              <strong>Contact:</strong> iantrimble@remnantsecurity.com
             </p>
             <p>
               <strong>Information We Collect:</strong> None. Lectern AI does not

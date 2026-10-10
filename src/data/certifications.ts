@@ -163,7 +163,7 @@ export const certifications: CertificationLevels = {
     {
       name: 'CRTO (Certified Red Team Operator)',
       org: 'Zero Point Security',
-      url: 'https://training.zeropointsecurity.co.uk/courses/red-team-ops',
+      url: 'https://www.zeropointsecurity.co.uk/course/red-team-ops',
       tags: ['Red Team', 'C2', 'Hands-on']
     },
     {

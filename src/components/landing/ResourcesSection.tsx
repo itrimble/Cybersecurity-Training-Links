@@ -27,16 +27,15 @@ export function ResourcesSection() {
   const [activeTab, setActiveTab] = useState<TabKey>("tools");
 
   return (
-    <section className="py-20 md:py-32 relative" id="resources">
+    <section className=" relative" id="resources">
       <div className="container px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-12">
-            <span className="section-label">[ RESOURCES ]</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Essential <span className="text-primary">Security Resources</span>
+          <div className="mb-12 max-w-2xl">
+            <h2 className="font-bold mb-4">
+              Essential Security Resources
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl">
               Tools, books, and interview prep to accelerate your security career.
             </p>
           </div>
@@ -108,7 +107,7 @@ export function ResourcesSection() {
                         />
                         <Book className="h-8 w-8 text-muted-foreground absolute" />
                       </div>
-                      <span className="text-[10px] font-mono text-primary uppercase">
+                      <span className="text-[10px] text-primary uppercase">
                         {book.category}
                       </span>
                       <h3 className="font-semibold text-sm mt-1 line-clamp-2 group-hover:text-primary transition-colors">
@@ -131,7 +130,7 @@ export function ResourcesSection() {
                       key={index}
                       className="p-4 border border-border flex items-start gap-3"
                     >
-                      <span className="text-primary font-mono text-sm">
+                      <span className="text-primary text-sm">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <p className="text-sm">{question}</p>

@@ -1,3 +1,4 @@
+import { CareerIcon } from "./CareerIcon";
 import { useState } from "react";
 import { ExternalLink, ChevronRight, ChevronLeft, RotateCcw, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -68,16 +69,15 @@ export function CareerPathsSection() {
   const question = quizQuestions[currentQuestion];
 
   return (
-    <section className="py-20 md:py-32 relative bg-card/50" id="careers">
+    <section className=" relative bg-card/50" id="careers">
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-12">
-            <span className="section-label">[ CAREER PATHS ]</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Explore <span className="text-primary">12 Career Paths</span>
+          <div className="mb-12 max-w-2xl">
+            <h2 className="font-bold mb-4">
+              Explore 12 Career Paths
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl">
               Find your ideal role in cybersecurity with detailed career guides,
               required skills, and recommended certifications.
             </p>
@@ -121,17 +121,17 @@ export function CareerPathsSection() {
                       }`}
                     >
                       <div className="flex items-start gap-4">
-                        <span className="text-3xl">{result.career?.icon}</span>
+                        <CareerIcon glyph={result.career?.icon} />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             {index === 0 && (
-                              <span className="px-2 py-0.5 text-xs font-mono bg-primary text-primary-foreground">
+                              <span className="px-2 py-0.5 text-xs bg-primary text-primary-foreground">
                                 BEST MATCH
                               </span>
                             )}
                           </div>
                           <h4 className="font-semibold">{result.career?.title}</h4>
-                          <p className="text-sm text-primary font-mono mt-1">
+                          <p className="text-sm text-primary mt-1">
                             {result.career?.salaryRange}
                           </p>
                         </div>
@@ -166,7 +166,7 @@ export function CareerPathsSection() {
                     <span className="text-muted-foreground">
                       Question {currentQuestion + 1} of {quizQuestions.length}
                     </span>
-                    <span className="text-primary font-mono">{Math.round(progress)}%</span>
+                    <span className="text-primary">{Math.round(progress)}%</span>
                   </div>
                   <Progress value={progress} />
                 </div>
@@ -245,8 +245,8 @@ export function CareerPathsSection() {
                 className="cyber-card p-6 text-left hover:border-primary/50 transition-colors group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{career.icon}</span>
-                  <span className={`text-xs font-mono ${careerCategories[career.category].color}`}>
+                  <CareerIcon glyph={career.icon} />
+                  <span className={`text-xs ${careerCategories[career.category].color}`}>
                     {career.level}
                   </span>
                 </div>
@@ -257,7 +257,7 @@ export function CareerPathsSection() {
                   {career.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-primary font-mono">{career.salaryRange}</span>
+                  <span className="text-xs text-primary">{career.salaryRange}</span>
                   <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
               </button>
@@ -290,10 +290,10 @@ export function CareerPathsSection() {
                 <>
                   <DialogHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-4xl">{selectedCareer.icon}</span>
+                      <CareerIcon glyph={selectedCareer.icon} />
                       <div>
                         <DialogTitle className="text-xl">{selectedCareer.title}</DialogTitle>
-                        <DialogDescription className="text-primary font-mono">
+                        <DialogDescription className="text-primary">
                           {selectedCareer.salaryRange}
                         </DialogDescription>
                       </div>
