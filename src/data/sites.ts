@@ -27,3 +27,7 @@ export const bookSites: SiteLink[] = [
 // Single contact address for the apex site (training, teams, Lectern support, general).
 export const contactEmail = "iantrimble@remnantsecurity.com";
 export const contactHref = `mailto:${contactEmail}`;
+
+// Build notes and write-ups. One destination rather than a collection, so it sits
+// in the nav as a plain link alongside Contact rather than becoming a dropdown.
+export const blogHref = "https://blog.remnantsecurity.com/";
