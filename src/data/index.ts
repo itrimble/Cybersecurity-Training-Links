@@ -11,6 +11,6 @@ export * from './technicalConcepts';
 export * from './tools';
 export * from './jobSearch';
 export * from './books';
-export * from './quiz';
 export * from './membership';
 export * from './courses';
+export * from './careerPlan';

@@ -26,6 +26,13 @@ export function HeroSection() {
               Get the free roadmap
               <ArrowRight aria-hidden className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
+            <a
+              href="#plan-builder"
+              className={cn(buttonVariants({ size: "lg", variant: "outline" }), "group")}
+            >
+              Build my 90-day plan
+              <ArrowRight aria-hidden className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
             <a href="#careers" className="font-medium text-primary underline">Explore career paths</a>
           </div>
         </div>

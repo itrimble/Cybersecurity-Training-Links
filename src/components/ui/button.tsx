@@ -45,4 +45,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
+// Shared by anchors that need button styling without nesting interactive elements.
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants };

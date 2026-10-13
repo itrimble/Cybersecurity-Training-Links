@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { courseInterests, roleOptions } from "@/data/courses";
+import { waitlistApiUrl } from "@/lib/academy";
 
-interface FormData {
+interface WaitlistFormData {
   email: string;
   interests: string[];
   role: string;
 }
 
 export function WaitlistSection() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<WaitlistFormData>({
     email: "",
     interests: [],
     role: "",
@@ -20,6 +21,30 @@ export function WaitlistSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const aliases: Record<string, string> = {
+      "remnant-security-bootcamp": "portfolio-labs",
+      "career-jumpstart": "career-jumpstart",
+      "ai-security-practitioner": "ai-security",
+    };
+
+    const handleRecommendation = (event: Event) => {
+      const interest = (event as CustomEvent<{ interest?: string }>).detail?.interest;
+      if (!interest) return;
+      const resolved = aliases[interest] ?? interest;
+      if (!courseInterests.some((item) => item.id === resolved)) return;
+      setFormData((current) => ({
+        ...current,
+        interests: current.interests.includes(resolved)
+          ? current.interests
+          : [...current.interests, resolved],
+      }));
+    };
+
+    window.addEventListener("remnant:waitlist", handleRecommendation);
+    return () => window.removeEventListener("remnant:waitlist", handleRecommendation);
+  }, []);
 
   const handleInterestChange = (interestId: string, checked: boolean) => {
     setFormData((prev) => ({
@@ -30,35 +55,32 @@ export function WaitlistSection() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      // ConvertKit API for form submission with custom fields
-      const response = await fetch(
-        "https://api.convertkit.com/v3/forms/9088673/subscribe",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            api_secret: "cFtDuqJz2WuvGXRbM0c7sSHOamEgh2kGuL8CTWu0Aog",
-            email: formData.email,
-            fields: {
-              interests: formData.interests.join(", "),
-              role: formData.role,
-            },
-          }),
-        }
-      );
+      const submitted = new window.FormData(e.currentTarget);
+      const response = await fetch(waitlistApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          interests: formData.interests,
+          role: formData.role,
+          source: window.location.href,
+          company: submitted.get("company"),
+        }),
+      });
 
       if (response.ok) {
         setIsSubmitted(true);
       } else {
-        throw new Error("Failed to submit form");
+        const data = await response.json().catch(() => ({})) as { error?: string };
+        throw new Error(data.error ?? "Failed to submit form");
       }
     } catch (err) {
       console.error("Submission error:", err);
@@ -108,6 +130,10 @@ export function WaitlistSection() {
 
           <div className="cyber-card p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <label className="absolute w-px h-px overflow-hidden opacity-0 pointer-events-none" aria-hidden="true">
+                Company
+                <input name="company" tabIndex={-1} autoComplete="off" />
+              </label>
               {/* Email input */}
               <div>
                 <label
