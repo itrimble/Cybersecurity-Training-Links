@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2d4a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffcc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b894;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid lines -->
+  <g stroke="#1e3a5f" stroke-width="1" opacity="0.5">
+    <line x1="100" y1="80" x2="100" y2="420"/>
+    <line x1="200" y1="80" x2="200" y2="420"/>
+    <line x1="300" y1="80" x2="300" y2="420"/>
+    <line x1="400" y1="80" x2="400" y2="420"/>
+    <line x1="500" y1="80" x2="500" y2="420"/>
+    <line x1="600" y1="80" x2="600" y2="420"/>
+    <line x1="700" y1="80" x2="700" y2="420"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="40" fill="#00ffcc" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" filter="url(#glow)">Cybersecurity Career Salary Progression</text>
+
+  <!-- Y-axis labels -->
+  <text x="60" y="420" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="12" text-anchor="end">$50K</text>
+  <text x="60" y="335" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="12" text-anchor="end">$100K</text>
+  <text x="60" y="250" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="12" text-anchor="end">$150K</text>
+  <text x="60" y="165" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="12" text-anchor="end">$200K</text>
+  <text x="60" y="80" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="12" text-anchor="end">$250K+</text>
+
+  <!-- X-axis labels -->
+  <text x="100" y="450" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">Entry</text>
+  <text x="300" y="450" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">Mid-Level</text>
+  <text x="500" y="450" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">Senior</text>
+  <text x="700" y="450" fill="#8b9dc3" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">Leadership</text>
+
+  <!-- SOC Analyst Path -->
+  <path d="M100,390 C200,370 300,320 400,290 C500,260 600,230 700,200" stroke="#00ffcc" stroke-width="3" fill="none" filter="url(#glow)"/>
+  <circle cx="100" cy="390" r="6" fill="#00ffcc"/>
+  <circle cx="400" cy="290" r="6" fill="#00ffcc"/>
+  <circle cx="700" cy="200" r="6" fill="#00ffcc"/>
+
+  <!-- Penetration Tester Path -->
+  <path d="M100,340 C200,300 300,250 400,210 C500,170 600,140 700,110" stroke="#f59e0b" stroke-width="3" fill="none" filter="url(#glow)"/>
+  <circle cx="100" cy="340" r="6" fill="#f59e0b"/>
+  <circle cx="400" cy="210" r="6" fill="#f59e0b"/>
+  <circle cx="700" cy="110" r="6" fill="#f59e0b"/>
+
+  <!-- Security Engineer Path -->
+  <path d="M100,370 C200,330 300,280 400,230 C500,180 600,150 700,120" stroke="#3b82f6" stroke-width="3" fill="none" filter="url(#glow)"/>
+  <circle cx="100" cy="370" r="6" fill="#3b82f6"/>
+  <circle cx="400" cy="230" r="6" fill="#3b82f6"/>
+  <circle cx="700" cy="120" r="6" fill="#3b82f6"/>
+
+  <!-- GRC Path -->
+  <path d="M100,380 C200,350 300,310 400,270 C500,230 600,200 700,170" stroke="#a855f7" stroke-width="3" fill="none" filter="url(#glow)"/>
+  <circle cx="100" cy="380" r="6" fill="#a855f7"/>
+  <circle cx="400" cy="270" r="6" fill="#a855f7"/>
+  <circle cx="700" cy="170" r="6" fill="#a855f7"/>
+
+  <!-- Legend -->
+  <rect x="580" y="60" width="200" height="100" rx="8" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1"/>
+  <circle cx="600" cy="80" r="5" fill="#00ffcc"/>
+  <text x="615" y="84" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11">SOC Analyst</text>
+  <circle cx="600" cy="100" r="5" fill="#f59e0b"/>
+  <text x="615" y="104" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11">Penetration Tester</text>
+  <circle cx="600" cy="120" r="5" fill="#3b82f6"/>
+  <text x="615" y="124" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11">Security Engineer</text>
+  <circle cx="600" cy="140" r="5" fill="#a855f7"/>
+  <text x="615" y="144" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11">GRC Analyst</text>
+</svg>

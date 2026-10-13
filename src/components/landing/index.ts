@@ -1,12 +1,13 @@
+export { SiteNav } from "./SiteNav";
 export { HeroSection } from "./HeroSection";
 export { LeadMagnetSection } from "./LeadMagnetSection";
 export { ValuePropsSection } from "./ValuePropsSection";
+export { CareerPlanSection } from "./CareerPlanSection";
 export { CareerPathsSection } from "./CareerPathsSection";
 export { CertificationSection } from "./CertificationSection";
 export { ResourcesSection } from "./ResourcesSection";
 export { SocialProofSection } from "./SocialProofSection";
 export { CoursePreviewSection } from "./CoursePreviewSection";
-export { QuickSurveySection } from "./QuickSurveySection";
-export { default as PricingSection } from "./PricingSection";
+export { PricingSection } from "./PricingSection";
 export { WaitlistSection } from "./WaitlistSection";
 export { Footer } from "./Footer";

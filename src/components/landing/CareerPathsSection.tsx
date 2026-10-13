@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { ExternalLink, ChevronRight, ChevronLeft, RotateCcw, Sparkles, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { ExternalLink, ChevronRight, ChevronDown } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,62 +9,18 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { careers, careerCategories, type Career } from "@/data/careers";
-import { quizQuestions, calculateQuizResults } from "@/data/quiz";
+import { academyUrl } from "@/lib/academy";
 
 export function CareerPathsSection() {
   const [selectedCareer, setSelectedCareer] = useState<Career | null>(null);
   const [filter, setFilter] = useState<string>("all");
   const [showAllCareers, setShowAllCareers] = useState(false);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
-  const [showResults, setShowResults] = useState(false);
 
   const filteredCareers = filter === "all"
     ? careers
     : careers.filter((c) => c.category === filter);
 
   const displayedCareers = showAllCareers ? filteredCareers : filteredCareers.slice(0, 6);
-
-  // Quiz handlers
-  const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
-
-  const handleAnswer = (optionIndex: number) => {
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = optionIndex;
-    setAnswers(newAnswers);
-  };
-
-  const handleNext = () => {
-    if (currentQuestion < quizQuestions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      setShowResults(true);
-    }
-  };
-
-  const handleBack = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
-
-  const handleReset = () => {
-    setCurrentQuestion(0);
-    setAnswers([]);
-    setShowResults(false);
-    setShowQuiz(false);
-  };
-
-  const getResults = () => {
-    const results = calculateQuizResults(answers);
-    return results.slice(0, 3).map((result) => {
-      const career = careers.find((c) => c.id === result.careerId);
-      return { ...result, career };
-    });
-  };
-
-  const question = quizQuestions[currentQuestion];
 
   return (
     <section className="py-20 md:py-32 relative bg-card/50" id="careers">
@@ -81,138 +36,6 @@ export function CareerPathsSection() {
               Find your ideal role in cybersecurity with detailed career guides,
               required skills, and recommended certifications.
             </p>
-          </div>
-
-          {/* Quiz card - inline expandable */}
-          <div className="mb-8">
-            {!showQuiz ? (
-              <button
-                onClick={() => setShowQuiz(true)}
-                className="w-full cyber-card p-6 text-left hover:border-primary/50 transition-colors group flex items-center justify-between"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="icon-box bg-accent/10 border-accent/30">
-                    <Sparkles className="h-5 w-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">
-                      Not sure where to start? Take the Career Quiz
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      5 questions to discover your ideal cybersecurity role
-                    </p>
-                  </div>
-                </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </button>
-            ) : showResults ? (
-              <div className="cyber-card p-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold">Your Top Career Matches</h3>
-                </div>
-                <div className="space-y-4 mb-6">
-                  {getResults().map((result, index) => (
-                    <div
-                      key={result.careerId}
-                      className={`p-4 border ${
-                        index === 0
-                          ? "border-primary bg-primary/5"
-                          : "border-border"
-                      }`}
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="text-3xl">{result.career?.icon}</span>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            {index === 0 && (
-                              <span className="px-2 py-0.5 text-xs font-mono bg-primary text-primary-foreground">
-                                BEST MATCH
-                              </span>
-                            )}
-                          </div>
-                          <h4 className="font-semibold">{result.career?.title}</h4>
-                          <p className="text-sm text-primary font-mono mt-1">
-                            {result.career?.salaryRange}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <Button variant="outline" onClick={handleReset} className="flex-1">
-                    <RotateCcw className="mr-2 h-4 w-4" />
-                    Retake Quiz
-                  </Button>
-                  <Button onClick={() => { handleReset(); }} className="flex-1">
-                    Browse All Careers
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="cyber-card p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="font-semibold">Career Quiz</h3>
-                  <button
-                    onClick={() => setShowQuiz(false)}
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    Close
-                  </button>
-                </div>
-                {/* Progress bar */}
-                <div className="mb-6">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-muted-foreground">
-                      Question {currentQuestion + 1} of {quizQuestions.length}
-                    </span>
-                    <span className="text-primary font-mono">{Math.round(progress)}%</span>
-                  </div>
-                  <Progress value={progress} />
-                </div>
-
-                {/* Question */}
-                <h4 className="text-lg font-semibold mb-6">{question.question}</h4>
-
-                {/* Options */}
-                <div className="space-y-3 mb-6">
-                  {question.options.map((option, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswer(index)}
-                      className={`w-full p-4 text-left border transition-colors ${
-                        answers[currentQuestion] === index
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <span className="text-sm">{option.text}</span>
-                    </button>
-                  ))}
-                </div>
-
-                {/* Navigation */}
-                <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    onClick={handleBack}
-                    disabled={currentQuestion === 0}
-                    className="flex-1"
-                  >
-                    <ChevronLeft className="mr-2 h-4 w-4" />
-                    Back
-                  </Button>
-                  <Button
-                    onClick={handleNext}
-                    disabled={answers[currentQuestion] === undefined}
-                    className="flex-1"
-                  >
-                    {currentQuestion === quizQuestions.length - 1 ? "See Results" : "Next"}
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Filter buttons */}
@@ -379,6 +202,16 @@ export function CareerPathsSection() {
                         ))}
                       </div>
                     </div>
+
+                    {selectedCareer.academyPathSlug && (
+                      <a
+                        href={academyUrl(`/courses/remnant-security-cybersecurity-bootcamp/paths/${selectedCareer.academyPathSlug}`)}
+                        className={buttonVariants({ className: "w-full cyber-button" })}
+                      >
+                        Follow the {selectedCareer.title} training path
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    )}
                   </div>
                 </>
               )}

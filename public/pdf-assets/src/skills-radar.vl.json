@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top Skills Gaps 2026",
+    "color": "#00ffcc",
+    "fontSize": 20,
+    "font": "Arial",
+    "fontWeight": "bold",
+    "subtitle": "Source: ISC2 Cybersecurity Workforce Study 2026",
+    "subtitleColor": "#8b9dc3",
+    "subtitleFontSize": 10
+  },
+  "width": 400,
+  "height": 400,
+  "background": "#0a1628",
+  "config": {
+    "axis": {
+      "labelColor": "#ffffff",
+      "titleColor": "#8b9dc3",
+      "gridColor": "#1e3a5f",
+      "domainColor": "#1e3a5f"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "data": {
+    "values": [
+      {"skill": "AI/ML Security", "gap": 34, "angle": 0},
+      {"skill": "Cloud Security", "gap": 30, "angle": 72},
+      {"skill": "Zero Trust", "gap": 27, "angle": 144},
+      {"skill": "DFIR", "gap": 25, "angle": 216},
+      {"skill": "AppSec", "gap": 23, "angle": 288}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 0,
+        "outerRadius": {"expr": "datum.gap * 5"},
+        "cornerRadius": 4
+      },
+      "encoding": {
+        "theta": {"field": "angle", "type": "quantitative", "scale": {"domain": [0, 360]}},
+        "color": {
+          "field": "skill",
+          "type": "nominal",
+          "scale": {
+            "domain": ["AI/ML Security", "Cloud Security", "Zero Trust", "DFIR", "AppSec"],
+            "range": ["#00ffcc", "#f59e0b", "#3b82f6", "#a855f7", "#10b981"]
+          },
+          "legend": {
+            "title": "Skill Area",
+            "labelColor": "#e2e8f0",
+            "titleColor": "#00ffcc"
+          }
+        },
+        "tooltip": [
+          {"field": "skill", "type": "nominal", "title": "Skill"},
+          {"field": "gap", "type": "quantitative", "title": "Gap %"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#ffffff"
+      },
+      "encoding": {
+        "text": {"field": "gap", "type": "quantitative", "format": ".0f"},
+        "x": {"field": "angle", "type": "quantitative"},
+        "y": {"field": "gap", "type": "quantitative"}
+      }
+    }
+  ]
+}

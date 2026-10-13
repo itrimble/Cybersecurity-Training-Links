@@ -1,7 +1,8 @@
 import { Clock, GraduationCap, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { coursePreviews, type CoursePreview } from "@/data/courses";
+import { academyUrl } from "@/lib/academy";
 
 function CourseCard({ course }: { course: CoursePreview }) {
   const levelColors = {
@@ -57,26 +58,47 @@ function CourseCard({ course }: { course: CoursePreview }) {
       {/* Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
         <div>
+          {course.listPrice && (
+            <span className="text-sm text-muted-foreground line-through mr-2">
+              ${course.listPrice}
+            </span>
+          )}
           <span className="text-2xl font-bold">${course.price}</span>
           <span className="text-sm text-muted-foreground ml-1">USD</span>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          className="group"
-          onClick={() => {
-            document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          Join Waitlist
-          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
+        {course.status === "available" && course.ctaUrl ? (
+          <a
+            href={course.ctaUrl}
+            className={buttonVariants({ variant: "default", size: "sm", className: "group cyber-button" })}
+          >
+            {course.ctaLabel ?? "View Course"}
+            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+        ) : (
+          <Button
+            variant="outline"
+            size="sm"
+            className="group"
+            onClick={() => {
+              document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Join Waitlist
+            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        )}
       </div>
     </div>
   );
 }
 
 export function CoursePreviewSection() {
+  const orderedCourses = [...coursePreviews].sort((left, right) => {
+    if (left.id === "career-jumpstart") return -1;
+    if (right.id === "career-jumpstart") return 1;
+    return 0;
+  });
+
   return (
     <section className="py-20 md:py-32 relative" id="courses">
       <div className="container px-4">
@@ -84,17 +106,17 @@ export function CoursePreviewSection() {
         <div className="text-center mb-12">
           <span className="section-label">[ COURSES ]</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Practical <span className="text-primary">Training</span> That Works
+            Build <span className="text-primary">Proof</span>, Not Playlists
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Courses designed by practitioners, for practitioners. No fluff, just the skills
-            you need to advance your career.
+            Start with a clear lane and 90-day plan. Continue into working defender tools,
+            safe labs, operational writeups, and evidence you can explain.
           </p>
         </div>
 
         {/* Course grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {coursePreviews.map((course) => (
+          {orderedCourses.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
         </div>
@@ -102,19 +124,16 @@ export function CoursePreviewSection() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
-            All courses are in development. Join the waitlist to get notified when they launch
-            and receive early-bird pricing.
+            Career Jumpstart is the recommended first course. The flagship bootcamp
+            follows with six role paths and a complete defend-and-hunt portfolio.
           </p>
-          <Button
-            size="lg"
-            className="cyber-button"
-            onClick={() => {
-              document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
-            }}
+          <a
+            href={academyUrl("/courses/cybersecurity-career-jumpstart")}
+            className={buttonVariants({ size: "lg", className: "cyber-button" })}
           >
-            Get Early Access
+            Explore Career Jumpstart
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -3,17 +3,22 @@
  * Course previews and interest categories for the waitlist
  */
 
+import { academyUrl } from '@/lib/academy';
+
 export interface CoursePreview {
   id: string;
   title: string;
   subtitle: string;
   description: string;
   price: number;
+  listPrice?: number;
   duration: string;
   level: 'Beginner' | 'Intermediate' | 'Advanced';
   features: string[];
   status: 'available' | 'coming-soon' | 'waitlist';
   badge?: string;
+  ctaUrl?: string;
+  ctaLabel?: string;
 }
 
 export interface CourseInterest {
@@ -23,6 +28,16 @@ export interface CourseInterest {
 }
 
 export const courseInterests: CourseInterest[] = [
+  {
+    id: 'career-jumpstart',
+    label: 'Cybersecurity Career Jumpstart',
+    description: 'Choose a lane and build a practical 90-day plan'
+  },
+  {
+    id: 'portfolio-labs',
+    label: 'Portfolio Labs & Bootcamp',
+    description: 'Build defender and hunter tools you can explain'
+  },
   {
     id: 'ai-governance',
     label: 'AI & Cybersecurity Governance',
@@ -39,9 +54,9 @@ export const courseInterests: CourseInterest[] = [
     description: 'Run effective security operations on a limited budget'
   },
   {
-    id: 'getting-started',
-    label: 'Getting Started in Cybersecurity',
-    description: 'Break into the field with foundational skills'
+    id: 'ai-security',
+    label: 'AI Security Practitioner',
+    description: 'Practice securing AI systems and workflows'
   }
 ];
 
@@ -53,6 +68,28 @@ export const roleOptions = [
 ];
 
 export const coursePreviews: CoursePreview[] = [
+  {
+    id: 'remnant-security-bootcamp',
+    title: 'Remnant Security Cybersecurity Bootcamp',
+    subtitle: 'Build a defend-and-hunt portfolio across six role paths',
+    description: 'A portfolio-first program that connects security foundations to working tools, KQL hunts, dashboards, risk briefs, and scenario-based assessments.',
+    price: 97,
+    listPrice: 197,
+    duration: '9 modules',
+    level: 'Beginner',
+    features: [
+      'Lifetime access with future updates',
+      '32 focused lessons across six paths',
+      'Nine portfolio artifacts',
+      'Three working-tool lab projects',
+      '180 interactive assessment questions',
+      'Protected video and transcripts'
+    ],
+    status: 'available',
+    badge: 'Flagship',
+    ctaUrl: academyUrl('/courses/remnant-security-cybersecurity-bootcamp'),
+    ctaLabel: 'Preview Bootcamp'
+  },
   {
     id: 'ai-governance',
     title: 'AI Governance for Security Leaders',
@@ -109,19 +146,23 @@ export const coursePreviews: CoursePreview[] = [
   {
     id: 'career-jumpstart',
     title: 'Cybersecurity Career Jumpstart',
-    subtitle: 'Your first 90 days into cybersecurity',
-    description: 'The complete roadmap for breaking into cybersecurity. Covers foundational skills, certifications to pursue, resume building, and landing your first role.',
+    subtitle: 'Choose a lane, build proof, execute 90 days',
+    description: 'The book-backed academy entry course. Build a lane decision, learning route, safe lab blueprint, portfolio evidence pack, AI review gate, and dated 90-day career contract.',
     price: 47,
+    listPrice: 97,
     duration: '3 weeks',
     level: 'Beginner',
     features: [
-      'Career roadmap templates',
-      'Resume & LinkedIn optimization',
-      'Interview prep guide',
-      'Certification study plan',
-      'Community access'
+      '18 focused lessons',
+      'Five required proof artifacts',
+      'Safe home lab blueprint',
+      'AI workflow guardrails',
+      '90-day execution scoreboard'
     ],
-    status: 'waitlist'
+    status: 'available',
+    badge: 'Start Here',
+    ctaUrl: academyUrl('/courses/cybersecurity-career-jumpstart'),
+    ctaLabel: 'Preview Course'
   },
   {
     id: 'ai-security-practitioner',

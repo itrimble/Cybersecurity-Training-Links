@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2d4a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad2)"/>
+
+  <!-- Title -->
+  <text x="400" y="45" fill="#00ffcc" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" filter="url(#glow2)">Certification Roadmap by Year</text>
+
+  <!-- Year 1 Section -->
+  <rect x="50" y="80" width="700" height="130" rx="10" fill="#0d1f3c" stroke="#00ffcc" stroke-width="2"/>
+  <text x="70" y="110" fill="#00ffcc" font-family="Arial, sans-serif" font-size="18" font-weight="bold">YEAR 1: Foundation</text>
+
+  <!-- Year 1 Certs -->
+  <rect x="70" y="125" width="140" height="70" rx="8" fill="#1a3a5c" stroke="#00ffcc" stroke-width="1"/>
+  <text x="140" y="155" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Security+</text>
+  <text x="140" y="175" fill="#00ffcc" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">$404</text>
+
+  <rect x="230" y="125" width="140" height="70" rx="8" fill="#1a3a5c" stroke="#00ffcc" stroke-width="1"/>
+  <text x="300" y="150" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Google</text>
+  <text x="300" y="168" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Cybersecurity</text>
+  <text x="300" y="185" fill="#00ffcc" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Free</text>
+
+  <rect x="390" y="125" width="140" height="70" rx="8" fill="#1a3a5c" stroke="#00ffcc" stroke-width="1"/>
+  <text x="460" y="155" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">ISC2 CC</text>
+  <text x="460" y="175" fill="#00ffcc" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Free</text>
+
+  <!-- Arrow -->
+  <path d="M400,215 L400,235" stroke="#00ffcc" stroke-width="3" fill="none"/>
+  <polygon points="400,245 390,235 410,235" fill="#00ffcc"/>
+
+  <!-- Year 2-3 Section -->
+  <rect x="50" y="255" width="700" height="130" rx="10" fill="#0d1f3c" stroke="#f59e0b" stroke-width="2"/>
+  <text x="70" y="285" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">YEARS 2-3: Specialization</text>
+
+  <!-- Blue Team -->
+  <rect x="70" y="300" width="155" height="70" rx="8" fill="#1a3a5c" stroke="#3b82f6" stroke-width="1"/>
+  <text x="147" y="320" fill="#3b82f6" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">BLUE TEAM</text>
+  <text x="147" y="340" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">CySA+ | BTL1</text>
+  <text x="147" y="358" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">GCIH</text>
+
+  <!-- Red Team -->
+  <rect x="240" y="300" width="155" height="70" rx="8" fill="#1a3a5c" stroke="#ef4444" stroke-width="1"/>
+  <text x="317" y="320" fill="#ef4444" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">RED TEAM</text>
+  <text x="317" y="340" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">CEH | PNPT</text>
+  <text x="317" y="358" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">eJPT</text>
+
+  <!-- Cloud -->
+  <rect x="410" y="300" width="155" height="70" rx="8" fill="#1a3a5c" stroke="#06b6d4" stroke-width="1"/>
+  <text x="487" y="320" fill="#06b6d4" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">CLOUD</text>
+  <text x="487" y="340" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">AWS Security</text>
+  <text x="487" y="358" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">AZ-500</text>
+
+  <!-- GRC -->
+  <rect x="580" y="300" width="155" height="70" rx="8" fill="#1a3a5c" stroke="#a855f7" stroke-width="1"/>
+  <text x="657" y="320" fill="#a855f7" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">GRC</text>
+  <text x="657" y="340" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">CISA | CRISC</text>
+  <text x="657" y="358" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">CGRC</text>
+
+  <!-- Arrow -->
+  <path d="M400,390 L400,410" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <polygon points="400,420 390,410 410,410" fill="#f59e0b"/>
+
+  <!-- Year 4-5 Section -->
+  <rect x="50" y="430" width="700" height="130" rx="10" fill="#0d1f3c" stroke="#10b981" stroke-width="2"/>
+  <text x="70" y="460" fill="#10b981" font-family="Arial, sans-serif" font-size="18" font-weight="bold">YEARS 4-5: Advanced / Leadership</text>
+
+  <!-- Advanced Certs -->
+  <rect x="70" y="475" width="150" height="70" rx="8" fill="#1a3a5c" stroke="#10b981" stroke-width="1"/>
+  <text x="145" y="505" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CISSP</text>
+  <text x="145" y="525" fill="#10b981" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">$749 | 15-25% raise</text>
+
+  <rect x="240" y="475" width="150" height="70" rx="8" fill="#1a3a5c" stroke="#10b981" stroke-width="1"/>
+  <text x="315" y="505" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">OSCP</text>
+  <text x="315" y="525" fill="#10b981" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">$1,749+ | Elite</text>
+
+  <rect x="410" y="475" width="150" height="70" rx="8" fill="#1a3a5c" stroke="#10b981" stroke-width="1"/>
+  <text x="485" y="505" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CISM</text>
+  <text x="485" y="525" fill="#10b981" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">$760 | Management</text>
+
+  <rect x="580" y="475" width="150" height="70" rx="8" fill="#1a3a5c" stroke="#10b981" stroke-width="1"/>
+  <text x="655" y="505" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CCSP</text>
+  <text x="655" y="525" fill="#10b981" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">$599 | Cloud Lead</text>
+</svg>

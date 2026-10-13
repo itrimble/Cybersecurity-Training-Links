@@ -1,0 +1,43 @@
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1a3a5c', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#00ffcc', 'lineColor': '#00ffcc', 'background': '#0a1628'}}}%%
+
+flowchart TB
+    subgraph AI["<b>🤖 AI Security Specialist</b><br/>$130-200K"]
+        direction TB
+        A1["LLM Security"]
+        A2["Prompt Injection Defense"]
+        A3["Model Security"]
+    end
+
+    subgraph ML["<b>📊 ML Security Engineer</b><br/>$120-180K"]
+        direction TB
+        M1["Adversarial ML"]
+        M2["Data Poisoning Defense"]
+        M3["Model Integrity"]
+    end
+
+    subgraph AUTO["<b>⚡ Security Automation</b><br/>$100-150K"]
+        direction TB
+        AU1["SOAR Platforms"]
+        AU2["AI-Powered Detection"]
+        AU3["Automated Response"]
+    end
+
+    subgraph THREAT["<b>🎯 AI Threat Hunter</b><br/>$110-170K"]
+        direction TB
+        T1["AI-Assisted Analysis"]
+        T2["Behavioral Analytics"]
+        T3["Anomaly Detection"]
+    end
+
+    CENTER((AI/ML<br/>Security<br/>2026))
+
+    CENTER --> AI
+    CENTER --> ML
+    CENTER --> AUTO
+    CENTER --> THREAT
+
+    style AI stroke:#00ffcc,stroke-width:2px,fill:#0d1f3c
+    style ML stroke:#f59e0b,stroke-width:2px,fill:#0d1f3c
+    style AUTO stroke:#3b82f6,stroke-width:2px,fill:#0d1f3c
+    style THREAT stroke:#a855f7,stroke-width:2px,fill:#0d1f3c
+    style CENTER fill:#00ffcc,stroke:#00ffcc,color:#0a1628

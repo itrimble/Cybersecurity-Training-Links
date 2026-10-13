@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Lectern AI</title>
+<meta name="description" content="Lectern AI privacy policy. We have no servers, store no content, and transmit your slides directly to the LLM provider you authenticated with.">
+<meta name="theme-color" content="#00C1C6">
+<style>
+:root{--brand:#00C1C6;--brand-dark:#009699;--ink:#1D1D1F;--ink-muted:#6E6E73;--surface:#FFF;--surface-tint:#F5F5F7;--divider:rgba(0,0,0,.08)}
+@media(prefers-color-scheme:dark){:root{--ink:#F5F5F7;--ink-muted:#A1A1A6;--surface:#1A1A1C;--surface-tint:#242426;--divider:rgba(255,255,255,.10)}body{background:#0E0E10}}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;color:var(--ink);background:var(--surface);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}.container{max-width:720px;margin:0 auto;padding:0 24px}
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--divider)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1120px;margin:0 auto}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;color:var(--ink);text-decoration:none}
+.nav-brand-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.legal{padding:64px 0 96px}.legal h1{font-size:clamp(32px,4vw,44px);font-weight:700;letter-spacing:-.015em;margin:0 0 12px}
+.legal .revised{color:var(--ink-muted);font-size:14px;margin:0 0 32px}
+.legal h2{margin:40px 0 12px;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.legal p{margin:12px 0}.legal ul,.legal ol{margin:12px 0;padding-left:24px}.legal li{margin:6px 0}
+.legal code{background:var(--surface-tint);padding:2px 6px;border-radius:4px;font-size:14px;font-family:"SF Mono",Menlo,monospace}
+.legal .contact-block{margin-top:40px;padding:20px 24px;background:var(--surface-tint);border-radius:12px;border:1px solid var(--divider)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://remnantsecurity.com" class="nav-brand">
+      <span class="nav-brand-icon">L</span>
+      <span>Lectern AI</span>
+    </a>
+  </div>
+</nav>
+
+<main class="legal">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="revised">Last updated: April 25, 2026</p>
+
+    <p>
+      Lectern AI is a Mac app that runs on your computer. It does not phone home.
+      It does not have servers. It does not collect analytics. The sections below
+      describe this in detail so you can verify those claims against the app's
+      App Store Connect privacy disclosures and the app's <code>PrivacyInfo.xcprivacy</code>
+      manifest, which publishes the same information to Apple in machine-readable form.
+    </p>
+
+    <h2>1. Who we are</h2>
+    <p>
+      Lectern AI is developed and published by <strong>Ian Trimble</strong>, operating as
+      <strong>Remnant Security</strong>. Contact: <a href="mailto:privacy@iantrimble.com">privacy@iantrimble.com</a>.
+    </p>
+
+    <h2>2. Data Lectern AI itself collects</h2>
+    <p><strong>None that leaves your Mac.</strong> Specifically:</p>
+    <ul>
+      <li><strong>Your slides and presentations</strong> are read from the file(s) you select, processed locally in the app's sandbox, and written to the output folder you choose. No copy is kept by Lectern.</li>
+      <li><strong>Generated talk tracks, handouts, labs, quizzes, diagrams, and PDFs</strong> are written to disk in the location you pick. Nothing is uploaded anywhere by Lectern.</li>
+      <li><strong>Preferences</strong> (your chosen LLM provider, theme, output toggles, etc.) are stored in macOS UserDefaults inside the app's sandbox container.</li>
+      <li><strong>API keys</strong> are stored in the macOS Keychain (encrypted) and cached in UserDefaults for fast access. They never leave your Mac except when used to authenticate requests to the LLM provider you chose.</li>
+    </ul>
+    <p>Lectern ships with no telemetry, analytics SDK, crash reporter, or feature-flag service. No data is sent to Remnant Security or Ian Trimble in the course of using the app.</p>
+
+    <h2>3. Data sent to third-party LLM providers</h2>
+    <p>To generate talk tracks and other artifacts, Lectern sends the text of your slides to a large language model. You bring your own API key for one of seven supported providers. When you trigger a generation:</p>
+    <ol>
+      <li>Lectern reads the slide text, bullets, notes, presentation outline, organization name, and subject template.</li>
+      <li>It authenticates directly to the provider using your API key — Remnant Security has no servers in this path and cannot see your content or your key.</li>
+      <li>The provider processes the request under <em>their</em> privacy policy and terms of service.</li>
+      <li>The response is returned to your Mac and written to the output folder.</li>
+    </ol>
+    <p>Data governed by each provider's own privacy policy:</p>
+    <ul>
+      <li><strong>Anthropic (Claude):</strong> <a href="https://www.anthropic.com/privacy">anthropic.com/privacy</a></li>
+      <li><strong>Google (Gemini):</strong> <a href="https://ai.google.dev/gemini-api/terms">ai.google.dev/gemini-api/terms</a></li>
+      <li><strong>DeepSeek:</strong> <a href="https://www.deepseek.com/privacy">deepseek.com/privacy</a></li>
+      <li><strong>Moonshot (Kimi):</strong> <a href="https://kimi.moonshot.cn/privacy">kimi.moonshot.cn/privacy</a></li>
+      <li><strong>Alibaba (Qwen):</strong> <a href="https://www.alibabacloud.com/help/en/model-studio/privacy-policy">alibabacloud.com — privacy policy</a></li>
+      <li><strong>xAI (Grok):</strong> <a href="https://x.ai/legal/privacy-policy">x.ai/legal/privacy-policy</a></li>
+      <li><strong>MiniMax:</strong> <a href="https://www.minimaxi.com/privacy-policy">minimaxi.com/privacy-policy</a></li>
+    </ul>
+
+    <h2>4. Live research (optional)</h2>
+    <p>When "Include live research" is enabled, Lectern queries web-search providers (Brave Search, Serper.dev, or Tavily) using your API key. Search queries derived from your slide content are sent. The same disclosure rules in Section 3 apply.</p>
+
+    <h2>5. API-key storage</h2>
+    <p>Keys are stored in the macOS Keychain (encrypted at rest) and cached in UserDefaults. Neither location leaves your Mac. You can delete a key at any time from the Configuration screen.</p>
+
+    <h2>6. Subscription billing (Pro tier)</h2>
+    <p>Pro subscriptions are processed by Apple StoreKit 2. Lectern never sees payment information — only a StoreKit receipt indicating your subscription state. Apple's privacy policy governs payment: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
+
+    <h2>7. Children</h2>
+    <p>The app is not directed at children under 13 and does not knowingly collect information from them.</p>
+
+    <h2>8. Cookies and tracking</h2>
+    <p>This website and the app use no cookies, no analytics, and no tracking pixels.</p>
+
+    <h2>9. Data-rights requests</h2>
+    <p>Because Remnant Security does not collect or store your data, there is no data we can correct, export, or delete on your behalf. Deletion of data held by third-party LLM providers should be requested directly from those providers.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>If we materially change this policy we will update the "Last updated" date and announce the change in the app's release notes.</p>
+
+    <p class="contact-block">Questions? <a href="mailto:privacy@iantrimble.com">privacy@iantrimble.com</a></p>
+  </div>
+</main>
+</body>
+</html>

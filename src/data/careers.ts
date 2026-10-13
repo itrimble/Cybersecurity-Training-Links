@@ -16,6 +16,7 @@ export interface Career {
   level: string;
   salaryRange: string;
   description: string;
+  academyPathSlug?: string;
   skills: string[];
   certifications: string[];
   resources: CareerResource[];
@@ -32,6 +33,7 @@ export const careers: Career[] = [
     level: 'Entry to Mid',
     salaryRange: '$60,000 - $110,000',
     description: 'Monitor security systems, analyze threats, investigate incidents, and respond to security alerts in a Security Operations Center.',
+    academyPathSlug: 'soc-analyst',
     skills: [
       'SIEM tools (Splunk, QRadar, Elastic)',
       'Log analysis and correlation',
@@ -64,6 +66,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$80,000 - $150,000',
     description: 'Simulate cyber attacks to identify vulnerabilities in systems, networks, and applications before malicious hackers can exploit them.',
+    academyPathSlug: 'penetration-tester',
     skills: [
       'Network penetration testing',
       'Web application security testing',
@@ -96,6 +99,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$90,000 - $160,000',
     description: 'Design, implement, and maintain security solutions to protect organizational infrastructure, applications, and data.',
+    academyPathSlug: 'security-engineer',
     skills: [
       'Network security architecture',
       'Firewall and IDS/IPS configuration',
@@ -128,6 +132,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$85,000 - $145,000',
     description: 'Investigate and respond to security breaches, perform digital forensics, and help organizations recover from cyber incidents.',
+    academyPathSlug: 'soc-analyst',
     skills: [
       'Digital forensics (disk, memory, network)',
       'Malware analysis',
@@ -160,6 +165,7 @@ export const careers: Career[] = [
     level: 'Senior',
     salaryRange: '$130,000 - $200,000',
     description: 'Design enterprise security architecture, create security standards, and guide organizations in implementing comprehensive security strategies.',
+    academyPathSlug: 'security-engineer',
     skills: [
       'Enterprise security architecture',
       'Risk assessment and management',
@@ -192,6 +198,7 @@ export const careers: Career[] = [
     level: 'Entry to Mid',
     salaryRange: '$65,000 - $120,000',
     description: 'Ensure organizations meet regulatory requirements, manage risk assessments, and develop security policies and procedures.',
+    academyPathSlug: 'risk-grc',
     skills: [
       'Regulatory compliance (GDPR, HIPAA, PCI-DSS, SOX)',
       'Risk assessment methodologies',
@@ -224,6 +231,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$100,000 - $170,000',
     description: 'Secure cloud infrastructure and applications across AWS, Azure, GCP, and hybrid environments.',
+    academyPathSlug: 'security-engineer',
     skills: [
       'AWS, Azure, GCP security services',
       'Container security (Kubernetes, Docker)',
@@ -256,6 +264,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$95,000 - $165,000',
     description: 'Integrate security into the software development lifecycle, perform code reviews, and build secure applications.',
+    academyPathSlug: 'security-engineer',
     skills: [
       'Secure coding practices',
       'SAST/DAST tools',
@@ -289,6 +298,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$80,000 - $140,000',
     description: 'Research and analyze cyber threats, track threat actors, and provide actionable intelligence to improve security posture.',
+    academyPathSlug: 'soc-analyst',
     skills: [
       'Threat landscape analysis',
       'OSINT techniques',
@@ -321,6 +331,7 @@ export const careers: Career[] = [
     level: 'Executive',
     salaryRange: '$150,000 - $400,000+',
     description: "Lead and manage an organization's entire security program, strategy, and team.",
+    academyPathSlug: 'risk-grc',
     skills: [
       'Strategic planning',
       'Budget management',
@@ -355,6 +366,7 @@ export const careers: Career[] = [
     level: 'Senior',
     salaryRange: '$110,000 - $180,000',
     description: "Conduct advanced adversary simulations to test an organization's detection and response capabilities.",
+    academyPathSlug: 'penetration-tester',
     skills: [
       'Advanced exploitation',
       'Custom tool development',
@@ -388,6 +400,7 @@ export const careers: Career[] = [
     level: 'Mid to Senior',
     salaryRange: '$90,000 - $160,000',
     description: 'Analyze malicious software to understand its behavior, capabilities, and origins.',
+    academyPathSlug: 'soc-analyst',
     skills: [
       'Static and dynamic malware analysis',
       'Reverse engineering (IDA Pro, Ghidra)',

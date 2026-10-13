@@ -1,0 +1,44 @@
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1a3a5c', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#00ffcc', 'lineColor': '#00ffcc', 'secondaryColor': '#0d1f3c', 'tertiaryColor': '#1e3a5f', 'background': '#0a1628', 'mainBkg': '#1a3a5c', 'nodeBorder': '#00ffcc', 'clusterBkg': '#0d1f3c', 'clusterBorder': '#00ffcc', 'titleColor': '#00ffcc', 'edgeLabelBackground': '#0a1628'}}}%%
+
+flowchart TB
+    subgraph Y1["<b>YEAR 1: Foundation</b>"]
+        direction LR
+        SEC["<b>Security+</b><br/>$404"]
+        GOOG["<b>Google<br/>Cybersecurity</b><br/>Free"]
+        CC["<b>ISC2 CC</b><br/>Free"]
+    end
+
+    subgraph Y2["<b>YEARS 2-3: Specialization</b>"]
+        direction LR
+        subgraph BLUE["Blue Team"]
+            BT["CySA+ | BTL1<br/>GCIH"]
+        end
+        subgraph RED["Red Team"]
+            RT["CEH | PNPT<br/>eJPT"]
+        end
+        subgraph CLOUD["Cloud"]
+            CL["AWS Security<br/>AZ-500"]
+        end
+        subgraph GRC["GRC"]
+            GR["CISA | CRISC<br/>CGRC"]
+        end
+    end
+
+    subgraph Y3["<b>YEARS 4-5: Advanced / Leadership</b>"]
+        direction LR
+        CISSP["<b>CISSP</b><br/>$749 | 15-25% raise"]
+        OSCP["<b>OSCP</b><br/>$1,749+ | Elite"]
+        CISM["<b>CISM</b><br/>$760 | Management"]
+        CCSP["<b>CCSP</b><br/>$599 | Cloud Lead"]
+    end
+
+    Y1 --> Y2
+    Y2 --> Y3
+
+    style Y1 stroke:#00ffcc,stroke-width:2px
+    style Y2 stroke:#f59e0b,stroke-width:2px
+    style Y3 stroke:#10b981,stroke-width:2px
+    style BLUE stroke:#3b82f6,stroke-width:1px
+    style RED stroke:#ef4444,stroke-width:1px
+    style CLOUD stroke:#06b6d4,stroke-width:1px
+    style GRC stroke:#a855f7,stroke-width:1px

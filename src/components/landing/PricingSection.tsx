@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import { pricingTiers } from "@/data/membership";
 
-export default function PricingSection() {
+export function PricingSection() {
   const handleCtaClick = (link: string) => {
     if (link.startsWith("#")) {
       document.getElementById(link.slice(1))?.scrollIntoView({ behavior: "smooth" });
@@ -82,10 +82,10 @@ export default function PricingSection() {
           variant="link"
           className="text-primary"
           onClick={() => {
-            document.getElementById("survey")?.scrollIntoView({ behavior: "smooth" });
+            document.getElementById("plan-builder")?.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          Take our quick quiz to get a personalized recommendation
+          Build your personalized 90-day plan
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>

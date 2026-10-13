@@ -1,0 +1,163 @@
+# Cybersecurity Training Links - Project Context
+
+## Project Overview
+
+This is a cybersecurity career path landing page built with React 19, TypeScript, Vite, and Tailwind CSS v4. The application serves as a comprehensive resource for individuals looking to launch their cybersecurity careers, featuring expert-led training, hands-on labs, and personalized career guidance from Remnant Security.
+
+The live site is accessible at: https://remnantsecurity.com
+
+## Architecture
+
+### Application Structure
+- **Single-page landing site** — The `App.tsx` component renders sections in order:
+  - Hero Section
+  - About Section
+  - Training Section
+  - Career Quiz
+  - Curriculum Section
+  - Certification Section
+  - Interview Section
+  - Tools Section
+  - Books Section
+  - Waitlist Section
+  - Footer
+
+### Data Layer
+- All content lives in `src/data/` as TypeScript modules:
+  - `careers.ts` - Career path information
+  - `certifications.ts` - Certification details
+  - `training.ts` - Training programs
+  - `tools.ts` - Cybersecurity tools
+  - `books.ts` - Recommended books
+  - `quiz.ts` - Career quiz questions
+  - `interviewQuestions.ts` - Interview preparation
+  - And more...
+
+### UI Components
+- **Radix UI primitives** wrapped in `src/components/ui/`:
+  - Accordion, Button, Checkbox, Dialog, Input, Progress
+- **Landing sections** in `src/components/landing/`:
+  - Each section corresponds to a major part of the landing page
+
+### Styling
+- **Tailwind v4** with CSS variables for theming
+- **Dark cybersecurity theme** with cyan (`--color-primary: hsl(168 100% 50%)`) and amber accents
+- **Custom utilities** in `src/index.css`:
+  - `.cyber-card`, `.cyber-grid`, `.text-glow`, `.section-label`
+- **Typography** using Space Grotesk (sans-serif) and JetBrains Mono (monospace) fonts
+
+### Path Alias
+- `@/` maps to `src/` (configured in `vite.config.ts` and `tsconfig.app.json`)
+
+## Technologies & Dependencies
+
+### Core Stack
+- React 19
+- TypeScript ~5.9.3
+- Vite 7.3.1
+- Tailwind CSS 4.1.18
+
+### UI Libraries
+- Radix UI Primitives (accordion, checkbox, dialog, progress, tabs, toast)
+- Lucide React Icons
+- Class Variance Authority & clsx for conditional classes
+- Tailwind Merge for combining classes
+
+### Development Tools
+- ESLint with TypeScript and React hooks plugins
+- TypeScript strict type checking
+- PostCSS for CSS processing
+
+## Building and Running
+
+### Development Commands
+```bash
+npm run dev      # Start dev server (uses port 5173 by default)
+npm run build    # TypeScript check + Vite production build
+npm run lint     # ESLint
+npm run preview  # Preview production build locally
+```
+
+### Build Configuration
+- Vite configuration in `vite.config.ts`
+- TypeScript configuration split between `tsconfig.app.json` and `tsconfig.node.json`
+- Path aliases configured for easier imports using `@/` prefix
+
+## Deployment
+
+- **Platform**: GitHub Pages with custom domain
+- **Public URL**: https://remnantsecurity.com
+- **Deployment Method**: GitHub Actions workflow (`.github/workflows/deploy.yml`)
+- **Trigger**: Deploys on push to `main` branch
+- **Process**: Builds and deploys the `dist/` folder to GitHub Pages with custom domain configuration
+
+## Development Conventions
+
+### Coding Standards
+- Strict TypeScript with type checking enabled
+- ESLint with recommended React and TypeScript rules
+- Consistent component structure using Radix UI primitives
+- Modular data organization in the `src/data/` directory
+
+### Component Structure
+- Components are organized in `src/components/` directory
+- UI primitives in `src/components/ui/` for reusable elements
+- Landing sections in `src/components/landing/` for page-specific components
+- Each component follows React best practices and TypeScript typing
+
+### Styling Approach
+- Utility-first CSS with Tailwind
+- Theme customization through CSS variables
+- Responsive design with Tailwind's responsive utilities
+- Consistent dark theme with cybersecurity-focused color palette
+
+## Project Files Structure
+
+```
+Cybersecurity-Training-Links/
+├── index.html                 # Main HTML entry point with SEO metadata
+├── package.json              # Dependencies and scripts
+├── vite.config.ts            # Vite build configuration
+├── tsconfig.json             # TypeScript configuration
+├── tailwind.config.ts        # Tailwind CSS configuration
+├── eslint.config.js          # ESLint configuration
+├── postcss.config.js         # PostCSS configuration
+├── src/
+│   ├── main.tsx              # React app entry point
+│   ├── App.tsx               # Main application component
+│   ├── index.css             # Global styles and custom utilities
+│   ├── assets/               # Static assets
+│   ├── components/           # React components
+│   │   ├── ui/               # Reusable UI components
+│   │   └── landing/          # Landing page sections
+│   ├── data/                 # Data modules (careers, certs, tools, etc.)
+│   └── lib/                  # Utility functions
+├── dist/                     # Build output (generated by npm run build)
+└── .github/workflows/        # GitHub Actions deployment workflow
+```
+
+## Special Features
+
+### SEO & Meta Tags
+- Comprehensive meta tags in `index.html` for SEO
+- Open Graph and Twitter Card metadata
+- Cybersecurity-focused icon using SVG
+
+### Animations & Effects
+- Custom animations defined in `tailwind.config.ts`:
+  - Accordion animations
+  - Fade-in effects
+  - Glow pulse effects for interactive elements
+
+### Accessibility
+- Built with Radix UI primitives for accessible components
+- Proper semantic HTML structure
+- Keyboard navigation support
+
+## Maintenance Notes
+
+- The project follows modern React 19 patterns
+- Type safety enforced throughout the codebase
+- Easy to extend with new data modules in the `src/data/` directory
+- Component-based architecture allows for modular development
+- GitHub Actions workflow handles automated deployments
