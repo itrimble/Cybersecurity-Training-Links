@@ -25,3 +25,29 @@ No automated test framework or coverage threshold is currently configured. The m
 ## Commit & Pull Request Guidelines
 
 Recent commits use short, imperative, sentence-case subjects such as `Add email integration and monetization features`. Keep each commit focused. Pull requests should explain the user-visible change, list validation performed, link relevant issues, and include before/after screenshots for visual work. Changes merged to `main` trigger the GitHub Pages deployment workflow, so call out changes to `public/CNAME`, deployment configuration, or public assets explicitly.
+
+## Content and asset boundaries
+
+`public/` is copied verbatim into `dist/` and served at the web root. Only web
+assets belong there. Build inputs for the roadmap PDF — Typst layout, Markdown
+content, Mermaid diagrams, Vega-Lite specs, the image generator — live in
+`pdf-source/`. The rendered `.pdf`, `.png` and `.svg` stay in `public/` because
+the PDF and the pages reference them.
+
+Two path dependencies exist in `pdf-source/`: `generate-ai-images.py` writes to
+`public/pdf-assets`, and the Typst source addresses images as
+`../public/pdf-assets/`. Moving either file means fixing those.
+
+## Credentials
+
+Never add a provider key, token or secret to this project. Everything in `src/`
+is compiled into a public bundle. Form submissions go server-side through the
+academy API via `src/lib/academy.ts`, which resolves public URLs only.
+`scripts/verify-career-plan-release.mjs` asserts the deployed bundle contains
+no `api_secret`; keep that assertion. See `SECURITY.md`.
+
+## Before merging
+
+There are no PR checks and `main` is not protected, so `npm run lint && npm run
+build` is the only gate and you have to run it. After deploying, run
+`CAREER_PLAN_QA_EMAIL=… npm run release:verify` against the live site.

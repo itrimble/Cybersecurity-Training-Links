@@ -39,3 +39,6 @@ tmp/
 .playwright-cli/
 .hermes/
 __pycache__/
+
+# superseded mcode migration plan, kept locally for reference
+plan.md
