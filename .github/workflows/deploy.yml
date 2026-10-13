@@ -31,6 +31,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Public origin only. The academy's provider secrets stay server-side.
+          VITE_ACADEMY_URL: https://academy.remnantsecurity.com
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

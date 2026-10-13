@@ -75,9 +75,13 @@ and `.svg` it embeds stay public.
 
 `LeadMagnetSection` and `WaitlistSection` post to the academy API via
 `src/lib/academy.ts`, which resolves **public URLs only**
-(`VITE_ACADEMY_URL`, falling back to the `.vercel.app` origin). Email-provider
+(`VITE_ACADEMY_URL`, falling back to a hardcoded default). Email-provider
 credentials live server-side in the academy project and must never come back
 into this bundle. See `SECURITY.md`.
 
-At the time of writing `academy.remnantsecurity.com` does not resolve, so the
-fallback `.vercel.app` origin is what is actually used.
+`academy.remnantsecurity.com` has resolved since 13 October 2026 and is the
+origin the site calls. `VITE_ACADEMY_URL` is set in the Pages build step in
+`.github/workflows/deploy.yml`; the fallback in `src/lib/academy.ts` holds the
+same value, so a build without it still calls the right host. To reproduce the
+deployed bundle byte for byte, build the way CI does:
+`VITE_ACADEMY_URL=https://academy.remnantsecurity.com npm run build`.

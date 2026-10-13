@@ -38,16 +38,13 @@ would undo the above.
 
 1. **Rotate the Kit `api_secret`.** Still not done. The deployed site no
    longer uses it, so rotating will not break the forms.
-2. **`academy.remnantsecurity.com` does not resolve.** It is absent from
-   Namecheap DNS *and* not attached to the Vercel project. The funnel's
-   download and email paths currently use the `.vercel.app` origin.
-3. **Run the full release gate** — `CAREER_PLAN_QA_EMAIL=… npm run
+2. **Run the full release gate** — `CAREER_PLAN_QA_EMAIL=… npm run
    release:verify`. The five bundle assertions were verified by hand against
    the live site; the live-API half has not been run.
-4. **The funnel has not been clicked through in a browser since deploy.**
+3. **The funnel has not been clicked through in a browser since deploy.**
    The seven questions, scoring, localStorage resume and Markdown download
    all have backend dependencies worth exercising once.
-5. **The old folder** `~/projects/Cybersecurity-Training-Links` is still in
+4. **The old folder** `~/projects/Cybersecurity-Training-Links` is still in
    place and untouched, as a fallback. Retire it once this folder has proven
    itself.
 

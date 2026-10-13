@@ -1,4 +1,4 @@
-const fallbackAcademyUrl = "https://remnant-security-academy.vercel.app";
+const fallbackAcademyUrl = "https://academy.remnantsecurity.com";
 
 function normalizeBaseUrl(value: string | undefined): string {
   return (value?.trim() || fallbackAcademyUrl).replace(/\/$/, "");
