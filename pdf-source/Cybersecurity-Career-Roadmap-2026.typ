@@ -97,7 +97,7 @@
   #box(width: 100%, height: 100%, fill: rgb("#0a1628"))[
     #v(2in)
 
-    #image("pdf-assets/logo-shield.png", width: 150pt)
+    #image("../public/pdf-assets/logo-shield.png", width: 150pt)
 
     #v(0.5in)
 
@@ -190,7 +190,7 @@
 
   #v(0.5em)
 
-  #image("pdf-assets/market-stats.png", width: 100%)
+  #image("../public/pdf-assets/market-stats.png", width: 100%)
 
   #v(1em)
 
@@ -255,7 +255,7 @@
 
   #v(0.5em)
 
-  #image("pdf-assets/career-paths-chart.png", width: 100%)
+  #image("../public/pdf-assets/career-paths-chart.png", width: 100%)
 
   #v(1em)
 
@@ -320,7 +320,7 @@
 
   #v(0.5em)
 
-  #image("pdf-assets/ai-security-roles.png", width: 100%)
+  #image("../public/pdf-assets/ai-security-roles.png", width: 100%)
 
   #v(1em)
 
@@ -627,7 +627,7 @@
 
   #v(0.5em)
 
-  #image("pdf-assets/cert-roadmap.png", width: 100%)
+  #image("../public/pdf-assets/cert-roadmap.png", width: 100%)
 
   #v(1em)
 
@@ -688,7 +688,7 @@
     column-gutter: 1.5em,
 
     [
-      #image("pdf-assets/skills-radar.png", width: 100%)
+      #image("../public/pdf-assets/skills-radar.png", width: 100%)
     ],
 
     [
@@ -799,7 +799,7 @@
 
   #v(0.5em)
 
-  #image("pdf-assets/action-plan-timeline.png", width: 100%)
+  #image("../public/pdf-assets/action-plan-timeline.png", width: 100%)
 
   #v(1em)
 

@@ -145,7 +145,10 @@ def generate_image(client, prompt: str, output_path: str):
 
 def main():
     """Generate all AI images for the PDF."""
-    output_dir = Path(__file__).parent.parent
+    # This script used to live in public/pdf-assets/src/, where parent.parent
+    # happened to be public/pdf-assets. It now lives in pdf-source/ at the repo
+    # root, so the rendered images are addressed explicitly.
+    output_dir = Path(__file__).resolve().parent.parent / "public" / "pdf-assets"
 
     print("=" * 60)
     print("Cybersecurity Career Roadmap - AI Image Generator")
