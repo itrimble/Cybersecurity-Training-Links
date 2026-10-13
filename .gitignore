@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Business and internal strategy docs live in the PRIVATE remnant-academy repo
+# (docs/business/). This is a public repository - do not reintroduce them.
+BUSINESS-PLAN-INVESTOR.*
+NAS-PROJECT-ASSET-INVENTORY-FOR-ACADEMY.*
+
+# Content projects with their own build pipelines - not website files.
+book/
+book-2/
+book-3/
+series/
+backup/
+output/
+tmp/
+.playwright-cli/
+.hermes/
+__pycache__/

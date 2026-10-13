@@ -1,7 +1,9 @@
 import {
+  SiteNav,
   HeroSection,
   LeadMagnetSection,
   ValuePropsSection,
+  CareerPlanSection,
   CareerPathsSection,
   CertificationSection,
   ResourcesSection,
@@ -13,7 +15,6 @@ import {
   SupportSection,
   PrivacySection,
   Footer,
-  SiteNav,
   AppsBooksSection,
   BuiltStrip,
   AboutSection,
@@ -30,6 +31,7 @@ export default function App() {
         <BuiltStrip />
         <AboutSection />
         <ValuePropsSection />
+        <CareerPlanSection />
         <CareerPathsSection />
         <CertificationSection />
         <LeadMagnetSection />

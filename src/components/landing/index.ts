@@ -1,6 +1,8 @@
+export { SiteNav } from "./SiteNav";
 export { HeroSection } from "./HeroSection";
 export { LeadMagnetSection } from "./LeadMagnetSection";
 export { ValuePropsSection } from "./ValuePropsSection";
+export { CareerPlanSection } from "./CareerPlanSection";
 export { CareerPathsSection } from "./CareerPathsSection";
 export { CertificationSection } from "./CertificationSection";
 export { ResourcesSection } from "./ResourcesSection";
@@ -13,7 +15,6 @@ export { WaitlistSection } from "./WaitlistSection";
 export { SupportSection } from "./SupportSection";
 export { PrivacySection } from "./PrivacySection";
 export { Footer } from "./Footer";
-export { SiteNav } from "./SiteNav";
 export { AppsBooksSection } from "./AppsBooksSection";
 export { BuiltStrip } from "./BuiltStrip";
 export { AboutSection } from "./AboutSection";

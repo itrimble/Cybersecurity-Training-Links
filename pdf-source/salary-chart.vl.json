@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cybersecurity Career Salary Progression",
+    "color": "#00ffcc",
+    "fontSize": 24,
+    "font": "Arial",
+    "fontWeight": "bold"
+  },
+  "width": 700,
+  "height": 400,
+  "background": "#0a1628",
+  "config": {
+    "axis": {
+      "labelColor": "#8b9dc3",
+      "titleColor": "#8b9dc3",
+      "gridColor": "#1e3a5f",
+      "domainColor": "#1e3a5f"
+    },
+    "legend": {
+      "labelColor": "#e2e8f0",
+      "titleColor": "#00ffcc"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "data": {
+    "values": [
+      {"career": "SOC Analyst", "stage": "Entry", "salary": 65, "order": 1},
+      {"career": "SOC Analyst", "stage": "Mid-Level", "salary": 90, "order": 2},
+      {"career": "SOC Analyst", "stage": "Senior", "salary": 130, "order": 3},
+      {"career": "SOC Analyst", "stage": "Leadership", "salary": 175, "order": 4},
+      {"career": "Penetration Tester", "stage": "Entry", "salary": 80, "order": 1},
+      {"career": "Penetration Tester", "stage": "Mid-Level", "salary": 120, "order": 2},
+      {"career": "Penetration Tester", "stage": "Senior", "salary": 165, "order": 3},
+      {"career": "Penetration Tester", "stage": "Leadership", "salary": 225, "order": 4},
+      {"career": "Security Engineer", "stage": "Entry", "salary": 75, "order": 1},
+      {"career": "Security Engineer", "stage": "Mid-Level", "salary": 110, "order": 2},
+      {"career": "Security Engineer", "stage": "Senior", "salary": 155, "order": 3},
+      {"career": "Security Engineer", "stage": "Leadership", "salary": 210, "order": 4},
+      {"career": "GRC Analyst", "stage": "Entry", "salary": 70, "order": 1},
+      {"career": "GRC Analyst", "stage": "Mid-Level", "salary": 100, "order": 2},
+      {"career": "GRC Analyst", "stage": "Senior", "salary": 140, "order": 3},
+      {"career": "GRC Analyst", "stage": "Leadership", "salary": 190, "order": 4}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "order",
+          "type": "quantitative",
+          "axis": {
+            "labelExpr": "datum.value == 1 ? 'Entry' : datum.value == 2 ? 'Mid-Level' : datum.value == 3 ? 'Senior' : 'Leadership'",
+            "title": null,
+            "tickCount": 4
+          }
+        },
+        "y": {
+          "field": "salary",
+          "type": "quantitative",
+          "axis": {
+            "title": "Salary (thousands USD)",
+            "format": "$~s"
+          },
+          "scale": {"domain": [50, 250]}
+        },
+        "color": {
+          "field": "career",
+          "type": "nominal",
+          "scale": {
+            "domain": ["SOC Analyst", "Penetration Tester", "Security Engineer", "GRC Analyst"],
+            "range": ["#00ffcc", "#f59e0b", "#3b82f6", "#a855f7"]
+          },
+          "legend": {
+            "title": "Career Path",
+            "orient": "top-right"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "x": {"field": "order", "type": "quantitative"},
+        "y": {"field": "salary", "type": "quantitative"},
+        "color": {"field": "career", "type": "nominal"}
+      }
+    }
+  ]
+}

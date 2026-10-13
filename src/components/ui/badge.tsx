@@ -33,4 +33,6 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   )
 }
 
+// Shared by course cards that need link semantics with the same badge styling.
+// eslint-disable-next-line react-refresh/only-export-components
 export { Badge, badgeVariants }
