@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { appSites, bookSites, contactHref, type SiteLink } from "@/data/sites";
+import { appSites, blogHref, bookSites, contactHref, type SiteLink } from "@/data/sites";
 import { Mark } from "./Mark";
 
 function Dropdown({ label, items }: { label: string; items: SiteLink[] }) {
@@ -52,11 +52,15 @@ function Dropdown({ label, items }: { label: string; items: SiteLink[] }) {
   );
 }
 
+// The first four are in-page anchors; Blog is a separate site on its own
+// subdomain. Keeping it in this list means desktop and mobile stay in step,
+// since both render from it.
 const primaryLinks = [
   { label: "Career paths", href: "#careers" },
   { label: "Certifications", href: "#certifications" },
   { label: "Courses", href: "#courses" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Blog", href: blogHref },
 ];
 
 export function SiteNav() {
