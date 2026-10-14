@@ -6,6 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A cybersecurity career path landing page built with React 19, TypeScript, Vite, and Tailwind CSS v4. Deployed to GitHub Pages via GitHub Actions on push to `main`.
 
+**Before touching DNS, adding a subdomain, or deploying, read [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md).** This repo is one of thirteen properties under `remnantsecurity.com`, and the DNS write tool replaces the entire zone — including the records that carry email. [`docs/estate.json`](docs/estate.json) is the machine-readable inventory.
+
+Reproducing the deployed bundle locally requires the env var CI passes, or the hash will differ for identical source:
+
+```bash
+VITE_ACADEMY_URL=https://academy.remnantsecurity.com npm run build
+```
+
 ## Commands
 
 ```bash
@@ -17,7 +25,9 @@ npm run preview  # Preview production build locally
 
 ## Architecture
 
-**Single-page landing site** — `App.tsx` renders: SiteNav → Hero → Free Guide (lead magnet) → Value Props → **My 90-Day Plan** → Career Paths → Certifications → Resources → Social Proof → Courses → Pricing → Waitlist → Footer.
+**Single-page landing site** — `App.tsx` renders, in this order: SiteNav → Hero → BuiltStrip → About → Value Props → **CareerPlan (the 90-day funnel)** → Career Paths → Certifications → LeadMagnet → Resources → Course Preview → Quick Survey → Pricing → Waitlist → AppsBooks → Lectern → Support → Privacy → Footer.
+
+`SocialProofSection.tsx` still exists on disk but is **deliberately not rendered** — it carried unverified stats and testimonials. Do not wire it back in.
 
 **Primary conversion funnel** — `CareerPlanSection` (`#plan-builder`) runs a 7-question assessment, generates a role match + 13-period roadmap, saves progress in `localStorage`, and offers download/email via the academy API (`src/lib/academy.ts`). Analytics live in `src/lib/analytics.ts` and never include email.
 

@@ -1,5 +1,21 @@
 # Repository Guidelines
 
+## Start here
+
+This repo is one property in a larger estate: one apex plus twelve subdomains,
+spread across separate GitHub Pages repos and one Vercel app.
+**[`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md)** maps all of it — which repo serves
+which hostname, how each deploys, and the operations that cause damage a
+`git revert` will not undo. [`docs/estate.json`](docs/estate.json) is the same
+inventory, machine-readable.
+
+Read it before you touch DNS, add a subdomain, or deploy anything. In
+particular: the Namecheap `dns_records_save` tool **replaces the entire zone**,
+and the zone carries the Google Workspace MX and DKIM records.
+
+The GitHub repo is `itrimble/Cybersecurity-Training-Links`; the local folder is
+`~/projects/remnantsecurity.com`. That mismatch is expected.
+
 ## Project Structure & Module Organization
 
 This repository contains a single-page cybersecurity career site built with React 19, TypeScript, Vite, and Tailwind CSS. Application code lives in `src/`: `components/landing/` contains page sections, `components/ui/` wraps reusable Radix UI primitives, `data/` holds typed site content, and `lib/` contains shared utilities. `App.tsx` assembles the page. Static files are served from `public/`, including the `lectern/` microsite and generated roadmap/PDF assets. Treat `backup/` as legacy reference and `dist/` as generated build output.

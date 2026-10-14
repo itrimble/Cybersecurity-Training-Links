@@ -1,0 +1,180 @@
+{
+  "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
+  "verified": "2026-10-14",
+  "apex": "remnantsecurity.com",
+  "github_owner": "itrimble",
+  "contact_email": "iantrimble@remnantsecurity.com",
+
+  "dns": {
+    "registrar": "Namecheap",
+    "mode": "BasicDNS",
+    "nameservers": ["dns1.registrar-servers.com", "dns2.registrar-servers.com"],
+    "record_count": 20,
+    "carries_email": true,
+    "email_records": [
+      { "type": "MX", "host": "@", "value": "SMTP.GOOGLE.COM.", "mxpref": 1 },
+      { "type": "TXT", "host": "google._domainkey", "purpose": "DKIM" },
+      { "type": "TXT", "host": "@", "purpose": "google-site-verification" }
+    ],
+    "write_api": {
+      "tool": "namecheap MCP dns_records_save",
+      "semantics": "REPLACE_ALL",
+      "params": ["domainName", "records", "force"],
+      "danger": "Sending only the record you want to add DELETES every other record, including MX and DKIM. That takes down email. Always send the complete desired record set.",
+      "backup_dir": "~/backups/remnant-dns/"
+    },
+    "github_pages_apex_a_records": [
+      "185.199.108.153",
+      "185.199.109.153",
+      "185.199.110.153",
+      "185.199.111.153"
+    ]
+  },
+
+  "properties": [
+    {
+      "domain": "remnantsecurity.com",
+      "aliases": ["www.remnantsecurity.com"],
+      "repo": "itrimble/Cybersecurity-Training-Links",
+      "local_path": "~/projects/remnantsecurity.com",
+      "host": "github-pages",
+      "deploy": "github-actions",
+      "workflow": ".github/workflows/deploy.yml",
+      "branch": "main",
+      "build": "vite",
+      "build_env": { "VITE_ACADEMY_URL": "https://academy.remnantsecurity.com" },
+      "https_enforced": true,
+      "status": "live",
+      "role": "apex marketing site and career-plan funnel"
+    },
+    {
+      "domain": "academy.remnantsecurity.com",
+      "repo": "itrimble/remnant-academy",
+      "repo_visibility": "private",
+      "host": "vercel",
+      "deploy": "vercel",
+      "dns_target": "653747db0f47a144.vercel-dns-017.com.",
+      "https_enforced": true,
+      "status": "live",
+      "role": "paid academy app; serves /api/waitlist and /api/career-plan for the apex site"
+    },
+    {
+      "domain": "blog.remnantsecurity.com",
+      "repo": "itrimble/product-diary",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "gh-pages",
+      "https_enforced": true,
+      "status": "live",
+      "note": "Deploys from gh-pages, NOT main. The only property in the estate that does."
+    },
+    {
+      "domain": "apps.remnantsecurity.com",
+      "repo": "itrimble/apps-site",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "role": "app portfolio index",
+      "editorial_policy": "See WEB-ESTATE.md. Three sections, and no App Store CTA without a verified listing."
+    },
+    {
+      "domain": "lightfence.remnantsecurity.com",
+      "repo": "itrimble/lightfence-site",
+      "app_repo": "itrimble/lightfence",
+      "app_local_path": "~/projects/qix-swift",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "app_status": "not on the App Store",
+      "note": "The app's folder is qix-swift and its Xcode project and bundle id are QixForge / com.iantrimble.qixforge. The shipping name is Lightfence."
+    },
+    {
+      "domain": "prismshift.remnantsecurity.com",
+      "repo": "itrimble/prismshift-site",
+      "app_repo": null,
+      "app_local_path": "~/projects/prismshift",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "app_status": "submitting to App Store Connect 2026-10-14",
+      "note": "The app repo has no git remote. A competing, undeployed microsite for this same domain exists at microsites/prismshift in the apex repo - see WEB-ESTATE.md 'Known conflicts'."
+    },
+    {
+      "domain": "snapdog.remnantsecurity.com",
+      "repo": "itrimble/snapdog-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": true, "status": "live",
+      "app_status": "shipped - Mac App Store id6783121166"
+    },
+    {
+      "domain": "lectern.remnantsecurity.com",
+      "repo": "itrimble/lectern-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": true, "status": "live",
+      "app_status": "shipped - Mac App Store id6761786041"
+    },
+    {
+      "domain": "cybersim.remnantsecurity.com",
+      "repo": "itrimble/cybersim-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": true, "status": "live",
+      "app_status": "shipped - App Store id6762009652"
+    },
+    {
+      "domain": "plumberpuzzle.remnantsecurity.com",
+      "repo": "itrimble/plumberpuzzle-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": true, "status": "live",
+      "app_status": "shipped - App Store id6789703995"
+    },
+    {
+      "domain": "books.remnantsecurity.com",
+      "repo": "itrimble/books-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": true, "status": "live"
+    },
+    {
+      "domain": "alttab.remnantsecurity.com",
+      "repo": "itrimble/alttab-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": false,
+      "status": "degraded",
+      "defect": "http returns 200 but https returns no response - no TLS certificate was ever provisioned. Plaintext only."
+    },
+    {
+      "domain": "tilepilot.remnantsecurity.com",
+      "repo": "itrimble/tilepilot-site",
+      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "https_enforced": false,
+      "status": "dangling",
+      "defect": "GitHub Pages has this custom domain configured but no DNS record exists in the zone, so the hostname does not resolve."
+    }
+  ],
+
+  "subdomain_pattern": {
+    "description": "Every app subdomain follows the same shape. Deviating from it is what breaks deploys.",
+    "steps": [
+      "A GitHub repo named <app>-site, public (Pages custom domains need public on this plan).",
+      "A CNAME file at the repo root containing the bare hostname, no scheme and no trailing slash.",
+      "GitHub Pages enabled on main at path /.",
+      "A DNS CNAME record: host <app>, value itrimble.github.io.",
+      "https_enforced set to true AFTER GitHub provisions the certificate, which takes a few minutes."
+    ],
+    "note": "Order matters only in that the certificate cannot be issued until DNS resolves. The repo may exist first."
+  },
+
+  "verification": {
+    "comment": "Run these from a machine other than Neo. Neo's mDNSResponder caches negative lookups for new hostnames, so curl reports 'could not resolve' long after dig succeeds.",
+    "all_endpoints": "for s in '' www. academy. blog. apps. lightfence. prismshift. snapdog. lectern. cybersim. plumberpuzzle. books.; do printf '%-34s %s\\n' \"${s}remnantsecurity.com\" \"$(curl -s -o /dev/null -w %{http_code} -L --max-time 12 https://${s}remnantsecurity.com/)\"; done",
+    "apex_reproduce_ci_build": "VITE_ACADEMY_URL=https://academy.remnantsecurity.com npm run build",
+    "apex_live_bundle": "curl -s https://remnantsecurity.com/ | grep -o '/assets/index-[A-Za-z0-9_-]*\\.js'",
+    "dns_authoritative": "dig +short @dns1.registrar-servers.com CNAME <host>.remnantsecurity.com",
+    "pages_state": "gh api repos/itrimble/<repo>/pages --jq '{status,cname,https_enforced,source}'"
+  }
+}

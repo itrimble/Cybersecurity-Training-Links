@@ -9,6 +9,12 @@ are in the right folder.
 > deferred, because `itrimble/remnantsecurity.com` is currently taken by the
 > Lectern landing page in `app-website`.
 
+This apex is one of thirteen properties under `remnantsecurity.com`. The whole
+estate — which repo serves which hostname, how each deploys, and the operations
+that cause damage a `git revert` will not undo — is mapped in
+**[`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md)**, with a machine-readable
+inventory in [`docs/estate.json`](docs/estate.json).
+
 ## Stack
 
 React 19 · TypeScript · Vite 7 · Tailwind v4 · Radix UI

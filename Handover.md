@@ -1,12 +1,18 @@
 # Project Handover
 
-**Updated:** October 13, 2026
+**Updated:** October 14, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `d450d7f`
+**Branch / HEAD:** `main` / `9787997`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
+
+> **New:** the estate is now documented in
+> [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md), with a machine-readable inventory
+> in [`docs/estate.json`](docs/estate.json). Read it before touching DNS,
+> adding a subdomain, or deploying. `GEMINI.md` and `QWEN.md` were stale and
+> now delegate to `AGENTS.md`.
 
 ## State
 
@@ -36,6 +42,37 @@ Two further deploys followed on the same day:
   `.vercel.app` origin, now that the academy's own domain resolves.
 - `d450d7f` — **Blog** added to the site nav. The blog had been live with no
   entry point from the apex site since it launched.
+
+## October 14, 2026
+
+Two game subdomains and the documentation above.
+
+- **`prismshift.remnantsecurity.com` is live.** New public repo
+  `itrimble/prismshift-site` on GitHub Pages, HTTPS enforced. Marketing,
+  support and privacy pages, built in the same house style as
+  `lightfence-site`. Copy comes from the app's own App Store listing
+  (`release/metadata/en-US/`); level names, tempos and world grouping come from
+  the game's `catalog.json` and `AppConstants.swift`. Ian created the DNS
+  CNAME. The app goes to App Store Connect the same evening.
+- **`lightfence.remnantsecurity.com` needed nothing** — it was already live,
+  already in `appSites`. Note its app source folder is `~/projects/qix-swift`.
+- `5306849` — Lightfence listed under Apps.
+- `9787997` — **Prism Shift listed under Apps**, and the "All apps" blurb
+  refreshed; it still named only the four shipped titles.
+- `apps-site@c0d97e4` — a third section, *"Coming soon — public site live,
+  store listing pending"*, now holds Lightfence and Prism Shift. Prism Shift
+  had been filed under Portfolio-only as "Local Xcode project. No public site
+  or store listing", which had stopped being true. Neither card carries a store
+  CTA, per that page's own rule.
+- Prism Shift's App Store `support_url.txt` pointed at the bare apex and
+  `privacy_url.txt` did not exist at all. Both now point at the real pages.
+  Left uncommitted in the app repo for review.
+
+**Unresolved:** a second, undeployed Prism Shift microsite for the same domain
+exists in this repo at `microsites/prismshift` with notes in
+`docs/prismshift-site/`, built for Vercel and describing the game as
+non-commercial homebrew. Both are untracked. See `docs/WEB-ESTATE.md` §7 —
+pick one before either is edited further.
 
 ## Branches
 
