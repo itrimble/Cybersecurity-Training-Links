@@ -3,7 +3,7 @@
 **Updated:** October 13, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `0f83ed2`
+**Branch / HEAD:** `main` / `d450d7f`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
@@ -30,9 +30,68 @@ What shipped:
 - PDF build sources moved out of `public/` into `pdf-source/`.
 - `SocialProofSection` remains deliberately unrendered.
 
-A recovery point for the original uncommitted tree is on the branch
-`snapshot/career-plan-funnel-20261013`. It is for reference only — merging it
-would undo the above.
+Two further deploys followed on the same day:
+
+- `01524d9` — the site calls `academy.remnantsecurity.com` instead of the
+  `.vercel.app` origin, now that the academy's own domain resolves.
+- `d450d7f` — **Blog** added to the site nav. The blog had been live with no
+  entry point from the apex site since it launched.
+
+## Branches
+
+### Keep
+
+**`snapshot/career-plan-funnel-20261013`** (`d380fca`) — **do not delete, do
+not merge.**
+
+It is a verbatim snapshot of the career-plan funnel as it existed uncommitted
+in a working tree on 2026-10-13, taken *before* the rebase onto `8ab6d86`.
+Written against `f021661`, which is 19 commits behind that base.
+
+Why it is kept: the funnel that shipped is a *rebase* of this work, not this
+work. If a behaviour turns out to have been lost or altered in the 88
+auto-merged hunks, this branch is the only record of what the original
+actually did. It is diff material, not a merge candidate — merging it would
+delete the six sections `main` gained since `f021661`.
+
+When it can go: once the funnel has been exercised end to end in a browser and
+`release:verify` has passed against the live API — Outstanding items 2 and 3
+below. Both are still open, so keep it until then.
+
+### Unmerged — read before deciding
+
+| Branch | Commits | Behind main | Last touched |
+|---|---|---|---|
+| `add-posthog` | 4 | 19 | 2026-08-26 |
+| `add-posthog-lectern` | 2 | 18 | 2026-08-26 |
+| `feat/polish-2026-10-10` | 1 | 7 | 2026-10-10 |
+
+The two PostHog branches predate the OKLCH overhaul and analytics may already
+have landed another way — check `public/posthog.js` on `main` before reviving
+them.
+
+### Deleted 2026-10-13
+
+Six branches, each verified first as an ancestor of `origin/main` with **zero**
+commits not already in `main`, and held by no worktree:
+
+| Branch | Tip |
+|---|---|
+| `blog-nav-link` | `8491637` |
+| `chore/contact-email` | `206f3d3` |
+| `feat/apps-books-nav` | `426cadb` |
+| `feat/clarity-about` | `91984c3` |
+| `feat/impeccable-overhaul` | `eb0a0dc` |
+| `claude/career-path-website-Uv0Ns` | `f021661` |
+
+Every tip is still reachable from `main`, so nothing was lost. A pre-deletion
+`git bundle --all` is at
+`~/backups/remnant-branch-cleanup/20261013-213153/` alongside the SHA list.
+
+**The rule used, and to reuse:** never delete on "looks merged". Require all
+three of `git merge-base --is-ancestor <branch> origin/main`,
+`git rev-list --count origin/main..<branch>` equal to 0, and no worktree
+holding it. Bundle first.
 
 ## Outstanding
 
