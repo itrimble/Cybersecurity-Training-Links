@@ -41,3 +41,8 @@ Backup before editing: `/Users/ian/backups/prismshift-website/20261014/repo.bund
 No live change has been made, so no production rollback is needed.
 
 User accepted the current website layout on October 14, then requested soundtrack playback when pressing Play. The preview now includes Awakening music without autoplay.
+
+## Authoritative hosting update — October14
+The domain is now live on GitHub Pages from itrimble/prismshift-site at main/root. Current live HTML exactly matches that repository before replacement. Publish this user-approved static root into the existing Pages repository, preserving its CNAME, support.html, privacy.html, robots and sitemap. No Vercel project or DNS migration is needed. Earlier NXDOMAIN/auth notes above are historical; GitHub Pages is the current publication target.
+
+Published approved composition to existing GitHub Pages target with commit839ad9d; workflow38617570950 completed successfully. Live HTML/styles/skins.js/soundtrack MP4 match publication files byte-for-byte. Live browser loads15 skin entries; native Play unmuted readyState4 and paired Pause (paused=true,time0.021189) pass. Support/privacy routes remain HTTP200 and unchanged in source. Live screenshot live-soundtrack.png. Rollback: git revert839ad9d && git push from /Users/ian/projects/prismshift-site. No DNS changes. Human listening and OS Reduce Motion runtime acceptance remain open.
