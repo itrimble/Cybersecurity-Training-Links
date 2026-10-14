@@ -224,20 +224,17 @@ domain configured in Pages but **no DNS record exists**. Either add the CNAME or
 clear the domain from the Pages config; leaving a Pages project claiming a
 hostname that does not resolve is untidy and confusing.
 
-**Two Prism Shift sites exist for one domain.** The live one is the
-`prismshift-site` repo on GitHub Pages, which is what the DNS CNAME points at.
-A second, *undeployed* microsite sits **in this repo** at `microsites/prismshift`
-with notes in `docs/prismshift-site/`, built for Vercel hosting. Both are
-untracked. The two disagree on substance: the microsite calls the game a
-"non-commercial homebrew project in development" with "no public download or
-store release claimed", which stopped being true when the app went to App Store
-Connect. Its `docs/prismshift-site/README.md` also still says the subdomain does
-not resolve and that the privacy URL is unfilled; both are stale.
-
-> Decide which one wins before either is edited further. If the Pages site
-> stays, `microsites/prismshift` and `docs/prismshift-site/` should be deleted
-> rather than left to rot. If the Vercel one wins, the DNS CNAME has to move off
-> `itrimble.github.io` and `prismshift-site` should be archived.
+**Prism Shift publication is consolidated on GitHub Pages.** The user approved
+`microsites/prismshift` (“Keep the current preview”) and requested soundtrack
+playback. That approved composition was published into `itrimble/prismshift-site`
+on October14, commit839ad9d, preserving CNAME/support/privacy and current DNS.
+The microsite here is the maintained source and local preview, not a second host.
+Private design/provenance/verification notes live in `docs/prismshift-site` and
+are excluded from publication. No Vercel project or DNS migration is required.
+Live HTML/styles/gallery code and soundtrack MP4 were checked byte-for-byte;
+native browser Play/Pause and15 gallery entries were verified. A build uploaded
+to App Store Connect alone does not establish a public download; public copy
+continues to label development status until distribution is verified.
 
 ---
 

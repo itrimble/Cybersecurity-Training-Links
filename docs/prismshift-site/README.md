@@ -13,18 +13,19 @@ cd /Users/ian/projects/remnantsecurity.com/microsites/prismshift
 python3 -m http.server 8767 --bind 127.0.0.1
 ```
 
-Deployment: create a separate static hosting project rooted at
-`microsites/prismshift`, with no build command; attach only
-`prismshift.remnantsecurity.com`. Do **not** change `public/CNAME` or the apex
-GitHub Pages workflow. The proposed Vercel headers are in `vercel.json`.
+Publication: copy this standalone static root into the existing
+`/Users/ian/projects/prismshift-site` GitHub Pages repository. Preserve its CNAME,
+support/privacy pages, robots and sitemap. Keep private docs outside the served
+root. Do not alter the apex GitHub Pages workflow or DNS. `vercel.json` is an
+unused original hosting proposal, not the current deployment configuration.
 
 Current gates:
 - Main site baseline rebuilt with `VITE_ACADEMY_URL=https://academy.remnantsecurity.com`;
   live and local asset hashes match (`index-WAKjas_O.js`, `index--HubJHRj.css`).
-- Game subdomain does not currently resolve. Nameservers are registrar-servers.com.
-- Existing Vercel CLI token was rejected, but read-only Vercel connector authentication works. An isolated hosting project and DNS configuration remain open.
+- Domain resolves and HTTPS is enforced on existing GitHub Pages hosting.
+- Existing GitHub Pages target confirmed and used; no new hosting/DNS changes required.
 - Desktop1440 and mobile390 full-page IAB captures are rendered; mobile has no horizontal viewport overflow and15 gallery entries. Gallery ArrowRight scrolling and native video playback/pause pass. Reduced-motion CSS is present, with runtime preference verification still open. See interaction-checks.md.
-- Independent visual review requested one correction batch (metadata position, glyphs, naming, hover contrast, documentation). User approved the current layout. Independent finish review disposition ship applies to local visuals/media/documentation; scoped DESIGN.md and token sidecar are complete. Deployment remains pending.
+- Independent visual review requested one correction batch (metadata position, glyphs, naming, hover contrast, documentation). User approved the current layout. Independent finish review disposition ship applies to local visuals/media/documentation; scoped DESIGN.md and token sidecar are complete. Published and verified live at the scope recorded below.
 
 Media provenance: `assets/capture-provenance.json` records actual current Debug
 SpriteKit capture filenames, QA arguments, binary hash, source commit and timestamp.
