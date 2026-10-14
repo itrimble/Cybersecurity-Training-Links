@@ -117,9 +117,10 @@ identical source. Always build with it before comparing anything to production.
 
 The full discipline, which has caught real regressions:
 
-1. **Baseline.** Build with the CI env and confirm your `dist/assets/index-*.js`
-   filename equals the one the live page references. If it does not, your tree
-   is not what is deployed — stop and reconcile.
+1. **Baseline.** Run `npm ci` first, then build with the CI env and compare
+   your `dist/assets/index-*.js` filename to the one the live page references.
+   A match is a strong signal. **A mismatch is not proof that something is
+   wrong** — see below.
 2. **Record counts** for every feature that must survive:
    `grep -o -i <term> dist/assets/index-*.js | wc -l`.
 3. Make the change. `npm run lint && npm run build` must both exit 0.
@@ -127,6 +128,19 @@ The full discipline, which has caught real regressions:
 5. Push, then `gh run watch <id> --exit-status --interval 10`.
 6. Confirm the live bundle filename matches the build you audited, and that the
    live bytes are identical.
+
+> **The bundle hash is not a fingerprint of the source.** On 2026-10-14 the
+> apex hash moved from `index-DJlHaEpP.js` to `index-DHlWHRnq.js` across two
+> commits that touched **only Markdown and JSON** — `git diff --name-status`
+> over the range listed nothing but docs, `package-lock.json` was untouched,
+> and the byte count was identical at 667384 either side. A clean
+> `npm ci` build reproduced the new hash byte for byte, and the content audit
+> was unchanged on every term.
+>
+> So treat a hash mismatch as a prompt to investigate, not a verdict. What
+> actually settles it is: does a clean lockfile build reproduce what is live,
+> and does the count-based audit show only the terms you intended? If both
+> hold, the deploy is sound whatever the filename says.
 
 > **Do not diff minified bundles.** Adding a single binding makes esbuild
 > rename identifiers through the rest of the file — a 9-line source change
