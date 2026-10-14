@@ -1,27 +1,74 @@
 {
-  "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
+  "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file; toolchain prerequisites and the Namecheap MCP setup are in TOOLCHAIN.md. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
   "verified": "2026-10-14",
   "apex": "remnantsecurity.com",
   "github_owner": "itrimble",
   "contact_email": "iantrimble@remnantsecurity.com",
-
   "dns": {
     "registrar": "Namecheap",
     "mode": "BasicDNS",
-    "nameservers": ["dns1.registrar-servers.com", "dns2.registrar-servers.com"],
+    "nameservers": [
+      "dns1.registrar-servers.com",
+      "dns2.registrar-servers.com"
+    ],
     "record_count": 20,
     "carries_email": true,
     "email_records": [
-      { "type": "MX", "host": "@", "value": "SMTP.GOOGLE.COM.", "mxpref": 1 },
-      { "type": "TXT", "host": "google._domainkey", "purpose": "DKIM" },
-      { "type": "TXT", "host": "@", "purpose": "google-site-verification" }
+      {
+        "type": "MX",
+        "host": "@",
+        "value": "SMTP.GOOGLE.COM.",
+        "mxpref": 1
+      },
+      {
+        "type": "TXT",
+        "host": "google._domainkey",
+        "purpose": "DKIM"
+      },
+      {
+        "type": "TXT",
+        "host": "@",
+        "purpose": "google-site-verification"
+      }
     ],
     "write_api": {
       "tool": "namecheap MCP dns_records_save",
       "semantics": "REPLACE_ALL",
-      "params": ["domainName", "records", "force"],
+      "params": [
+        "domainName",
+        "records",
+        "force"
+      ],
       "danger": "Sending only the record you want to add DELETES every other record, including MX and DKIM. That takes down email. Always send the complete desired record set.",
-      "backup_dir": "~/backups/remnant-dns/"
+      "backup_dir": "~/backups/remnant-dns/",
+      "mcp_server": {
+        "url": "https://mcp.namecheap.com/mcp",
+        "transport": "http",
+        "auth": "OAuth 2.1 with dynamic client registration and PKCE (S256). No API key, no secret in any config file - the config entry is the URL only and the token lives in each CLI's own credential store.",
+        "token_scope": "Per machine AND per CLI. Signing in on one CLI on one Mac authorises nothing else. Registration is visible in the config; authentication is not.",
+        "tools_confirmed": [
+          "domains_list",
+          "domains_check_availability",
+          "dns_records_get",
+          "dns_records_save",
+          "dns_records_delete"
+        ],
+        "add_commands": {
+          "claude": "claude mcp add --transport http --scope user namecheap https://mcp.namecheap.com/mcp",
+          "codex": "codex mcp add namecheap --url https://mcp.namecheap.com/mcp",
+          "gemini": "gemini mcp add -s user -t http namecheap https://mcp.namecheap.com/mcp",
+          "qwen": "qwen mcp add -s user -t http namecheap https://mcp.namecheap.com/mcp",
+          "opencode": "opencode mcp add namecheap --url https://mcp.namecheap.com/mcp",
+          "grok": "grok mcp add -s user -t http namecheap https://mcp.namecheap.com/mcp"
+        },
+        "traps": [
+          "codex mcp add opens a browser immediately; over SSH it hangs because the OAuth callback is on the remote machine's 127.0.0.1. Append the two-line [mcp_servers.namecheap] block to ~/.codex/config.toml instead and sign in at that machine.",
+          "grok cannot complete this OAuth flow: mcp add accepts only static --header values and there is no login subcommand. Leave it configured-but-unauthenticated; do not use grok for DNS.",
+          "Use each CLI's own mcp add. Do not hand-edit ~/.claude.json - it is over 100 KB and easy to corrupt."
+        ],
+        "fallback": "The Namecheap web UI. Per-record editing there has no replace-all risk and is safer for a single record. The MCP buys speed, not capability.",
+        "docs": "TOOLCHAIN.md"
+      }
     },
     "github_pages_apex_a_records": [
       "185.199.108.153",
@@ -30,11 +77,12 @@
       "185.199.111.153"
     ]
   },
-
   "properties": [
     {
       "domain": "remnantsecurity.com",
-      "aliases": ["www.remnantsecurity.com"],
+      "aliases": [
+        "www.remnantsecurity.com"
+      ],
       "repo": "itrimble/Cybersecurity-Training-Links",
       "local_path": "~/projects/remnantsecurity.com",
       "host": "github-pages",
@@ -42,7 +90,9 @@
       "workflow": ".github/workflows/deploy.yml",
       "branch": "main",
       "build": "vite",
-      "build_env": { "VITE_ACADEMY_URL": "https://academy.remnantsecurity.com" },
+      "build_env": {
+        "VITE_ACADEMY_URL": "https://academy.remnantsecurity.com"
+      },
       "https_enforced": true,
       "status": "live",
       "role": "apex marketing site and career-plan funnel"
@@ -108,41 +158,58 @@
     {
       "domain": "snapdog.remnantsecurity.com",
       "repo": "itrimble/snapdog-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": true, "status": "live",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
       "app_status": "shipped - Mac App Store id6783121166"
     },
     {
       "domain": "lectern.remnantsecurity.com",
       "repo": "itrimble/lectern-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": true, "status": "live",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
       "app_status": "shipped - Mac App Store id6761786041"
     },
     {
       "domain": "cybersim.remnantsecurity.com",
       "repo": "itrimble/cybersim-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": true, "status": "live",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
       "app_status": "shipped - App Store id6762009652"
     },
     {
       "domain": "plumberpuzzle.remnantsecurity.com",
       "repo": "itrimble/plumberpuzzle-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": true, "status": "live",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
       "app_status": "shipped - App Store id6789703995"
     },
     {
       "domain": "books.remnantsecurity.com",
       "repo": "itrimble/books-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": true, "status": "live"
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live"
     },
     {
       "domain": "alttab.remnantsecurity.com",
       "repo": "itrimble/alttab-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
       "https_enforced": true,
       "status": "live",
       "note": "Was plaintext-only until 2026-10-14: Pages held the custom domain but had no https_certificate object at all, so no cert was ever requested. Fixed by clearing and re-setting the custom domain, which forced provisioning. See WEB-ESTATE.md section 7."
@@ -150,14 +217,15 @@
     {
       "domain": "tilepilot.remnantsecurity.com",
       "repo": "itrimble/tilepilot-site",
-      "host": "github-pages", "deploy": "branch", "branch": "main",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
       "https_enforced": true,
       "status": "live",
       "content": "A complete marketing site: index, features, pricing, changelog, privacy, support. Built 2026-07-18 and left unwired until 2026-10-14.",
       "note": "Was dangling - Pages held the custom domain but no DNS record existed, so no certificate could be issued. Ian added the CNAME on 2026-10-14 and the section 5 procedure brought it up. All six pages serve 200."
     }
   ],
-
   "tls": {
     "issuer": "Let's Encrypt",
     "managed_by": "GitHub Pages",
@@ -179,7 +247,6 @@
     "check_one": "echo | openssl s_client -servername <host> -connect <host>:443 2>/dev/null | openssl x509 -noout -issuer -dates",
     "check_pages": "gh api repos/itrimble/<repo>/pages --jq '{cname,https_enforced,cert:(.https_certificate.state // \"NONE\")}'"
   },
-
   "subdomain_pattern": {
     "description": "Every app subdomain follows the same shape. Deviating from it is what breaks deploys.",
     "steps": [
@@ -191,7 +258,6 @@
     ],
     "note": "Order matters only in that the certificate cannot be issued until DNS resolves. The repo may exist first."
   },
-
   "verification": {
     "comment": "Run these from a machine other than Neo. Neo's mDNSResponder caches negative lookups for new hostnames, so curl reports 'could not resolve' long after dig succeeds.",
     "all_endpoints": "for s in '' www. academy. blog. apps. lightfence. prismshift. snapdog. lectern. cybersim. plumberpuzzle. books.; do printf '%-34s %s\\n' \"${s}remnantsecurity.com\" \"$(curl -s -o /dev/null -w %{http_code} -L --max-time 12 https://${s}remnantsecurity.com/)\"; done",
@@ -199,5 +265,23 @@
     "apex_live_bundle": "curl -s https://remnantsecurity.com/ | grep -o '/assets/index-[A-Za-z0-9_-]*\\.js'",
     "dns_authoritative": "dig +short @dns1.registrar-servers.com CNAME <host>.remnantsecurity.com",
     "pages_state": "gh api repos/itrimble/<repo>/pages --jq '{status,cname,https_enforced,source}'"
+  },
+  "prerequisites": {
+    "doc": "TOOLCHAIN.md",
+    "note": "None of these live in the repo and none are discoverable from the code. Read TOOLCHAIN.md after relocating or cloning this folder.",
+    "gh": {
+      "needed_for": "Pages state, certificate repair, deploy status",
+      "required_scope": "repo",
+      "check": "gh auth status"
+    },
+    "node": {
+      "needed_for": "build, lint, release gate",
+      "observed": "v24.18.0",
+      "engines_pin": null
+    },
+    "namecheap_mcp": {
+      "needed_for": "reading and writing DNS",
+      "see": "dns.write_api.mcp_server"
+    }
   }
 }

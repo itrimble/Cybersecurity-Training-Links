@@ -13,6 +13,11 @@ Read it before you touch DNS, add a subdomain, or deploy anything. In
 particular: the Namecheap `dns_records_save` tool **replaces the entire zone**,
 and the zone carries the Google Workspace MX and DKIM records.
 
+**[`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md)** covers what you need installed and
+authenticated before any of that is actionable — `gh`, Node, and the Namecheap
+MCP server that DNS is reached through. None of it lives in this repo, so read
+it first if this folder has been moved, cloned, or handed to a new machine.
+
 The GitHub repo is `itrimble/Cybersecurity-Training-Links`; the local folder is
 `~/projects/remnantsecurity.com`. That mismatch is expected.
 

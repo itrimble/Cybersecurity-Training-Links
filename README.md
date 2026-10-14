@@ -15,6 +15,11 @@ that cause damage a `git revert` will not undo — is mapped in
 **[`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md)**, with a machine-readable
 inventory in [`docs/estate.json`](docs/estate.json).
 
+**[`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md)** lists what you need installed and
+authenticated before any of that is actionable — `gh`, Node, and the Namecheap
+MCP server that DNS is reached through. None of it lives in this repo, so read
+it first if this folder has been moved, cloned, or handed to a new machine.
+
 ## Stack
 
 React 19 · TypeScript · Vite 7 · Tailwind v4 · Radix UI

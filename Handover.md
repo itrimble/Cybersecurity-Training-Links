@@ -9,7 +9,9 @@ Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
 
 > **New:** the estate is now documented in
-> [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md), with a machine-readable inventory
+> [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md), the prerequisites to work on it
+> in [`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md) (`gh`, Node, the Namecheap MCP
+> server and how to authenticate it), with a machine-readable inventory
 > in [`docs/estate.json`](docs/estate.json). Read it before touching DNS,
 > adding a subdomain, or deploying. `GEMINI.md` and `QWEN.md` were stale and
 > now delegate to `AGENTS.md`.

@@ -417,3 +417,14 @@ survived a full page reload.
 not in `main`** and is **not an ancestor** of it. It fails the three-check rule
 in `Handover.md`, so removing it would discard history rather than tidy up —
 regardless of the funnel now being exercised. Keep it, or discard it knowingly.
+
+---
+
+## 11. Toolchain prerequisites
+
+`gh`, Node and the **Namecheap MCP server** are what make everything above
+actionable, and none of them live in this repo. If this folder has been moved,
+cloned, or handed to a new machine, read
+**[`TOOLCHAIN.md`](./TOOLCHAIN.md)** first — it has the MCP server URL, the
+per-CLI `mcp add` and sign-in commands, the three traps that waste an
+afternoon, and the web-UI fallback for when the MCP is unreachable.
