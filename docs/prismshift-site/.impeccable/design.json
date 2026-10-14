@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T18:26:41.162696+00:00",
+  "title": "Design System: Prism Shift website",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "canonical": "#f5f3ff",
+        "tonalRamp": [
+          "oklch(15% 0.01606 293.76)",
+          "oklch(26% 0.01606 293.76)",
+          "oklch(38% 0.01606 293.76)",
+          "oklch(49% 0.01606 293.76)",
+          "oklch(61% 0.01606 293.76)",
+          "oklch(72% 0.01606 293.76)",
+          "oklch(84% 0.01606 293.76)",
+          "oklch(95% 0.01606 293.76)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      },
+      "quiet": {
+        "role": "neutral",
+        "displayName": "quiet",
+        "canonical": "#c1bdd9",
+        "tonalRamp": [
+          "oklch(15% 0.03926 292.06)",
+          "oklch(26% 0.03926 292.06)",
+          "oklch(38% 0.03926 292.06)",
+          "oklch(49% 0.03926 292.06)",
+          "oklch(61% 0.03926 292.06)",
+          "oklch(72% 0.03926 292.06)",
+          "oklch(84% 0.03926 292.06)",
+          "oklch(95% 0.03926 292.06)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      },
+      "cyan": {
+        "role": "primary",
+        "displayName": "cyan",
+        "canonical": "#69dcff",
+        "tonalRamp": [
+          "oklch(15% 0.11459 220.68)",
+          "oklch(26% 0.11459 220.68)",
+          "oklch(38% 0.11459 220.68)",
+          "oklch(49% 0.11459 220.68)",
+          "oklch(61% 0.11459 220.68)",
+          "oklch(72% 0.11459 220.68)",
+          "oklch(84% 0.11459 220.68)",
+          "oklch(95% 0.11459 220.68)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      },
+      "violet": {
+        "role": "secondary",
+        "displayName": "violet",
+        "canonical": "#ad8af4",
+        "tonalRamp": [
+          "oklch(15% 0.15348 297.58)",
+          "oklch(26% 0.15348 297.58)",
+          "oklch(38% 0.15348 297.58)",
+          "oklch(49% 0.15348 297.58)",
+          "oklch(61% 0.15348 297.58)",
+          "oklch(72% 0.15348 297.58)",
+          "oklch(84% 0.15348 297.58)",
+          "oklch(95% 0.15348 297.58)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "ground",
+        "canonical": "#09071d",
+        "tonalRamp": [
+          "oklch(15% 0.04614 283.85)",
+          "oklch(26% 0.04614 283.85)",
+          "oklch(38% 0.04614 283.85)",
+          "oklch(49% 0.04614 283.85)",
+          "oklch(61% 0.04614 283.85)",
+          "oklch(72% 0.04614 283.85)",
+          "oklch(84% 0.04614 283.85)",
+          "oklch(95% 0.04614 283.85)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "line",
+        "canonical": "#37304e",
+        "tonalRamp": [
+          "oklch(15% 0.05269 294.04)",
+          "oklch(26% 0.05269 294.04)",
+          "oklch(38% 0.05269 294.04)",
+          "oklch(49% 0.05269 294.04)",
+          "oklch(61% 0.05269 294.04)",
+          "oklch(72% 0.05269 294.04)",
+          "oklch(84% 0.05269 294.04)",
+          "oklch(95% 0.05269 294.04)"
+        ],
+        "rampPurpose": "Generated panel preview only; not implemented CSS tokens."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Unbounded display",
+        "purpose": "Hero heading."
+      },
+      "headline": {
+        "displayName": "Unbounded headline",
+        "purpose": "Section headings."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-capture",
+        "value": "0 24px 60px #0009",
+        "purpose": "Soft depth behind the real portrait capture."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action extracted from the current standalone site.",
+      "html": "<a class=\"ds-primary\" href=\"#play\">Watch the game</a>",
+      "css": ".ds-primary{display:inline-block;font:600 16px Space,sans-serif;background:var(--cyan,#69dcff);color:var(--ground,#09071d);padding:14px 24px;border-radius:100px;text-decoration:none}.ds-primary:hover{background:#bcefff;color:var(--ground,#09071d)}.ds-primary:focus-visible{outline:3px solid var(--cyan,#69dcff);outline-offset:6px}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "description": "Text action extracted from the current standalone site.",
+      "html": "<a class=\"ds-link\" href=\"#worlds\">Explore the fifteen skins</a>",
+      "css": ".ds-link{font:400 16px Space,sans-serif;color:var(--ink,#f5f3ff);text-underline-offset:.3em;text-decoration-thickness:1px}.ds-link:hover{color:var(--cyan,#69dcff)}.ds-link:focus-visible{outline:3px solid var(--cyan,#69dcff);outline-offset:6px}"
+    },
+    {
+      "name": "Header navigation",
+      "kind": "nav",
+      "description": "Header navigation extracted from the current standalone site.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"#play\">The game</a><a href=\"#worlds\">The skins</a><a href=\"#accessibility\">Play your way</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:30px;font:400 16px Space,sans-serif}.ds-nav a{color:var(--ink,#f5f3ff);text-decoration:none}.ds-nav a:hover{color:var(--cyan,#69dcff)}.ds-nav a:focus-visible{outline:3px solid var(--cyan,#69dcff);outline-offset:6px}"
+    },
+    {
+      "name": "Material caption",
+      "kind": "custom",
+      "description": "Material caption extracted from the current standalone site.",
+      "html": "<figcaption class=\"ds-caption\">Awakening<small>Frosted glass</small></figcaption>",
+      "css": ".ds-caption{font:600 17px/1.65 Space,sans-serif;color:var(--ink,#f5f3ff);padding-top:14px}.ds-caption small{display:block;font-size:13px;font-weight:400;color:var(--quiet,#c1bdd9)}"
+    },
+    {
+      "name": "Native gameplay frame",
+      "kind": "custom",
+      "description": "Native gameplay frame extracted from the current standalone site.",
+      "html": "<video class=\"ds-video\" controls playsinline preload=\"metadata\" aria-label=\"Development gameplay preview\"></video>",
+      "css": ".ds-video{display:block;width:100%;max-height:650px;aspect-ratio:750/1334;object-fit:contain;background:#04030d;border-radius:16px}.ds-video:focus-visible{outline:3px solid var(--cyan,#69dcff);outline-offset:6px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Build the light. Break the darkness.",
+    "overview": "The game's crystal identity carries into a quiet, media-led website: an indigo field, cyan light, original prism art, and real portrait captures. Reused game fonts make it recognizable while restrained framing leaves the board and materials in view.\n\nThis system records the user-approved local website preview, scoped to microsites/prismshift. It is independent of the main Remnant Security site's tokens and does not establish production deployment or human musical acceptance.",
+    "keyCharacteristics": [
+      "Original crystal art and authentic gameplay",
+      "Indigo foundation with cyan light",
+      "Game fonts with readable body copy",
+      "User-controlled media and horizontal material gallery"
+    ],
+    "rules": [
+      {
+        "name": "The Shared Light Rule",
+        "body": "Cyan highlights both the game's light and the page's actionable focus.",
+        "section": "colors"
+      },
+      {
+        "name": "The Visitor Starts the Sound Rule",
+        "body": "Playback begins only after a visitor action; the soundtrack disclosure stays beside the recording.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do reuse authentic game captures and accompanying provenance.",
+      "Do retain visible keyboard focus and the gallery\u2019s combined-image fallback.",
+      "Do keep soundtrack playback under the visitor\u2019s control."
+    ],
+    "donts": [
+      "Don\u2019t autoplay the gameplay or soundtrack.",
+      "Don\u2019t describe the added Awakening track as live gameplay sound effects.",
+      "Don\u2019t invent a public download, release date, production deployment, or musical acceptance."
+    ]
+  }
+}

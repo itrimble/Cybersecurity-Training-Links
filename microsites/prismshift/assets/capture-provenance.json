@@ -1,0 +1,250 @@
+{
+  "source_commit": "54f9fd0c0eb2376ed179e3b45968ca93670736f6",
+  "capture_utc": "2026-10-14T16:53:55.939780+00:00",
+  "simulator_id": "D7ADAA3C-C29B-4112-9F06-6A1F8C1CBD99",
+  "kind": "actual SpriteKit gameplay, Debug seeded QA autoplay; tide suppressed",
+  "captures": [
+    {
+      "catalog_index": 0,
+      "material_skin": "Awakening",
+      "file": "01-awakening.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "0",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "cfbda598883d3421e52a661bc910f6e05996cbc95b6394a7fb670c0b79e7dcf8"
+    },
+    {
+      "catalog_index": 1,
+      "material_skin": "Ripples",
+      "file": "02-ripples.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "1",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "3597d62b3965291ad3aa5eb3948e805e3a28151219c8a4194df169107a374eff"
+    },
+    {
+      "catalog_index": 2,
+      "material_skin": "Biolume",
+      "file": "03-biolume.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "2",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "b397b18a8a9d49665a6eeed050aa9b06148223c7f342d5abacb9807433be4966"
+    },
+    {
+      "catalog_index": 3,
+      "material_skin": "Pulse",
+      "file": "04-pulse.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "3",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "061086a73c7350dd741f5e5e903fa302a547a54f8a46c4bc2e1d96adabc33397"
+    },
+    {
+      "catalog_index": 4,
+      "material_skin": "Cosmic",
+      "file": "05-cosmic.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "4",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "c71abe1c6508b1a44f0352f03239e19abd154436b93f1a89c807cace8a797adc"
+    },
+    {
+      "catalog_index": 5,
+      "material_skin": "Voltage",
+      "file": "06-voltage.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "5",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "1461429f4cda30a774953672dabc76b7330831f918c352a367387a1c152c50f6"
+    },
+    {
+      "catalog_index": 6,
+      "material_skin": "Origami",
+      "file": "07-origami.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "6",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "8641ea9bd6c2b3665dcc854aa1cb600c9a7858c9b5d958fbca1ef7cf7c1e7795"
+    },
+    {
+      "catalog_index": 7,
+      "material_skin": "Cyber-Hive",
+      "file": "08-cyber-hive.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "7",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "1115cdc1f5307cf10a23235b4de667186adf9ca71edd2c19c9a485578a843028"
+    },
+    {
+      "catalog_index": 8,
+      "material_skin": "Magma",
+      "file": "09-magma.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "8",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "48dc97182bd8285135271d6c3b282eff062c155a3bdca8f263bc8219992805bb"
+    },
+    {
+      "catalog_index": 9,
+      "material_skin": "Blackout",
+      "file": "10-blackout.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "9",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "011411f93adafe95ad616fedf5ff33120fce619f08d453a15529f5f9003599c0"
+    },
+    {
+      "catalog_index": 10,
+      "material_skin": "Echo",
+      "file": "11-echo.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "10",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "7d503ef0f86963f351c08dc8f4a53bc6368090a446307c841c83fdf8c6f1ee3c"
+    },
+    {
+      "catalog_index": 11,
+      "material_skin": "Facet",
+      "file": "12-facet.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "11",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "fee271af6bdd98a919f79d644d3a0f2f4d94997cdd17d63469498dc2f547c31a"
+    },
+    {
+      "catalog_index": 12,
+      "material_skin": "Retro Arcade",
+      "file": "13-retro-arcade.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "12",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "df6354ffc49dcc963813a0fcc6393f9ee2e483ce73f80df89bc941101834daa6"
+    },
+    {
+      "catalog_index": 13,
+      "material_skin": "Toy Brick",
+      "file": "14-toy-brick.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "13",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "7a2e7e262b9fead8d3cbab487badd6ad83de5a3df098ab22a036197e28f9d6d5"
+    },
+    {
+      "catalog_index": 14,
+      "material_skin": "Stained Glass",
+      "file": "15-stained-glass.png",
+      "launch_args": [
+        "-autoPlay",
+        "-autoPlayLevelIndex",
+        "14",
+        "-autoPlaySeed",
+        "11",
+        "-autoPlayCadence",
+        "0.40",
+        "-noTide"
+      ],
+      "sha256": "4373fa8c1b3cbc4c9e3a31b02109616efdffae6c8a8de18be4dda812340faf7e"
+    }
+  ],
+  "installed_app_binary_sha256": "237848225a589d47481848112c66edc7324e39023d2d79f502891e277e187050",
+  "viewport": "750\u00d71334 pixels (compact iPhone simulator)"
+}
