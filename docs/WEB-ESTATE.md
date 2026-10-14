@@ -44,7 +44,7 @@ One apex, twelve subdomains. Eleven live, two broken (§8).
 | `plumberpuzzle.` | `plumberpuzzle-site` | branch `main` | Shipped. |
 | `books.` | `books-site` | branch `main` | |
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
-| `tilepilot.` | `tilepilot-site` | branch `main` | **No DNS — §8** |
+| `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
 
 ### Naming traps
 
@@ -213,6 +213,22 @@ gh api -X PUT repos/itrimble/<repo>/pages -F https_enforced=true
 `https_enforced` cannot be set before the certificate exists. Skipping that
 last step is what left `alttab` serving plaintext for months.
 
+**What it looks like while it runs.** The state goes
+`NONE` → `authorization_pending` → `approved`, usually inside a minute. Do not
+give up at `authorization_pending`.
+
+**A failed build here is usually noise.** The clear and the re-set can trigger
+two Pages builds seconds apart, and the first often fails — leaving
+`pages.status == "errored"` for a few minutes while the host already serves
+perfectly. Check the build list before believing it:
+
+```sh
+gh api repos/itrimble/<repo>/pages/builds --jq '.[0:2][] | "\(.status) \(.created_at) \(.error.message // "")"'
+```
+
+If the newest build is `built`, the error was transient. Judge by what the
+hostname actually serves, not by `pages.status` alone.
+
 ### Auditing the whole estate
 
 ```sh
@@ -283,9 +299,16 @@ re-set to force the DNS re-check. After that the certificate reached
 `approved` within a minute. It now has a Let's Encrypt certificate valid to
 2027-01-12 with HTTPS enforced. Procedure in §5.
 
-**`tilepilot.remnantsecurity.com` is dangling.** `tilepilot-site` has the custom
-domain configured in Pages but **no DNS record exists**, so the hostname does
-not resolve and no certificate can be issued.
+**`tilepilot.remnantsecurity.com` — wired up 2026-10-14.** It had been
+dangling: Pages held the custom domain but no DNS record existed, so nothing
+resolved and no certificate could be issued. The repo had held a complete,
+finished marketing site since 2026-07-18.
+
+Ian added `CNAME tilepilot -> itrimble.github.io.` and the §5 procedure brought
+it up — same missing-`https_certificate` symptom as `alttab`, same clear and
+re-set repair. All six pages serve 200 behind a Let's Encrypt certificate valid
+to 2027-01-12, with HTTPS enforced. The first Pages build after the swap
+errored and the next one succeeded; see the note in §5.
 
 It is not junk: the repo holds a complete marketing site — index, features,
 pricing, changelog, privacy and support — last pushed 2026-07-18. It was built
@@ -333,8 +356,13 @@ These cost real time on this fleet.
 
 ## 10. Open items
 
-Done 2026-10-14: `alttab` certificate repaired (§8); Prism Shift hosting
-consolidated on GitHub Pages (§8).
+Done 2026-10-14: `alttab` certificate repaired and `tilepilot` wired up (§8).
+Every hostname in §1 now serves 200 behind a valid certificate, and all twelve
+Pages repos report `https_enforced=true` with `cert=approved`.
+
+> **Ownership:** the Prism Shift web app is being worked on in a separate Codex
+> session. Do not edit `microsites/prismshift`, `docs/prismshift-site/` or the
+> `prismshift-site` repo from here without checking with Ian first.
 
 - Rotate the Kit/ConvertKit `api_secret`. Public since ~10 Oct. The deployed
   site no longer uses it, so rotating breaks nothing. **Ian only.**
@@ -342,8 +370,6 @@ consolidated on GitHub Pages (§8).
   has never been exercised.
 - Click the career-plan funnel end to end: seven questions, scoring,
   `localStorage` resume, Markdown download.
-- `tilepilot.remnantsecurity.com`: decide whether to wire it up or retire it
-  (§8). It needs a DNS record before a certificate can exist.
 - The stale `release/web/` package in `~/projects/prismshift` still advertises
   `hello@` and pre-launch URLs. Its `metadata/en-US/` URLs are already correct.
 - Branch policy and the kept snapshot branch: see `Handover.md`.

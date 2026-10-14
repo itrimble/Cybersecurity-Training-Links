@@ -3,7 +3,7 @@
 **Updated:** October 14, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `f0eac86`
+**Branch / HEAD:** `main` / `69bb162`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
@@ -85,9 +85,19 @@ record existed. Re-saving the domain did nothing; clearing and re-setting it
 forced provisioning, and it now has a certificate valid to 2027-01-12 with
 HTTPS enforced. The procedure is written up in `docs/WEB-ESTATE.md` §5.
 
-`tilepilot.remnantsecurity.com` is still dangling — Pages claims the domain but
-no DNS record exists, so no certificate can be issued. The repo holds a
-complete, finished marketing site from July. It needs a DNS CNAME, then §5.
+`tilepilot.remnantsecurity.com` was dangling for the same reason — Pages
+claimed the domain but no DNS record existed, so no certificate could be
+issued, and a complete marketing site from July sat unreachable. Ian added the
+CNAME; the same repair brought it up. All six of its pages now serve 200
+behind a certificate valid to 2027-01-12.
+
+**The estate is now clean.** Every hostname returns 200 behind a valid
+Let's Encrypt certificate, and all twelve Pages repos report
+`https_enforced=true` with `cert=approved`.
+
+> **Ownership note:** the Prism Shift web app is being worked on in a separate
+> Codex session. Do not edit `microsites/prismshift`, `docs/prismshift-site/`
+> or the `prismshift-site` repo from a Claude session without checking first.
 
 ## Branches
 

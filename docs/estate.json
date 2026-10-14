@@ -151,11 +151,10 @@
       "domain": "tilepilot.remnantsecurity.com",
       "repo": "itrimble/tilepilot-site",
       "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": false,
-      "status": "dangling",
-      "defect": "GitHub Pages has this custom domain configured but no DNS record exists in the zone, so the hostname does not resolve and no certificate can be issued.",
-      "content": "A complete marketing site (index, features, pricing, changelog, privacy, support), last pushed 2026-07-18. Not junk - it was built and never wired up.",
-      "fix": "Add DNS CNAME tilepilot -> itrimble.github.io., then run the certificate procedure in WEB-ESTATE.md section 7."
+      "https_enforced": true,
+      "status": "live",
+      "content": "A complete marketing site: index, features, pricing, changelog, privacy, support. Built 2026-07-18 and left unwired until 2026-10-14.",
+      "note": "Was dangling - Pages held the custom domain but no DNS record existed, so no certificate could be issued. Ian added the CNAME on 2026-10-14 and the section 5 procedure brought it up. All six pages serve 200."
     }
   ],
 
@@ -173,7 +172,10 @@
       "wait for https_certificate.state to become 'approved' (about a minute)",
       "gh api -X PUT repos/itrimble/<repo>/pages -F https_enforced=true"
     ],
-    "repair_warning": "Clearing the cname deletes the CNAME file from the repo. Re-setting it recreates the file, so the round trip is safe, but do not stop halfway.",
+    "repair_warning": "Clearing the cname deletes the CNAME file from the repo. Re-setting it recreates the file, so the round trip is safe, but do not stop halfway. Confirm the file is back before walking away.",
+    "repair_observed_states": "After the re-set the certificate goes NONE -> authorization_pending -> approved, usually inside a minute. Do not give up at authorization_pending.",
+    "repair_transient_error": "The clear/re-set pair can trigger two Pages builds seconds apart and the first may fail, leaving pages.status == 'errored' for a few minutes while the site already serves correctly. Check pages/builds: if the newest build is 'built' the error was transient. Judge by what the host actually serves, not by pages.status alone.",
+    "verified_estate_wide": "2026-10-14: all 14 hostnames return 200 and all 12 Pages repos report https_enforced=true with cert=approved.",
     "check_one": "echo | openssl s_client -servername <host> -connect <host>:443 2>/dev/null | openssl x509 -noout -issuer -dates",
     "check_pages": "gh api repos/itrimble/<repo>/pages --jq '{cname,https_enforced,cert:(.https_certificate.state // \"NONE\")}'"
   },
