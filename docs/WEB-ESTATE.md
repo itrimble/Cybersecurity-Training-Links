@@ -18,7 +18,7 @@ perform any of them without reading the named section first.
 | Operation | Why it is dangerous | Read |
 |---|---|---|
 | Writing DNS | `dns_records_save` **replaces the entire zone**. The zone carries the Google Workspace MX and DKIM records. A careless write takes down email. | [§4](#4-dns) |
-| Deleting a Pages repo or its `CNAME` file | The custom domain stops resolving and GitHub must re-issue the certificate, which takes minutes to hours. | [§3](#3-deploying) |
+| Deleting a Pages repo or its `CNAME` file | The custom domain stops resolving and GitHub must re-issue the certificate. Clearing a Pages `cname` deletes that file — safe only as half of the §5 round trip, never on its own. | [§5](#5-tls-certificates) |
 | Rotating the Kit/ConvertKit key | Breaks lead capture if the deployed bundle still uses it. | `SECURITY.md` |
 | Force-pushing `main` on any site repo | `main` is unprotected everywhere and every push deploys. There is no PR gate to catch you. | [§3](#3-deploying) |
 
@@ -28,23 +28,23 @@ Everything else here is recoverable.
 
 ## 1. The map
 
-One apex, twelve subdomains. Eleven live, two broken (§7).
+One apex, twelve subdomains. Eleven live, two broken (§8).
 
 | Host | Repo | Deploys from | Notes |
 |---|---|---|---|
 | `remnantsecurity.com` + `www` | `Cybersecurity-Training-Links` | **GitHub Actions** on `main` | This repo. Vite build. |
 | `academy.` | `remnant-academy` *(private)* | **Vercel** | Serves the APIs the apex calls. |
 | `blog.` | `product-diary` | branch **`gh-pages`** | The only one not on `main`. |
-| `apps.` | `apps-site` | branch `main` | Portfolio index. Editorial rules in §6. |
+| `apps.` | `apps-site` | branch `main` | Portfolio index. Editorial rules in §7. |
 | `lightfence.` | `lightfence-site` | branch `main` | App source is `~/projects/qix-swift`. |
-| `prismshift.` | `prismshift-site` | branch `main` | App source is `~/projects/prismshift`. See §7. |
+| `prismshift.` | `prismshift-site` | branch `main` | App source is `~/projects/prismshift`. See §8. |
 | `snapdog.` | `snapdog-site` | branch `main` | Shipped. |
 | `lectern.` | `lectern-site` | branch `main` | Shipped. |
 | `cybersim.` | `cybersim-site` | branch `main` | Shipped. |
 | `plumberpuzzle.` | `plumberpuzzle-site` | branch `main` | Shipped. |
 | `books.` | `books-site` | branch `main` | |
-| `alttab.` | `alttab-site` | branch `main` | **Broken — §7** |
-| `tilepilot.` | `tilepilot-site` | branch `main` | **Dangling — §7** |
+| `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
+| `tilepilot.` | `tilepilot-site` | branch `main` | **No DNS — §8** |
 
 ### Naming traps
 
@@ -77,12 +77,13 @@ Every app subdomain has the same shape. Follow it exactly.
    Pages reads the `CNAME` file and sets the custom domain itself.
 4. Add the DNS record: `CNAME <app> -> itrimble.github.io.` — see §4, and
    never send a partial record set.
-5. Wait for the certificate, then enforce HTTPS. It cannot be enabled before
-   the cert exists:
+5. Wait for the Let's Encrypt certificate GitHub provisions automatically,
+   then enforce HTTPS. It cannot be enabled before the cert exists, and if it
+   never appears see §5:
    ```sh
    gh api -X PUT repos/itrimble/<app>-site/pages -F https_enforced=true
    ```
-6. List it on `apps.remnantsecurity.com` under the right section (§6) and in
+6. List it on `apps.remnantsecurity.com` under the right section (§7) and in
    `src/data/sites.ts → appSites` in this repo.
 
 Skipping step 5 is how `alttab` ended up plaintext-only.
@@ -168,7 +169,64 @@ Namecheap web UI, whose per-record editing has no replace-all risk.
 
 ---
 
-## 5. This repo
+## 5. TLS certificates
+
+**Every certificate in the estate is Let's Encrypt, and GitHub Pages requests
+and renews them automatically.** There is no certbot, no ACME client and no
+cron job on any machine. Certificates last 90 days and GitHub rotates them on
+its own. Nothing here needs a human on a schedule.
+
+Provisioning is triggered by **setting the Pages custom domain while the DNS
+record already resolves**. That ordering is the whole game.
+
+### The failure mode
+
+If the custom domain was set *before* DNS existed, GitHub may never retry, and
+it does not tell you. The symptom is specific and easy to test for: the Pages
+API response has **no `https_certificate` object at all** — not a certificate
+in a failed state, but the field missing entirely.
+
+```sh
+gh api repos/itrimble/<repo>/pages --jq '{cname,https_enforced,cert:(.https_certificate.state // "NONE")}'
+```
+
+A healthy property returns `"cert": "approved"`. A broken one returns
+`"cert": "NONE"`. That one command distinguishes them.
+
+### The repair
+
+Re-saving the same domain does nothing — it has to be cleared and re-set, which
+is what forces GitHub to re-run the DNS check and request a certificate:
+
+```sh
+gh api -X PUT repos/itrimble/<repo>/pages -f cname=''
+gh api -X PUT repos/itrimble/<repo>/pages -f cname=<host>.remnantsecurity.com
+# wait ~1 min for https_certificate.state to reach "approved", then:
+gh api -X PUT repos/itrimble/<repo>/pages -F https_enforced=true
+```
+
+> **Clearing the cname deletes the `CNAME` file from the repo.** Re-setting it
+> recreates the file, so the round trip is safe — but do not stop halfway, and
+> confirm the file is back:
+> `gh api repos/itrimble/<repo>/pages/../contents/CNAME`.
+
+`https_enforced` cannot be set before the certificate exists. Skipping that
+last step is what left `alttab` serving plaintext for months.
+
+### Auditing the whole estate
+
+```sh
+for h in $(python3 -c "import json;print(' '.join(p['domain'] for p in json.load(open('docs/estate.json'))['properties']))"); do
+  printf '%-34s %s\n' "$h" "$(echo | openssl s_client -servername $h -connect $h:443 2>/dev/null \
+    | openssl x509 -noout -enddate 2>/dev/null | sed 's/notAfter=//' || echo 'NO CERT')"
+done
+```
+
+Run it from the mini or the MBP, not Neo (§9).
+
+---
+
+## 6. This repo
 
 React 19 + TypeScript + Vite + Tailwind v4. Single page.
 
@@ -195,7 +253,7 @@ path dependencies, and `SECURITY.md` for the credential rules.
 
 ---
 
-## 6. apps.remnantsecurity.com editorial policy
+## 7. apps.remnantsecurity.com editorial policy
 
 The page's own stated promise is "Public apps, labeled honestly." It has three
 sections and the boundaries are deliberate:
@@ -212,17 +270,29 @@ the thing that defines that section becomes true — not when it feels ready.
 
 ---
 
-## 7. Known defects and conflicts
+## 8. Known defects and conflicts
 
-**`alttab.remnantsecurity.com` is plaintext-only.** `http` returns 200, `https`
-returns nothing — no certificate was ever provisioned and `https_enforced` is
-false. A security company serving a subdomain over plain HTTP. Fix by
-re-saving the custom domain in Pages to trigger issuance, then enforcing HTTPS.
+**`alttab.remnantsecurity.com` — fixed 2026-10-14.** It had served plaintext
+only: `http` 200, `https` nothing, `https_enforced` false, and the Pages API
+returned **no `https_certificate` object at all**, meaning GitHub had never
+even requested one. Almost certainly because the custom domain was set before
+the DNS record existed.
+
+Re-saving the same domain did **nothing** — the record has to be cleared and
+re-set to force the DNS re-check. After that the certificate reached
+`approved` within a minute. It now has a Let's Encrypt certificate valid to
+2027-01-12 with HTTPS enforced. Procedure in §5.
 
 **`tilepilot.remnantsecurity.com` is dangling.** `tilepilot-site` has the custom
-domain configured in Pages but **no DNS record exists**. Either add the CNAME or
-clear the domain from the Pages config; leaving a Pages project claiming a
-hostname that does not resolve is untidy and confusing.
+domain configured in Pages but **no DNS record exists**, so the hostname does
+not resolve and no certificate can be issued.
+
+It is not junk: the repo holds a complete marketing site — index, features,
+pricing, changelog, privacy and support — last pushed 2026-07-18. It was built
+and never wired up. To finish it, add `CNAME tilepilot -> itrimble.github.io.`
+(§4, and send the complete record set), then run the certificate procedure in
+§5. To abandon it, clear the domain from the Pages config so nothing claims a
+hostname that does not resolve.
 
 **Prism Shift publication is consolidated on GitHub Pages.** The user approved
 `microsites/prismshift` (“Keep the current preview”) and requested soundtrack
@@ -238,7 +308,7 @@ continues to label development status until distribution is verified.
 
 ---
 
-## 8. Environment traps
+## 9. Environment traps
 
 These cost real time on this fleet.
 
@@ -261,7 +331,10 @@ These cost real time on this fleet.
 
 ---
 
-## 9. Open items
+## 10. Open items
+
+Done 2026-10-14: `alttab` certificate repaired (§8); Prism Shift hosting
+consolidated on GitHub Pages (§8).
 
 - Rotate the Kit/ConvertKit `api_secret`. Public since ~10 Oct. The deployed
   site no longer uses it, so rotating breaks nothing. **Ian only.**
@@ -269,9 +342,8 @@ These cost real time on this fleet.
   has never been exercised.
 - Click the career-plan funnel end to end: seven questions, scoring,
   `localStorage` resume, Markdown download.
-- Resolve the Prism Shift duplication (§7).
-- Fix `alttab` HTTPS and the `tilepilot` dangling domain (§7).
-- Fill `release/metadata/en-US/privacy_url.txt` is **done**; the stale
-  `release/web/` package in `~/projects/prismshift` still advertises `hello@`
-  and the wrong URLs.
+- `tilepilot.remnantsecurity.com`: decide whether to wire it up or retire it
+  (§8). It needs a DNS record before a certificate can exist.
+- The stale `release/web/` package in `~/projects/prismshift` still advertises
+  `hello@` and pre-launch URLs. Its `metadata/en-US/` URLs are already correct.
 - Branch policy and the kept snapshot branch: see `Handover.md`.

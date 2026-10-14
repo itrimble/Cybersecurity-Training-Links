@@ -3,7 +3,7 @@
 **Updated:** October 14, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `9787997`
+**Branch / HEAD:** `main` / `f0eac86`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
@@ -68,11 +68,26 @@ Two game subdomains and the documentation above.
   `privacy_url.txt` did not exist at all. Both now point at the real pages.
   Left uncommitted in the app repo for review.
 
-**Unresolved:** a second, undeployed Prism Shift microsite for the same domain
-exists in this repo at `microsites/prismshift` with notes in
-`docs/prismshift-site/`, built for Vercel and describing the game as
-non-commercial homebrew. Both are untracked. See `docs/WEB-ESTATE.md` §7 —
-pick one before either is edited further.
+**Resolved the same day.** There had briefly been two Prism Shift sites for one
+hostname — this repo's `microsites/prismshift` and the `prismshift-site` Pages
+repo. They were consolidated: the approved microsite composition was published
+into `itrimble/prismshift-site` (`839ad9d`), keeping the existing CNAME, DNS and
+support/privacy pages. `microsites/prismshift` is now the maintained source and
+local preview, not a second host. No Vercel project is needed. See
+`docs/WEB-ESTATE.md` §8.
+
+**TLS across the estate.** Every certificate is Let's Encrypt, issued and
+renewed automatically by GitHub Pages — no certbot, no cron, nothing to renew
+by hand. `alttab.remnantsecurity.com` had been serving **plaintext only**: the
+Pages API carried no `https_certificate` object at all, so GitHub had never
+requested one, most likely because the custom domain was set before its DNS
+record existed. Re-saving the domain did nothing; clearing and re-setting it
+forced provisioning, and it now has a certificate valid to 2027-01-12 with
+HTTPS enforced. The procedure is written up in `docs/WEB-ESTATE.md` §5.
+
+`tilepilot.remnantsecurity.com` is still dangling — Pages claims the domain but
+no DNS record exists, so no certificate can be issued. The repo holds a
+complete, finished marketing site from July. It needs a DNS CNAME, then §5.
 
 ## Branches
 

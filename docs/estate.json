@@ -143,9 +143,9 @@
       "domain": "alttab.remnantsecurity.com",
       "repo": "itrimble/alttab-site",
       "host": "github-pages", "deploy": "branch", "branch": "main",
-      "https_enforced": false,
-      "status": "degraded",
-      "defect": "http returns 200 but https returns no response - no TLS certificate was ever provisioned. Plaintext only."
+      "https_enforced": true,
+      "status": "live",
+      "note": "Was plaintext-only until 2026-10-14: Pages held the custom domain but had no https_certificate object at all, so no cert was ever requested. Fixed by clearing and re-setting the custom domain, which forced provisioning. See WEB-ESTATE.md section 7."
     },
     {
       "domain": "tilepilot.remnantsecurity.com",
@@ -153,9 +153,30 @@
       "host": "github-pages", "deploy": "branch", "branch": "main",
       "https_enforced": false,
       "status": "dangling",
-      "defect": "GitHub Pages has this custom domain configured but no DNS record exists in the zone, so the hostname does not resolve."
+      "defect": "GitHub Pages has this custom domain configured but no DNS record exists in the zone, so the hostname does not resolve and no certificate can be issued.",
+      "content": "A complete marketing site (index, features, pricing, changelog, privacy, support), last pushed 2026-07-18. Not junk - it was built and never wired up.",
+      "fix": "Add DNS CNAME tilepilot -> itrimble.github.io., then run the certificate procedure in WEB-ESTATE.md section 7."
     }
   ],
+
+  "tls": {
+    "issuer": "Let's Encrypt",
+    "managed_by": "GitHub Pages",
+    "manual_renewal": false,
+    "note": "Every certificate in the estate is Let's Encrypt, but GitHub Pages requests and renews them automatically. There is no certbot, no ACME client and no cron job on any machine. Nothing expires that GitHub does not renew on its own.",
+    "lifetime_days": 90,
+    "provision_trigger": "Setting the Pages custom domain while the DNS record already resolves.",
+    "failure_mode": "If the custom domain was set BEFORE DNS existed, GitHub may never retry. The symptom is that the Pages API response has no https_certificate object at all - not a certificate in a failed state, but the field missing entirely. A healthy property shows https_certificate.state == 'approved'.",
+    "repair": [
+      "gh api -X PUT repos/itrimble/<repo>/pages -f cname=''",
+      "gh api -X PUT repos/itrimble/<repo>/pages -f cname=<host>.remnantsecurity.com",
+      "wait for https_certificate.state to become 'approved' (about a minute)",
+      "gh api -X PUT repos/itrimble/<repo>/pages -F https_enforced=true"
+    ],
+    "repair_warning": "Clearing the cname deletes the CNAME file from the repo. Re-setting it recreates the file, so the round trip is safe, but do not stop halfway.",
+    "check_one": "echo | openssl s_client -servername <host> -connect <host>:443 2>/dev/null | openssl x509 -noout -issuer -dates",
+    "check_pages": "gh api repos/itrimble/<repo>/pages --jq '{cname,https_enforced,cert:(.https_certificate.state // \"NONE\")}'"
+  },
 
   "subdomain_pattern": {
     "description": "Every app subdomain follows the same shape. Deviating from it is what breaks deploys.",
