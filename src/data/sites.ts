@@ -15,6 +15,7 @@ export const appSites: SiteLink[] = [
   { name: "Lectern AI", href: "https://lectern.remnantsecurity.com/", tag: "Mac", blurb: "Talk tracks for every slide. Turns decks into instructor-ready teaching packages — talk tracks, labs, quizzes, handouts — on your Mac." },
   { name: "CyberSim", href: "https://cybersim.remnantsecurity.com/", tag: "iOS · Free", blurb: "Cert exam practice for iOS. Security+, CISSP, CEH, and more — 10 certs, 7 question types. Security+ free. Full unlock coming soon." },
   { name: "Plumber Puzzle: Pipe Flow", href: "https://plumberpuzzle.remnantsecurity.com/", tag: "iOS · $2.99 one-time", blurb: "Connect pipes. Beat the flow. 140 handcrafted pipe puzzles for iPhone. No ads, no account." },
+  { name: "Lightfence", href: "https://lightfence.remnantsecurity.com/", tag: "iPhone · iPad · Apple TV · Coming soon", blurb: "Conquer the grid. Claim the universe. A neon arcade game of cutting lines and claiming ground: ten sectors, ten guardian fights, a 100-stage campaign and Endless mode." },
 ];
 
 export const bookSites: SiteLink[] = [
