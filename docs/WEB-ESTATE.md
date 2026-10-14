@@ -378,12 +378,42 @@ Pages repos report `https_enforced=true` with `cert=approved`.
 > session. Do not edit `microsites/prismshift`, `docs/prismshift-site/` or the
 > `prismshift-site` repo from here without checking with Ian first.
 
-- Rotate the Kit/ConvertKit `api_secret`. Public since ~10 Oct. The deployed
-  site no longer uses it, so rotating breaks nothing. **Ian only.**
-- Run `CAREER_PLAN_QA_EMAIL=<inbox> npm run release:verify` — the live-API half
-  has never been exercised.
-- Click the career-plan funnel end to end: seven questions, scoring,
-  `localStorage` resume, Markdown download.
+- **Rotate the Kit/ConvertKit `api_secret`.** Public since ~10 Oct. The
+  deployed site no longer uses it, so rotating breaks nothing. **Ian only** —
+  it lives in the Kit dashboard.
+- **Run the email half of the release gate.** The rest now passes; see below.
+  `CAREER_PLAN_QA_EMAIL=<inbox> npm run release:verify` posts a real message
+  through the server-side provider, so run it when you can check the inbox.
+- **Confirm the Markdown download writes a file.** The button fires and the UI
+  reports success, and the server download endpoint is asserted by the gate,
+  but no `.md` appeared on disk when driven through browser automation. One
+  manual click settles whether that is a profile artefact or a real bug.
 - The stale `release/web/` package in `~/projects/prismshift` still advertises
-  `hello@` and pre-launch URLs. Its `metadata/en-US/` URLs are already correct.
-- Branch policy and the kept snapshot branch: see `Handover.md`.
+  `hello@` and pre-launch URLs; its `metadata/en-US/` URLs are already correct.
+  That tree belongs to the Codex session — see the ownership note above.
+- `~/projects/Cybersecurity-Training-Links` is still in place as a fallback.
+  Retire it once this folder has proven itself. **Ian's call.**
+
+### Verified 2026-10-14
+
+`npm run release:verify -- --skip-email` **passes** against the live site:
+marketing funnel and client credential boundary; career-plan CORS, untrusted
+origin rejection, duplicate-roadmap rejection, download, roadmap and routing.
+
+The gate had been **broken since the 13 Oct academy move** — its
+`defaultAcademyUrl` still named the retired `.vercel.app` origin, so the
+"bundle targets the verified academy origin" assertion failed for everyone.
+Fixed in `scripts/verify-career-plan-release.mjs`; it now passes with no
+arguments. If the academy origin ever moves again, that constant moves with it.
+
+The funnel was clicked end to end in a browser: all seven questions, scoring
+(manager + strategic + risk/policy answers resolved to GRC Analyst /
+Compliance Specialist with credible alternatives), and `localStorage` resume
+survived a full page reload.
+
+### The snapshot branch is not deletable
+
+`snapshot/career-plan-funnel-20261013` (`d380fca`) holds **one commit that is
+not in `main`** and is **not an ancestor** of it. It fails the three-check rule
+in `Handover.md`, so removing it would discard history rather than tidy up —
+regardless of the funnel now being exercised. Keep it, or discard it knowingly.

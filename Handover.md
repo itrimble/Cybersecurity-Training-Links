@@ -3,7 +3,7 @@
 **Updated:** October 14, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `69bb162`
+**Branch / HEAD:** `main` / `2bf1faa`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
@@ -116,9 +116,16 @@ auto-merged hunks, this branch is the only record of what the original
 actually did. It is diff material, not a merge candidate — merging it would
 delete the six sections `main` gained since `f021661`.
 
-When it can go: once the funnel has been exercised end to end in a browser and
-`release:verify` has passed against the live API — Outstanding items 2 and 3
-below. Both are still open, so keep it until then.
+When it can go: the original condition was that the funnel be exercised in a
+browser and `release:verify` pass against the live API. As of 2026-10-14 both
+are substantially met — the funnel was clicked through and the gate is green
+apart from the email step (Outstanding 2 and 3).
+
+That is no longer the binding constraint. **It still holds one commit that is
+not in `main`, and it is not an ancestor of `main`,** so it fails the
+three-check rule below. Deleting it discards the only record of the
+pre-rebase work. Keep it until someone decides that record is genuinely no
+longer wanted, and treat that as a deliberate discard rather than cleanup.
 
 ### Unmerged — read before deciding
 
@@ -158,16 +165,33 @@ holding it. Bundle first.
 ## Outstanding
 
 1. **Rotate the Kit `api_secret`.** Still not done. The deployed site no
-   longer uses it, so rotating will not break the forms.
-2. **Run the full release gate** — `CAREER_PLAN_QA_EMAIL=… npm run
-   release:verify`. The five bundle assertions were verified by hand against
-   the live site; the live-API half has not been run.
-3. **The funnel has not been clicked through in a browser since deploy.**
-   The seven questions, scoring, localStorage resume and Markdown download
-   all have backend dependencies worth exercising once.
+   longer uses it, so rotating will not break the forms. **Ian only.**
+2. **The email half of the release gate.** Everything else now passes —
+   `npm run release:verify -- --skip-email` is green against the live site
+   (marketing funnel, credential boundary, career-plan CORS, untrusted-origin
+   rejection, duplicate-roadmap rejection, download, roadmap, routing).
+   The email step posts a real message through the provider, so run
+   `CAREER_PLAN_QA_EMAIL=… npm run release:verify` when you can watch the inbox.
+
+   While running it, the gate turned out to have been **broken since the
+   13 Oct academy move**: `defaultAcademyUrl` in
+   `scripts/verify-career-plan-release.mjs` still named the retired
+   `.vercel.app` origin, so its "bundle targets the verified academy origin"
+   assertion failed for everyone. Fixed; it passes with no arguments now.
+3. **Funnel: exercised 2026-10-14.** All seven questions, scoring and the
+   `localStorage` resume were clicked through in a browser against the live
+   site; the plan survived a full page reload. Two gaps remain: the Markdown
+   download fires and the UI reports success but no file appeared on disk
+   under browser automation — worth one manual click — and the email path was
+   deliberately not triggered.
 4. **The old folder** `~/projects/Cybersecurity-Training-Links` is still in
    place and untouched, as a fallback. Retire it once this folder has proven
    itself.
+5. **The snapshot branch cannot simply be deleted.**
+   `snapshot/career-plan-funnel-20261013` (`d380fca`) holds one commit that is
+   not in `main` and is not an ancestor of it, so it fails the three-check
+   rule above. The funnel being exercised does not change that: removing it
+   discards the pre-rebase snapshot rather than tidying a merged branch.
 
 ## Notes for whoever is next
 

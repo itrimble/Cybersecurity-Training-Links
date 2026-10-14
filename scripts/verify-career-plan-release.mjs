@@ -1,5 +1,8 @@
 const defaultMarketingUrl = "https://remnantsecurity.com";
-const defaultAcademyUrl = "https://remnant-security-academy.vercel.app";
+// Must match the origin the deployed bundle actually targets — the build sets
+// VITE_ACADEMY_URL to this, and verifyMarketing asserts the bundle contains it.
+// Changing the academy origin without changing this fails the gate for everyone.
+const defaultAcademyUrl = "https://academy.remnantsecurity.com";
 const requestTimeoutMs = 15_000;
 
 function argument(name, fallback) {
