@@ -67,6 +67,49 @@ warnings on load; the plan builder still advances and still resumes from
 `localStorage` across a reload (with the no-stored-state control confirming the
 difference); headless render against live **RMSE 0, pixel-identical**.
 
+## Estate status, 2026-10-15
+
+Re-audited live after the day's deploys. 10 of 13 hostnames pass every item in
+the table above.
+
+| Property | Was wrong | Fixed |
+|---|---|---|
+| apex | empty `#root` for non-JS crawlers | prerendered, see above |
+| `alttab.` | no canonical on any page; `summary_large_image` with no image | `assets/og-card.png`, canonical + OG on all 5 pages |
+| `tilepilot.` | no canonical; OG only on `index.html`; card was **1024x1024** | `assets/og-card.png` at 1200x630, canonical + OG on all 6 pages |
+| `books.` | **11 pages pointed `og:image` at an SVG**; `gfn/` used a relative URL | 9 raster cards built from the real cover art |
+| `lectern.` | favicon declared `image/png` for an SVG; SVG apple-touch-icon; no OG on inner pages | real 180x180 PNG, correct types, OG on all 4 pages |
+| `academy.` | no robots, sitemap, canonical or OG at all | `src/app/robots.ts`, `src/app/sitemap.ts`, per-page canonicals, social card |
+| `blog.` | no `og:image`; `twitter:card` was `summary` | site-wide default card in `build.mjs` |
+
+### Still open
+
+- **`blog.`** — the fix is committed but sits in `itrimble/product-diary#40`.
+  `main` is protected and requires the `verify` check plus a review. After
+  merging, run `./deploy.sh`; the blog publishes `dist/` to `gh-pages` by hand,
+  it is not deployed by CI.
+- **`academy.`** — committed and pushed to `itrimble/remnant-academy` `main`,
+  but **not deployed**. The Vercel project serving `academy.remnantsecurity.com`
+  is not in the team this machine's Vercel token can see: that team holds only
+  `remnant-security-academy` (no custom domain, last deployed 2026-08-02) and
+  `cyberops-command-center`. Whoever deploys the academy has to pick the commit
+  up. The live response is `x-vercel-id: cle1`, matching `vercel.json`'s region,
+  so it is this app, just under another account.
+- **`prismshift.`** — has a canonical and a description but **no Open Graph
+  tags at all**. A card was built but not installed: `prismshift-site` belongs
+  to the Codex session and writing to it was refused as a shared resource. The
+  card is ready at `scratchpad/build/prismshift-og.png`.
+
+### Three traps worth remembering
+
+- **`og:image` must be raster.** SVG fails silently everywhere: the tag looks
+  right and the card comes out blank. `books.` had eleven of them.
+- **A square `og:image` is not a large card.** Scrapers crop to 1.91:1, so
+  `tilepilot.`'s 1024x1024 rendered cropped or as a thumbnail.
+- **`robots.txt` matches on prefix, not path segments.** `Disallow: /portfolio`
+  also blocks `/portfolio-labs`. The academy's rule carries a trailing slash
+  for exactly this reason.
+
 ## Fonts: do not add a Google Fonts link
 
 The site self-hosts Public Sans, Bricolage Grotesque and JetBrains Mono via
