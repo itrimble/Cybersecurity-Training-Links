@@ -91,32 +91,44 @@ the table above.
   After a squash merge the local `main` diverges from `origin/main` with
   identical trees — check `git diff --stat main origin/main` is empty, then
   `git reset --hard origin/main`.
-- **`academy.`** — committed and pushed to `itrimble/remnant-academy` `main`,
-  but **not deployed**, because **the Vercel project has no Git connection**.
-  An earlier note here said the project was in a team this machine's token
-  could not see. That was wrong: `academy.remnantsecurity.com` is attached to
+- **`academy.`** — **done 2026-10-15.** Live and verified: `/robots.txt`,
+  `/sitemap.xml` (12 URLs) and `/og-card.png` all 200, canonical and
+  `twitter:card` present, and the rendered page is pixel-identical (RMSE 0) to
+  the build it replaced.
+
+  Two things had to be understood first, and an earlier note here got the first
+  one wrong. It claimed the Vercel project was in a team this machine's token
+  could not see. It is not: `academy.remnantsecurity.com` is attached to
   `remnant-security-academy` (`prj_QMC5U73vkiY9gxm1TErxst606nxy`) in
-  `team_biZFVGbqZTPRRqpD3n2certC`, verified, attached 2026-10-13. The project
-  listing does not show custom domains, which is what produced the wrong
-  conclusion — `list_project_domains` does.
+  `team_biZFVGbqZTPRRqpD3n2certC`, verified, attached 2026-10-13. **The project
+  listing does not show custom domains**, which is what produced the wrong
+  conclusion; `list_project_domains` does. Do not infer a missing domain from
+  a project listing.
 
-  All three production deployments carry an empty `meta: {}` and no
-  `githubCommitSha`, so every one was a manual CLI upload. The newest is
-  **2026-08-02**. Pushing to GitHub therefore deploys nothing, and the live site
-  is a two-month-old build that predates not just the SEO work but everything
-  else committed since. Fixing it is one of:
+  The real reason the push did nothing is that **the project has no Git
+  connection**. Every production deployment carried an empty `meta` and no
+  commit SHA, so all three were manual CLI uploads, the newest from
+  **2026-08-02** — two months of commits had never shipped. Deployed by hand
+  with `vercel --prod` from `~/projects/remnant-academy`.
 
-  1. Connect the repo in the Vercel dashboard (Project → Settings → Git), after
-     which pushes to `main` deploy on their own. This is the durable fix.
-  2. Deploy by hand from `~/projects/remnant-academy`: `vercel --prod`. It needs
-     the production env vars (Supabase, Stripe, Cloudflare Stream) present in
-     the project, and it is a live paid app, so it is Ian's call.
+  **The trap that caught this deploy:** `NEXT_PUBLIC_ACADEMY_URL` was set in
+  Production only, created 80 days ago, pointing at
+  `https://remnant-security-academy.vercel.app` — correct when the project was
+  made, stale the moment the custom domain was attached. It overrode the
+  deliberate production fallback in `src/lib/config.ts`, so the first deploy
+  published a canonical, an `og:image` and a `Sitemap:` line all naming the
+  `.vercel.app` origin. That is worse than having no canonical: it tells Google
+  the branded domain is the duplicate. Removed the variable rather than
+  correcting it, so the origin is written down in exactly one place — the code
+  fallback. Redeployed; zero occurrences of `vercel.app` remain across `/`,
+  `/courses`, `/portfolio-labs`, `/waitlist`, `robots.txt` and `sitemap.xml`.
 
-  The site itself is up and renders correctly — `/`, `/courses`,
-  `/portfolio-labs`, `/waitlist` and `/login` all return 200 with full
-  server-rendered HTML. What is missing is only what `ee8978f` adds:
-  `/robots.txt`, `/sitemap.xml` and `/og-card.png` all 404, and the served HTML
-  has no canonical, no `og:image` and no `twitter:card`.
+  **Still open:** `vercel git connect` fails with *"You need to add a Login
+  Connection to your GitHub account first"* (400). Until Ian links GitHub to
+  the Vercel account in the dashboard, every academy deploy must be run by hand
+  with `vercel --prod` from `~/projects/remnant-academy`, or the site silently
+  falls behind again.
+
 - **`prismshift.`** — has a canonical and a description but **no Open Graph
   tags at all**. A card was built but not installed: `prismshift-site` belongs
   to the Codex session and writing to it was refused as a shared resource. The

@@ -335,12 +335,12 @@
         "tilepilot.remnantsecurity.com": "og.png was 1024x1024; new 1200x630 og-card.png, canonical and OG on all 6 pages",
         "books.remnantsecurity.com": "11 pages had an SVG og:image and gfn used a relative url; 9 raster cards built from the real covers",
         "lectern.remnantsecurity.com": "favicon type mismatch, SVG apple-touch-icon, OG on inner pages",
-        "academy.remnantsecurity.com": "robots.ts, sitemap.ts, per-page canonicals, social card - COMMITTED BUT NOT DEPLOYED",
+        "academy.remnantsecurity.com": "robots.ts, sitemap.ts, per-page canonicals, OG/Twitter metadata and og-card.png. Deployed by hand with `vercel --prod` because the Vercel project has no Git connection (all prior production deployments were manual uploads, newest 2026-08-02). Removed the stale Production env var NEXT_PUBLIC_ACADEMY_URL, which pointed at the old .vercel.app origin and overrode the correct fallback in src/lib/config.ts, publishing a canonical that named the wrong domain. Verified: all routes 200, zero vercel.app references, rendered page RMSE 0 against the build it replaced.",
         "blog.remnantsecurity.com": "default og:image for every page; PR #40 squash-merged as cab48c4 and published with ./deploy.sh on 2026-10-15. Verified live: og-card.png 200 image/png, og:image and twitter:card present."
       },
       "open": {
-        "academy.remnantsecurity.com": "pushed to itrimble/remnant-academy main, not deployed. The Vercel project remnant-security-academy (prj_QMC5U73vkiY9gxm1TErxst606nxy, team_biZFVGbqZTPRRqpD3n2certC) owns the domain but has NO Git connection: all three production deployments have empty meta and no commit SHA, the newest dated 2026-08-02. Pushing to GitHub deploys nothing. Connect the repo in Vercel Settings -> Git, or deploy by hand with `vercel --prod`.",
-        "prismshift.remnantsecurity.com": "no Open Graph tags at all. Card generated but not installed: prismshift-site belongs to the Codex session and the write was refused as a shared resource."
+        "prismshift.remnantsecurity.com": "no Open Graph tags at all. Card generated but not installed: prismshift-site belongs to the Codex session and the write was refused as a shared resource.",
+        "academy.remnantsecurity.com (auto-deploy only)": "The site is current. `vercel git connect` fails with 'You need to add a Login Connection to your GitHub account first' (400), so pushes still do not deploy. Ian must link GitHub in the Vercel dashboard; until then run `vercel --prod` from ~/projects/remnant-academy."
       }
     },
     "traps": [
@@ -348,7 +348,10 @@
       "A square og:image is not a large card. Scrapers crop to 1.91:1.",
       "robots.txt matches on prefix, not path segments. Disallow: /portfolio also blocks /portfolio-labs.",
       "In Next.js, alternates in a root layout is inherited, so every route would canonical to /. Set canonicals per page.",
-      "metadataBase falling back to localhost publishes localhost canonicals if the env var is unset in production."
+      "metadataBase falling back to localhost publishes localhost canonicals if the env var is unset in production.",
+      "A Production-only env var pinning an origin (NEXT_PUBLIC_ACADEMY_URL) outlives the domain change that made it wrong and silently overrides a correct code fallback. Prefer deleting it so the origin is written down in exactly one place.",
+      "A Vercel project listing does not show custom domains. Use list_project_domains before concluding a project does not serve a hostname.",
+      "A Vercel project with no Git connection ignores every push. Deployments with empty meta and no commit SHA were manual uploads - check that before assuming a push will deploy."
     ]
   }
 }
