@@ -336,11 +336,10 @@
         "books.remnantsecurity.com": "11 pages had an SVG og:image and gfn used a relative url; 9 raster cards built from the real covers",
         "lectern.remnantsecurity.com": "favicon type mismatch, SVG apple-touch-icon, OG on inner pages",
         "academy.remnantsecurity.com": "robots.ts, sitemap.ts, per-page canonicals, OG/Twitter metadata and og-card.png. Deployed by hand with `vercel --prod` because the Vercel project has no Git connection (all prior production deployments were manual uploads, newest 2026-08-02). Removed the stale Production env var NEXT_PUBLIC_ACADEMY_URL, which pointed at the old .vercel.app origin and overrode the correct fallback in src/lib/config.ts, publishing a canonical that named the wrong domain. Verified: all routes 200, zero vercel.app references, rendered page RMSE 0 against the build it replaced. Auto-deploy fixed the same day: Ian added a GitHub Login Connection at vercel.com/account/authentication (the account had been created with an email address, so no Git provider was ever attached), and `vercel git connect` then recorded link={type:github, org:itrimble, repo:remnant-academy, productionBranch:main}. Pushes to main now deploy on their own.",
-        "blog.remnantsecurity.com": "default og:image for every page; PR #40 squash-merged as cab48c4 and published with ./deploy.sh on 2026-10-15. Verified live: og-card.png 200 image/png, og:image and twitter:card present."
+        "blog.remnantsecurity.com": "default og:image for every page; PR #40 squash-merged as cab48c4 and published with ./deploy.sh on 2026-10-15. Verified live: og-card.png 200 image/png, og:image and twitter:card present.",
+        "prismshift.remnantsecurity.com": "Had a canonical and description but no Open Graph tags at all. Fixed by the Codex session that owns prismshift-site, in b8ffcde, with a social card built from actual gameplay. Writes from this session were correctly refused as a shared resource. Verified live: og:image 200 image/png 1200x630, og:url, og:type, alt and twitter:card."
       },
-      "open": {
-        "prismshift.remnantsecurity.com": "no Open Graph tags at all. Card generated but not installed: prismshift-site belongs to the Codex session and the write was refused as a shared resource."
-      }
+      "open": {}
     },
     "traps": [
       "og:image must be raster. SVG fails silently - the tag looks correct and the card renders blank.",
@@ -352,7 +351,7 @@
       "A Vercel project listing does not show custom domains. Use list_project_domains before concluding a project does not serve a hostname.",
       "A Vercel project with no Git connection ignores every push. Deployments with empty meta and no commit SHA were manual uploads - check that before assuming a push will deploy."
     ],
-    "hosts_clean": 12,
+    "hosts_clean": 13,
     "hosts_total": 13
   }
 }

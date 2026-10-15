@@ -69,9 +69,8 @@ difference); headless render against live **RMSE 0, pixel-identical**.
 
 ## Estate status, 2026-10-15
 
-Re-audited live after the day's deploys. **12 of 13 hostnames pass every item
-in the table above.** The one exception is `prismshift.`, and it is blocked
-rather than unfinished — see "Still open" below.
+Re-audited live after the day's deploys. **All 13 hostnames pass every item in
+the table above.** Nothing is outstanding.
 
 | Property | Was wrong | Fixed |
 |---|---|---|
@@ -134,18 +133,23 @@ rather than unfinished — see "Still open" below.
   productionBranch: main}`, so pushes to `main` deploy on their own. Note the
   account is on **Hobby**, which allows only one login connection per service.
 
-### Still open
+### `prismshift.` was finished by the Codex session
 
-- **`prismshift.`** — has a canonical and a description but **no Open Graph
-  tags at all**, so every share renders a bare card. A 1200x630 card was built
-  and verified but **not installed**: writes to `prismshift-site` are refused
-  by the permission classifier as a shared resource, which matches the standing
-  instruction that the Prism Shift web app is worked on in a Codex session.
-  The card is ready at `scratchpad/build/prismshift-og.png`. To finish it,
-  either add a Bash permission rule for `~/projects/prismshift-site`, or hand
-  the PNG to the Codex session and have it add `og:image` (plus `og:url`,
-  `og:type`, `og:site_name` and `twitter:card`) to `index.html`,
-  `support.html` and `privacy.html`.
+Worth recording because of how it resolved. This site had a canonical and a
+description but **no Open Graph tags at all**. A 1200x630 card was built here
+and verified, but every attempt to write to `prismshift-site` was refused by
+the permission classifier as a shared resource — matching the standing note
+that the Prism Shift web app is worked on in a separate Codex session.
+
+That refusal was correct. The Codex session shipped the work itself in
+`b8ffcde`, "Add actual-gameplay social preview and sharing metadata", with a
+card built from real widescreen gameplay rather than the generic one prepared
+here. Live and verified: `og:image` 200 `image/png` at 1200x630, `og:url`,
+`og:type`, alt text and `twitter:card` all present on the apex.
+
+**The lesson is the general one:** when a repo has another owner, the block is
+information, not an obstacle. Do not route around it and do not install a
+lesser version of work its owner is already doing.
 
 ### Traps worth remembering
 

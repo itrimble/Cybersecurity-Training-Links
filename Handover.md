@@ -105,8 +105,7 @@ Let's Encrypt certificate, and all twelve Pages repos report
 
 An estate-wide SEO and discoverability pass. Full detail, including the per-
 property checklist and the traps, is in [`docs/SEO.md`](docs/SEO.md); this is
-the summary. **12 of the 13 hostnames now pass every item**, and the one that
-does not is blocked rather than unfinished.
+the summary. **All 13 hostnames now pass every item.**
 
 **The apex is prerendered.** `npm run build` gained two steps: it builds
 `src/entry-server.tsx` with Vite's SSR mode, then `scripts/prerender.mjs`
@@ -162,10 +161,12 @@ ever attached — and `vercel git connect` now records
 `link: {type: github, org: itrimble, repo: remnant-academy, productionBranch:
 main}`. **Academy pushes deploy on their own from here.**
 
-**Still open: `prismshift.` has no Open Graph tags at all.** A 1200x630 card was
-built and verified but not installed — writes to `prismshift-site` are refused
-by the permission classifier as a shared resource, consistent with the
-ownership note above. The card is at `scratchpad/build/prismshift-og.png`.
+**`prismshift.` was finished by its own owner.** It had no Open Graph tags at
+all. A card was built here, but writes to `prismshift-site` were refused as a
+shared resource, consistent with the ownership note above — and that refusal
+was right: the Codex session shipped `b8ffcde` with a card made from actual
+gameplay. Live and verified. When a repo has another owner, the block is
+information, not an obstacle.
 
 Docs: `322bc38`, `7e92d49`, `e88ae08`.
 
