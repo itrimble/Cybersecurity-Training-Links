@@ -84,17 +84,39 @@ the table above.
 
 ### Still open
 
-- **`blog.`** — the fix is committed but sits in `itrimble/product-diary#40`.
-  `main` is protected and requires the `verify` check plus a review. After
-  merging, run `./deploy.sh`; the blog publishes `dist/` to `gh-pages` by hand,
-  it is not deployed by CI.
+- **`blog.`** — **done 2026-10-15.** `itrimble/product-diary#40` was squash-
+  merged as `cab48c4` and published with `./deploy.sh`; the blog pushes `dist/`
+  to `gh-pages` by hand, it is not deployed by CI. `main` is protected and needs
+  the `verify` check plus a review, so the fix cannot be pushed straight to it.
+  After a squash merge the local `main` diverges from `origin/main` with
+  identical trees — check `git diff --stat main origin/main` is empty, then
+  `git reset --hard origin/main`.
 - **`academy.`** — committed and pushed to `itrimble/remnant-academy` `main`,
-  but **not deployed**. The Vercel project serving `academy.remnantsecurity.com`
-  is not in the team this machine's Vercel token can see: that team holds only
-  `remnant-security-academy` (no custom domain, last deployed 2026-08-02) and
-  `cyberops-command-center`. Whoever deploys the academy has to pick the commit
-  up. The live response is `x-vercel-id: cle1`, matching `vercel.json`'s region,
-  so it is this app, just under another account.
+  but **not deployed**, because **the Vercel project has no Git connection**.
+  An earlier note here said the project was in a team this machine's token
+  could not see. That was wrong: `academy.remnantsecurity.com` is attached to
+  `remnant-security-academy` (`prj_QMC5U73vkiY9gxm1TErxst606nxy`) in
+  `team_biZFVGbqZTPRRqpD3n2certC`, verified, attached 2026-10-13. The project
+  listing does not show custom domains, which is what produced the wrong
+  conclusion — `list_project_domains` does.
+
+  All three production deployments carry an empty `meta: {}` and no
+  `githubCommitSha`, so every one was a manual CLI upload. The newest is
+  **2026-08-02**. Pushing to GitHub therefore deploys nothing, and the live site
+  is a two-month-old build that predates not just the SEO work but everything
+  else committed since. Fixing it is one of:
+
+  1. Connect the repo in the Vercel dashboard (Project → Settings → Git), after
+     which pushes to `main` deploy on their own. This is the durable fix.
+  2. Deploy by hand from `~/projects/remnant-academy`: `vercel --prod`. It needs
+     the production env vars (Supabase, Stripe, Cloudflare Stream) present in
+     the project, and it is a live paid app, so it is Ian's call.
+
+  The site itself is up and renders correctly — `/`, `/courses`,
+  `/portfolio-labs`, `/waitlist` and `/login` all return 200 with full
+  server-rendered HTML. What is missing is only what `ee8978f` adds:
+  `/robots.txt`, `/sitemap.xml` and `/og-card.png` all 404, and the served HTML
+  has no canonical, no `og:image` and no `twitter:card`.
 - **`prismshift.`** — has a canonical and a description but **no Open Graph
   tags at all**. A card was built but not installed: `prismshift-site` belongs
   to the Codex session and writing to it was refused as a shared resource. The

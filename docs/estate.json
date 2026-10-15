@@ -336,11 +336,10 @@
         "books.remnantsecurity.com": "11 pages had an SVG og:image and gfn used a relative url; 9 raster cards built from the real covers",
         "lectern.remnantsecurity.com": "favicon type mismatch, SVG apple-touch-icon, OG on inner pages",
         "academy.remnantsecurity.com": "robots.ts, sitemap.ts, per-page canonicals, social card - COMMITTED BUT NOT DEPLOYED",
-        "blog.remnantsecurity.com": "site-wide default og:image in build.mjs - IN PR #40, NOT MERGED"
+        "blog.remnantsecurity.com": "default og:image for every page; PR #40 squash-merged as cab48c4 and published with ./deploy.sh on 2026-10-15. Verified live: og-card.png 200 image/png, og:image and twitter:card present."
       },
       "open": {
-        "blog.remnantsecurity.com": "itrimble/product-diary#40 needs review; main is protected. Then run ./deploy.sh by hand - the blog is not deployed by CI.",
-        "academy.remnantsecurity.com": "pushed to itrimble/remnant-academy main. The Vercel project for this domain is not in the team this machine's token can see, so the deploy cannot be triggered or observed from here.",
+        "academy.remnantsecurity.com": "pushed to itrimble/remnant-academy main, not deployed. The Vercel project remnant-security-academy (prj_QMC5U73vkiY9gxm1TErxst606nxy, team_biZFVGbqZTPRRqpD3n2certC) owns the domain but has NO Git connection: all three production deployments have empty meta and no commit SHA, the newest dated 2026-08-02. Pushing to GitHub deploys nothing. Connect the repo in Vercel Settings -> Git, or deploy by hand with `vercel --prod`.",
         "prismshift.remnantsecurity.com": "no Open Graph tags at all. Card generated but not installed: prismshift-site belongs to the Codex session and the write was refused as a shared resource."
       }
     },
