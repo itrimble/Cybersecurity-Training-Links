@@ -1,9 +1,22 @@
 {
   "track": "Awakening",
-  "source": "PrismShift/SkinTracks/awakening/track.wav",
+  "source": "SkinTracks/awakening/track.wav",
   "sourceSHA256": "c0bbc17874e18bfcc0289d87b308cfcc499edc78f99be7f88d04f053d581c186",
-  "previewSHA256": "bd0fefb57d46704cfdb1ac2274bf4421331484ba40f918de2fad7a8b36a818e9",
-  "encoding": "H.264 video copied; AAC stereo 192 kbps; 21.591678 second excerpt",
+  "previewSHA256": "3cc62348732d6778e5df9f485616a8421a0b9daf990bc4f0c9c8b2bf4b290ecc",
+  "encoding": "Original H.264 video packets copied; AAC stereo 192 kbps; 21.591678 seconds",
   "presentation": "Soundtrack added to development footage; no live gameplay SFX",
-  "autoplay": false
+  "autoplay": false,
+  "playback": {
+    "gameRevision": "0cb05b2",
+    "completeMixGain": 0.5700505375862122,
+    "musicVolume": 0.8,
+    "masterVolume": 0.9,
+    "source": "Native decoded-buffer review export at default game gains",
+    "exportSHA256": "4c7f3376c2bfefe33e5673d0f0594be572560c48cdbd249188bb8a69f4b5f9d4",
+    "loopFrames": 940800,
+    "sampleRate": 44100,
+    "tail": "Loop repeated to cover the unchanged footage duration",
+    "encodedIntegratedLUFS": -26.69,
+    "encodedTruePeakDBTP": -10.22
+  }
 }
