@@ -285,8 +285,8 @@
     }
   },
   "seo": {
-    "doc": "WEB-ESTATE.md section 12",
-    "checked": "2026-10-14",
+    "doc": "docs/SEO.md (moved out of WEB-ESTATE.md section 12 on 2026-10-15)",
+    "checked": "2026-10-15",
     "required_per_property": [
       "robots.txt declaring the sitemap",
       "sitemap.xml listing canonical URLs only",
@@ -295,12 +295,6 @@
       "meta description"
     ],
     "robots_house_style": "User-agent: *\\nAllow: /\\n\\nSitemap: https://<host>/sitemap.xml",
-    "apex_is_client_rendered": {
-      "problem": "index.html ships no content; Bing, DuckDuckGo and the LinkedIn/Slack/Discord scrapers do not run JavaScript and saw zero text before 2026-10-14.",
-      "mitigation": "A noscript block in index.html carrying the real h1, intro copy and estate links (719 crawler-visible characters).",
-      "maintenance": "Keep the noscript block in sync with HeroSection.tsx and src/data/sites.ts. Content that appears only in the fallback is cloaking.",
-      "real_fix_not_done": "Prerender the route to static HTML at build time. CareerPlanSection touches localStorage so naive SSR throws, and a headless render step needs Chrome in CI."
-    },
     "fonts_warning": "Do not add a Google Fonts link. Fonts are self-hosted via @fontsource-variable in src/main.tsx. The removed link requested Space Grotesk, which no stylesheet references. tailwind.config.ts names it but Tailwind v4 is CSS-first here with no @config, so that file is never read.",
     "duplicate_pages": [
       {
@@ -317,6 +311,24 @@
       "blog., alttab. and prismshift. have no og:image; alttab. and tilepilot. have no canonical. prismshift-site belongs to the Codex session - ask first.",
       "academy. has no robots.txt; as the paid Vercel app its policy is a deliberate decision.",
       "The apex JS bundle is 652 KB uncompressed, over Vite's warning limit - an LCP risk. No code-splitting."
-    ]
+    ],
+    "apex_prerender": {
+      "status": "done 2026-10-15",
+      "problem": "The apex is a React SPA. index.html shipped an empty #root, so Bing, DuckDuckGo and the LinkedIn/Slack/Discord scrapers saw zero text.",
+      "solution": "Build-time SSR. npm run build = tsc -b && vite build && npm run build:ssr && npm run prerender.",
+      "entry": "src/entry-server.tsx",
+      "script": "scripts/prerender.mjs",
+      "needs_browser": false,
+      "note": "Pure Node react-dom/server. No headless browser, so CI needs nothing extra.",
+      "result": {
+        "html_bytes": 153937,
+        "crawler_visible_chars": 17565,
+        "links": 99,
+        "previously": "719 chars and 12 links via a noscript block, now deleted"
+      },
+      "hydration": "src/main.tsx hydrateRoot when #root has children, createRoot otherwise. CareerPlanSection starts from empty state and restores localStorage in an effect behind a 'restored' flag so the first client render matches the server render.",
+      "build_gate": "prerender.mjs exits non-zero if render() throws, returns under 20KB, or lacks <h1, the hero headline or </footer>.",
+      "verified": "lint 0, build 0, zero console/hydration errors, plan builder advances and resumes from localStorage across reload, headless render vs live RMSE 0"
+    }
   }
 }

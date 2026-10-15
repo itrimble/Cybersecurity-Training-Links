@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import {
   ArrowLeft,
@@ -85,11 +85,15 @@ function resultFilename(plan: CareerPlan): string {
 }
 
 export function CareerPlanSection() {
-  const stored = useMemo(loadStoredState, []);
-  const [stage, setStage] = useState<PlanStage>(stored.plan ? "result" : "intro");
-  const [currentStep, setCurrentStep] = useState(stored.currentStep);
-  const [answers, setAnswers] = useState<AssessmentAnswers>(stored.answers);
-  const [plan, setPlan] = useState<CareerPlan | null>(stored.plan);
+  // Start from the same empty state the build-time prerender produces, then
+  // restore saved progress in an effect below. Reading localStorage during
+  // render would make the first client render disagree with the prerendered
+  // HTML, and React would discard the hydrated tree and re-render from scratch.
+  const [restored, setRestored] = useState(false);
+  const [stage, setStage] = useState<PlanStage>("intro");
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState<AssessmentAnswers>({});
+  const [plan, setPlan] = useState<CareerPlan | null>(null);
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [emailStatus, setEmailStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -98,6 +102,21 @@ export function CareerPlanSection() {
   const [downloadMessage, setDownloadMessage] = useState("");
 
   useEffect(() => {
+    const stored = loadStoredState();
+    if (stored.plan) {
+      setPlan(stored.plan);
+      setStage("result");
+    }
+    if (stored.currentStep > 0) setCurrentStep(stored.currentStep);
+    if (Object.keys(stored.answers).length > 0) setAnswers(stored.answers);
+    setRestored(true);
+  }, []);
+
+  useEffect(() => {
+    // Hold off until the restore pass above has run. Writing the empty initial
+    // state on mount would erase saved progress before it was read back.
+    if (!restored) return;
+
     if (stage === "intro" && Object.keys(answers).length === 0 && !plan) {
       window.localStorage.removeItem(storageKey);
       return;
@@ -107,7 +126,7 @@ export function CareerPlanSection() {
       storageKey,
       JSON.stringify({ currentStep, answers, plan } satisfies StoredPlanState),
     );
-  }, [answers, currentStep, plan, stage]);
+  }, [answers, currentStep, plan, restored, stage]);
 
   useEffect(() => {
     if (stage !== "processing") return;

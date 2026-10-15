@@ -433,64 +433,14 @@ afternoon, and the web-UI fallback for when the MCP is unreachable.
 
 ## 12. SEO and discoverability
 
-Baseline checked across all thirteen hostnames on 2026-10-14.
+Moved to [`docs/SEO.md`](SEO.md) on 2026-10-15, when this file reached the
+repo's 500-line limit.
 
-**Every property must have**, and all but the exceptions below now do:
+That document holds the per-property checklist, the build-time prerender that
+makes the apex readable to crawlers that do not run JavaScript, the
+do-not-add-Google-Fonts trap, and the two pages that exist at two hostnames.
 
-| Item | Why |
-|---|---|
-| `robots.txt` declaring the sitemap | House style: `User-agent: *` / `Allow: /` / `Sitemap: https://<host>/sitemap.xml` |
-| `sitemap.xml` listing **canonical URLs only** | Do not list a page that canonicals elsewhere |
-| `<link rel="canonical">` | Several pages exist at two hostnames; see below |
-| `og:image` + `twitter:image`, absolute URLs | Without one, every share renders a bare card |
-| `<meta name="description">` | |
-
-### The apex is a client-rendered SPA
-
-`index.html` ships no content — the page is built by the bundle at runtime.
-Googlebot renders JavaScript, but **Bing, DuckDuckGo and the LinkedIn, Slack
-and Discord link scrapers do not.** Before 2026-10-14 they saw 2,391 bytes and
-zero text.
-
-The mitigation is the `<noscript>` block in `index.html`, which carries the
-real `h1`, the real intro copy and links to the rest of the estate — 719
-crawler-visible characters. **Keep it in sync with `HeroSection.tsx` and
-`src/data/sites.ts`.** It must mirror what the page actually renders; copy
-that appears only in the fallback is cloaking.
-
-A real fix is prerendering the route to static HTML at build time. It is not
-done: `CareerPlanSection` touches `localStorage`, so naive SSR throws, and a
-headless-render step would need Chrome in CI. Worth doing deliberately, not
-as a drive-by.
-
-### Fonts: do not add a Google Fonts link
-
-The site self-hosts Public Sans, Bricolage Grotesque and JetBrains Mono via
-`@fontsource-variable` imports in `src/main.tsx`. `index.html` carried a
-render-blocking Google Fonts stylesheet requesting **Space Grotesk, which no
-stylesheet references** — removed 2026-10-14, verified by a headless render
-against live at RMSE 0 (pixel-identical).
-
-`tailwind.config.ts` still names Space Grotesk, but **Tailwind v4 is CSS-first
-here** (`@import "tailwindcss"`, no `@config`), so that file is never read.
-Do not treat it as live configuration.
-
-### Pages that exist at two hostnames
-
-Both are kept, because external listings may point at them, and both now
-carry a canonical rather than competing:
-
-| Duplicate | Canonical target |
-|---|---|
-| `remnantsecurity.com/privacy.html` — a stale copy of AltTab's policy | `alttab.remnantsecurity.com/privacy.html` |
-| `remnantsecurity.com/lectern/` | `lectern.remnantsecurity.com/` — where the site's own links go |
-
-### Still open
-
-- `blog.`, `alttab.` and `prismshift.` have **no `og:image`**; `alttab.` and
-  `tilepilot.` have **no canonical**. One small commit each.
-  *`prismshift-site` belongs to the Codex session — ask first.*
-- `academy.` has no `robots.txt`. It is the paid app on Vercel, so the right
-  policy is a deliberate decision, not a copy of the marketing default.
-- The apex JS bundle is **652 KB uncompressed**, over Vite's warning limit,
-  which is an LCP risk. Code-splitting is untouched.
+**Read it before editing `index.html`, `src/main.tsx`, `src/entry-server.tsx`
+or `scripts/prerender.mjs`.** The build fails closed if the prerender produces
+an empty page, and the rules that keep hydration matching are written down
+there rather than in the code.
