@@ -1,8 +1,38 @@
 {
-  "source_commit": "54f9fd0c0eb2376ed179e3b45968ca93670736f6",
-  "capture_utc": "2026-10-14T16:53:55.939780+00:00",
-  "simulator_id": "D7ADAA3C-C29B-4112-9F06-6A1F8C1CBD99",
+  "source_commit": "3ba45b8d7d6d1f8532eb8121936c1a4c440583f8",
+  "capture_utc": "2026-10-15T15:29:15.996823+00:00",
   "kind": "actual SpriteKit gameplay, Debug seeded QA autoplay; tide suppressed",
+  "platform": "iphone",
+  "nativeDimensions": [
+    750,
+    1334
+  ],
+  "installedBuildSHA256": {
+    "PrismShift": "26622db78cdcbcb091e72699535fbb325af25aa8988e4d4558e4080233fe34fa",
+    "PrismShift.debug.dylib": "0c05cd3cd78564ba849799d9d7592563d61383ce632f7c0bc47e20d2b56300dc",
+    "Assets.car": "fb5a7bb8b2f1c127c4b87c2ec34f26d777862ec5b029b29d27e7e09e1bde2726",
+    "Info.plist": "ea4f15bad7406a812734196ba874966955e9b0ea426e5b8e3f70d0ad9c1e7259"
+  },
+  "websiteVersion": "4223abdd2bf4",
+  "publishedSHA256": {
+    "assets/awakening.webp": "45485d6e15a394df451a6997fb08c841654f2a36d092773704f9b7525229b082",
+    "assets/all-15-skins.webp": "31aced5d854ba1b086809f977165aed3e60c7c45b36c1bd2b7361c7dd6b86c01",
+    "assets/skins/01-awakening.webp": "45485d6e15a394df451a6997fb08c841654f2a36d092773704f9b7525229b082",
+    "assets/skins/02-ripples.webp": "766805c721ba99828c5daf373592ffbd7a4a9f4cc47b2615da4eba9ab8b26fe1",
+    "assets/skins/03-biolume.webp": "d6a6c2116776a15cedc3ae3f31392a141bdfb9f97582ac206c229c42eaf94536",
+    "assets/skins/04-pulse.webp": "54eb46cde7b3538ba6a9c1b4297d520afb91bb9cb7ce6865c13cb93f0fbd98c8",
+    "assets/skins/05-cosmic.webp": "3db174903d68cd0226cba45454a31a194b785a14ca28b092ebd795fe197ee1f0",
+    "assets/skins/06-voltage.webp": "7748dfeb0fe5f65ab1f77ea3b65073a310e8359280b3dce4438bbbefcc8d9a27",
+    "assets/skins/07-origami.webp": "ee68688a0e03962a98575d60fb1680962f4df44bd2856ce5480b70c0869e1caa",
+    "assets/skins/08-cyber-hive.webp": "a69439a39497bd706c9b0d265646fd96f49b88d3dd9090aa55b2dc1fc5af725d",
+    "assets/skins/09-magma.webp": "795607518888c484fcb120009b0d3f37aa6a1ce94871593390f0137560f376f6",
+    "assets/skins/10-blackout.webp": "32ceb86a8f49f53f0016a70372a57a949e127de1aa709ededc827798b2ca150b",
+    "assets/skins/11-echo.webp": "1f073e6f032ebe366d75553f2631653991611785c7e3da97a6835e771e7ae642",
+    "assets/skins/12-facet.webp": "6bd0cf25fc22bea5f52b968532d087985baaba52a0b58e7344f162e4c26f7ff8",
+    "assets/skins/13-retro-arcade.webp": "5d7a0a3af92732e455d0a5c420ccdd63ea8b48994af3d4adc4fbd321db9b3ea0",
+    "assets/skins/14-toy-brick.webp": "3cff217bb80ad7a8c5f8ebbcad35cf647459ce418bed5ea24ba9904dd856dc33",
+    "assets/skins/15-stained-glass.webp": "16319c021e770e4bb0376cbedde7dd85968a5b4ce417133e32dc983ea48f9846"
+  },
   "captures": [
     {
       "catalog_index": 0,
@@ -16,9 +46,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "cfbda598883d3421e52a661bc910f6e05996cbc95b6394a7fb670c0b79e7dcf8"
+      "readiness_identifier": "readyLevel_firstLight-1",
+      "readiness_log": "01-readiness.log",
+      "captured_utc": "2026-10-15T15:29:25.822476+00:00",
+      "sha256": "f70102eb215219433473ad34d8410eacb1381b784ea183bcd4a7f641c91e31d8",
+      "pixel_sha256": "f440283fd6d3314bf3893a7378819f13d6338ef1f22a4b0a1f9d83ef377a065e"
     },
     {
       "catalog_index": 1,
@@ -32,9 +67,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "3597d62b3965291ad3aa5eb3948e805e3a28151219c8a4194df169107a374eff"
+      "readiness_identifier": "readyLevel_firstLight-2",
+      "readiness_log": "02-readiness.log",
+      "captured_utc": "2026-10-15T15:29:34.381478+00:00",
+      "sha256": "b2bb005b352ece0da3fb87e8b1b2a432f5416ac6c8021007c66ed0049ef91dec",
+      "pixel_sha256": "15d8e4e1e3fbc0306c2d5a875a426670865c164c70fd0afefab41a2c924c57fe"
     },
     {
       "catalog_index": 2,
@@ -48,9 +88,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "b397b18a8a9d49665a6eeed050aa9b06148223c7f342d5abacb9807433be4966"
+      "readiness_identifier": "readyLevel_firstLight-3",
+      "readiness_log": "03-readiness.log",
+      "captured_utc": "2026-10-15T15:29:42.990055+00:00",
+      "sha256": "b3e49ffaaaa2397eae22d5658d0a9a029df086b49e5b04418d221bfa0007c058",
+      "pixel_sha256": "dda023f7b4d85d80783a27572dbed5d53da15a56e9bbfb013d68bb8d2093bbfb"
     },
     {
       "catalog_index": 3,
@@ -63,10 +108,40 @@
         "-autoPlaySeed",
         "11",
         "-autoPlayCadence",
-        "0.40",
-        "-noTide"
+        "1.2",
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "061086a73c7350dd741f5e5e903fa302a547a54f8a46c4bc2e1d96adabc33397"
+      "readiness_identifier": "readyLevel_firstLight-4",
+      "readiness_log": "04-readiness-retake.log",
+      "captured_utc": "2026-10-15T15:33:39.599416+00:00",
+      "sha256": "0060a7f7ad7ffa6f2dd60ee8bbfd2feb2cab240d49c3c591e536c962859f6d59",
+      "pixel_sha256": "82e05b0676866139f90eb977328b48cf200c40142e69ac3b301b1456467d55bb",
+      "previous_takes": [
+        {
+          "catalog_index": 3,
+          "material_skin": "Pulse",
+          "file": "rejected/04-pulse-flash.png",
+          "launch_args": [
+            "-autoPlay",
+            "-autoPlayLevelIndex",
+            "3",
+            "-autoPlaySeed",
+            "11",
+            "-autoPlayCadence",
+            "1.2",
+            "-noTide",
+            "-campaignAudit"
+          ],
+          "readiness_identifier": "readyLevel_firstLight-4",
+          "readiness_log": "rejected/04-readiness.log",
+          "captured_utc": "2026-10-15T15:29:52.974727+00:00",
+          "sha256": "2b35dda2e228cd2784a16b2469dc0b47e4559cb9768d78068d21a47c90d4e3c2",
+          "pixel_sha256": "4cb684db9cafa00ee7b6d4b4f5d7c279dd9faa9cb927ce53695ef47f90070242"
+        }
+      ],
+      "retake_reason": "Original sampled a large transient clear flash; use a fresh unedited material-readable native frame.",
+      "settle_seconds_after_readiness": 0
     },
     {
       "catalog_index": 4,
@@ -80,9 +155,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "c71abe1c6508b1a44f0352f03239e19abd154436b93f1a89c807cace8a797adc"
+      "readiness_identifier": "readyLevel_firstLight-5",
+      "readiness_log": "05-readiness.log",
+      "captured_utc": "2026-10-15T15:30:01.482618+00:00",
+      "sha256": "976a52e621c49f7ea00e7372d947f028071ba6d544c0f082c47a61e9f28cfb01",
+      "pixel_sha256": "0e447baeb67b3c8ce26fbcfa77b9bc55f998d912bbacbbfe171c450bf7521053"
     },
     {
       "catalog_index": 5,
@@ -96,9 +176,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "1461429f4cda30a774953672dabc76b7330831f918c352a367387a1c152c50f6"
+      "readiness_identifier": "readyLevel_neonDistrict-1",
+      "readiness_log": "06-readiness.log",
+      "captured_utc": "2026-10-15T15:30:12.223050+00:00",
+      "sha256": "0bbe9438a1b45f72b118e5141ebbff3c03e9a781a0df24290680ef71ac53ebd8",
+      "pixel_sha256": "ba0c6e7e34b76b9bddcb0e226b433966b09ae4c5c3b68700312cf788ae3ceebd"
     },
     {
       "catalog_index": 6,
@@ -112,9 +197,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "8641ea9bd6c2b3665dcc854aa1cb600c9a7858c9b5d958fbca1ef7cf7c1e7795"
+      "readiness_identifier": "readyLevel_neonDistrict-2",
+      "readiness_log": "07-readiness.log",
+      "captured_utc": "2026-10-15T15:30:20.763742+00:00",
+      "sha256": "0ae10c664a996a417016a124333a41ba7692eee0e0b68ab0bb02e3b9d3560ade",
+      "pixel_sha256": "a987b5c85b58f135ea3a387c1da24a0e841ba7c04db111885989e3d3923de75e"
     },
     {
       "catalog_index": 7,
@@ -128,9 +218,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "1115cdc1f5307cf10a23235b4de667186adf9ca71edd2c19c9a485578a843028"
+      "readiness_identifier": "readyLevel_neonDistrict-3",
+      "readiness_log": "08-readiness.log",
+      "captured_utc": "2026-10-15T15:30:30.271637+00:00",
+      "sha256": "ba0124abed372c3ed003610f06e59b0938d5e833af4aa34d453887a6255b254f",
+      "pixel_sha256": "5e40832de70f14adc86b7d9d5aaf2c5f9badc81896bb1df626fb99536710cceb"
     },
     {
       "catalog_index": 8,
@@ -144,9 +239,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "48dc97182bd8285135271d6c3b282eff062c155a3bdca8f263bc8219992805bb"
+      "readiness_identifier": "readyLevel_neonDistrict-4",
+      "readiness_log": "09-readiness.log",
+      "captured_utc": "2026-10-15T15:30:40.090415+00:00",
+      "sha256": "57445c4ec528641c8d10ee2362135840596ba5477c358c1ec29d43a4c2e1af36",
+      "pixel_sha256": "85f8e77cc49cf9040da1b753b91d9da712bf4de2755fcb866540173a0c73ee4a"
     },
     {
       "catalog_index": 9,
@@ -160,9 +260,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "011411f93adafe95ad616fedf5ff33120fce619f08d453a15529f5f9003599c0"
+      "readiness_identifier": "readyLevel_neonDistrict-5",
+      "readiness_log": "10-readiness.log",
+      "captured_utc": "2026-10-15T15:30:49.355463+00:00",
+      "sha256": "2312dd37cfaa8f23c2350643d7431a291029a6e89959f4601a5e58e9be1c12c8",
+      "pixel_sha256": "a8a0e53e8ac96f96cd7b008720263e053b571bf51e5c6abf5cf1b7fc915d26ff"
     },
     {
       "catalog_index": 10,
@@ -176,9 +281,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "7d503ef0f86963f351c08dc8f4a53bc6368090a446307c841c83fdf8c6f1ee3c"
+      "readiness_identifier": "readyLevel_crystalCaverns-1",
+      "readiness_log": "11-readiness.log",
+      "captured_utc": "2026-10-15T15:30:58.975914+00:00",
+      "sha256": "3c10517c89651e8faaf0bf24d0f5c1d7602cb3520ea4f8e497f2c835267ac885",
+      "pixel_sha256": "2fefaf1ab80221f41659fc2211e3130b73a6a9c9eb1681390e8c34d5ac68f25e"
     },
     {
       "catalog_index": 11,
@@ -192,9 +302,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "fee271af6bdd98a919f79d644d3a0f2f4d94997cdd17d63469498dc2f547c31a"
+      "readiness_identifier": "readyLevel_crystalCaverns-2",
+      "readiness_log": "12-readiness.log",
+      "captured_utc": "2026-10-15T15:31:08.490044+00:00",
+      "sha256": "e54b9e42dc19c0e6b25257cec252577aa2567d6dd174170b49b5e563b2d15b4b",
+      "pixel_sha256": "ed921bc721e645b8077ca88e8ee3a3e53b756c34b9225962500fe4c61bd11b50"
     },
     {
       "catalog_index": 12,
@@ -208,9 +323,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "df6354ffc49dcc963813a0fcc6393f9ee2e483ce73f80df89bc941101834daa6"
+      "readiness_identifier": "readyLevel_crystalCaverns-3",
+      "readiness_log": "13-readiness.log",
+      "captured_utc": "2026-10-15T15:31:19.376940+00:00",
+      "sha256": "8dfc294ef9c5ca40ee18e3cd91e9ee8361858188bd2285d4ddf3ba03de0d5132",
+      "pixel_sha256": "b003490b94eb5220d11acc46acda445a28bd91b08ee6ccbb769198b41ab88916"
     },
     {
       "catalog_index": 13,
@@ -224,9 +344,14 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "7a2e7e262b9fead8d3cbab487badd6ad83de5a3df098ab22a036197e28f9d6d5"
+      "readiness_identifier": "readyLevel_crystalCaverns-4",
+      "readiness_log": "14-readiness.log",
+      "captured_utc": "2026-10-15T15:31:29.171690+00:00",
+      "sha256": "d1fd3e5f9f6f91f2fb67e0dad40f7605f29a7a3f7a35541bc4ddcad620cb6de3",
+      "pixel_sha256": "08cd352a794a327408cffaf13ae5fb1475f8ec8a818045203a5acfa4f7a477ed"
     },
     {
       "catalog_index": 14,
@@ -240,11 +365,26 @@
         "11",
         "-autoPlayCadence",
         "0.40",
-        "-noTide"
+        "-noTide",
+        "-campaignAudit"
       ],
-      "sha256": "4373fa8c1b3cbc4c9e3a31b02109616efdffae6c8a8de18be4dda812340faf7e"
+      "readiness_identifier": "readyLevel_crystalCaverns-5",
+      "readiness_log": "15-readiness.log",
+      "captured_utc": "2026-10-15T15:31:37.705453+00:00",
+      "sha256": "0e866b72be16837bc88c592ed959b102f6c4986164c31f0ec98ade2be7a36a4a",
+      "pixel_sha256": "20f22549de0d1324fcced4923279fd8da865aefa0281ffc2be622b419db57680"
     }
   ],
-  "installed_app_binary_sha256": "237848225a589d47481848112c66edc7324e39023d2d79f502891e277e187050",
-  "viewport": "750\u00d71334 pixels (compact iPhone simulator)"
+  "composition": {
+    "file": "all-15-skins.png",
+    "columns": 5,
+    "rows": 3,
+    "dimensions": [
+      2408,
+      2850
+    ],
+    "edits": "Uniform thumbnail scaling only; labels outside original screenshots. No generated game pixels.",
+    "sha256": "227b2da5e637704f904eca12903d0d7054f0a3ec9f0209833c9c928fc59ec844"
+  },
+  "edits": "Native captures encoded as WebP quality86; combined sheet uses uniform scaling with labels outside original game frames. No generated game pixels."
 }

@@ -12,7 +12,7 @@ const strip = document.getElementById('skin-strip');
 for (const [name, material, filename] of skins) {
   const figure = document.createElement('figure');
   const image = document.createElement('img');
-  image.src = `assets/skins/${filename}.webp`;
+  image.src = `assets/skins/${filename}.webp?v=4223abdd2bf4`;
   image.alt = `Actual ${name} crystal-skin gameplay — ${material}.`;
   image.width = 750;
   image.height = 1334;
