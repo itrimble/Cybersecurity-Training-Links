@@ -69,8 +69,9 @@ difference); headless render against live **RMSE 0, pixel-identical**.
 
 ## Estate status, 2026-10-15
 
-Re-audited live after the day's deploys. 10 of 13 hostnames pass every item in
-the table above.
+Re-audited live after the day's deploys. **12 of 13 hostnames pass every item
+in the table above.** The one exception is `prismshift.`, and it is blocked
+rather than unfinished — see "Still open" below.
 
 | Property | Was wrong | Fixed |
 |---|---|---|
@@ -82,7 +83,7 @@ the table above.
 | `academy.` | no robots, sitemap, canonical or OG at all | `src/app/robots.ts`, `src/app/sitemap.ts`, per-page canonicals, social card |
 | `blog.` | no `og:image`; `twitter:card` was `summary` | site-wide default card in `build.mjs` |
 
-### Still open
+### What the two deploys each required
 
 - **`blog.`** — **done 2026-10-15.** `itrimble/product-diary#40` was squash-
   merged as `cab48c4` and published with `./deploy.sh`; the blog pushes `dist/`
@@ -123,18 +124,30 @@ the table above.
   fallback. Redeployed; zero occurrences of `vercel.app` remain across `/`,
   `/courses`, `/portfolio-labs`, `/waitlist`, `robots.txt` and `sitemap.xml`.
 
-  **Still open:** `vercel git connect` fails with *"You need to add a Login
-  Connection to your GitHub account first"* (400). Until Ian links GitHub to
-  the Vercel account in the dashboard, every academy deploy must be run by hand
-  with `vercel --prod` from `~/projects/remnant-academy`, or the site silently
-  falls behind again.
+  **Auto-deploy is now fixed too.** `vercel git connect` first failed with
+  *"You need to add a Login Connection to your GitHub account first"* (400):
+  the Vercel account was created with an email address, so no Git provider was
+  ever attached. Ian linked GitHub at `vercel.com/account/authentication`
+  (avatar -> Settings -> Authentication, a **personal account** page, not a
+  team one and not the "Connect"/Connectors page). The project now carries
+  `link: {type: github, org: itrimble, repo: remnant-academy,
+  productionBranch: main}`, so pushes to `main` deploy on their own. Note the
+  account is on **Hobby**, which allows only one login connection per service.
+
+### Still open
 
 - **`prismshift.`** — has a canonical and a description but **no Open Graph
-  tags at all**. A card was built but not installed: `prismshift-site` belongs
-  to the Codex session and writing to it was refused as a shared resource. The
-  card is ready at `scratchpad/build/prismshift-og.png`.
+  tags at all**, so every share renders a bare card. A 1200x630 card was built
+  and verified but **not installed**: writes to `prismshift-site` are refused
+  by the permission classifier as a shared resource, which matches the standing
+  instruction that the Prism Shift web app is worked on in a Codex session.
+  The card is ready at `scratchpad/build/prismshift-og.png`. To finish it,
+  either add a Bash permission rule for `~/projects/prismshift-site`, or hand
+  the PNG to the Codex session and have it add `og:image` (plus `og:url`,
+  `og:type`, `og:site_name` and `twitter:card`) to `index.html`,
+  `support.html` and `privacy.html`.
 
-### Three traps worth remembering
+### Traps worth remembering
 
 - **`og:image` must be raster.** SVG fails silently everywhere: the tag looks
   right and the card comes out blank. `books.` had eleven of them.
@@ -143,6 +156,20 @@ the table above.
 - **`robots.txt` matches on prefix, not path segments.** `Disallow: /portfolio`
   also blocks `/portfolio-labs`. The academy's rule carries a trailing slash
   for exactly this reason.
+
+Three more earned on 2026-10-15, all from the academy:
+
+- **A Vercel project listing does not show custom domains.** Concluding from
+  its absence that a project does not serve a hostname is wrong;
+  `list_project_domains` is the call that answers it. This produced a confident
+  but false claim in an earlier version of this file.
+- **A stale env var silently overrides a correct code fallback.**
+  `NEXT_PUBLIC_ACADEMY_URL` outlived the domain change that made it wrong and
+  beat the right value baked into the code. Prefer deleting such a variable
+  over correcting it, so the origin lives in exactly one place.
+- **A deployment with empty `meta` and no commit SHA was a manual upload, not
+  a push.** Check that before assuming a push will deploy anything; a project
+  with no Git connection ignores every commit in silence.
 
 ## Fonts: do not add a Google Fonts link
 

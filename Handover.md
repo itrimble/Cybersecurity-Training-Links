@@ -1,9 +1,9 @@
 # Project Handover
 
-**Updated:** October 14, 2026
+**Updated:** October 15, 2026
 **Repository:** `itrimble/Cybersecurity-Training-Links` (the name is stale; see README)
 **Working folder:** `~/projects/remnantsecurity.com`
-**Branch / HEAD:** `main` / `2bf1faa`
+**Branch / HEAD:** `main` / `e88ae08`
 
 Supersedes the August 3 handover, which described work that had not yet been
 committed. That work has now shipped.
@@ -100,6 +100,74 @@ Let's Encrypt certificate, and all twelve Pages repos report
 > **Ownership note:** the Prism Shift web app is being worked on in a separate
 > Codex session. Do not edit `microsites/prismshift`, `docs/prismshift-site/`
 > or the `prismshift-site` repo from a Claude session without checking first.
+
+## October 15, 2026
+
+An estate-wide SEO and discoverability pass. Full detail, including the per-
+property checklist and the traps, is in [`docs/SEO.md`](docs/SEO.md); this is
+the summary. **12 of the 13 hostnames now pass every item**, and the one that
+does not is blocked rather than unfinished.
+
+**The apex is prerendered.** `npm run build` gained two steps: it builds
+`src/entry-server.tsx` with Vite's SSR mode, then `scripts/prerender.mjs`
+renders the app and injects the HTML into `dist/index.html`. Crawlers that do
+not run JavaScript now get **17,565 characters and 99 links** instead of the
+empty `#root` they saw before. It is pure `react-dom/server`, so CI needs
+nothing extra, and the script fails the build rather than publishing a blank
+page. The `<noscript>` stopgap was removed as redundant. `24e92fb`.
+
+A note in this repo claimed `CareerPlanSection` could not be server-rendered
+because it reads `localStorage`. That was false — `loadStoredState()` already
+guards on `typeof window === "undefined"`. The real work was hydration parity:
+the component now starts from empty state and restores saved progress in an
+effect behind a `restored` flag.
+
+**Four sites had silently broken social cards.** The common thread is that all
+of these fail *quietly* — the tag looks correct and the card renders blank or
+cropped:
+
+- `books.` — **eleven pages pointed `og:image` at an SVG**, which every scraper
+  refuses. `gfn/` used a relative URL to a JPEG misnamed `.png`. `444a1b9`
+- `tilepilot.` — the card was 1024x1024, so large-card scrapers cropped it, and
+  only `index.html` had any OG tags. `1a6bfcb`
+- `lectern.` — the SVG favicon was declared `image/png`, and the same SVG was
+  used as the apple-touch-icon, which iOS ignores. `286eb06`
+- `alttab.` — promised `summary_large_image` with no image, and had no
+  canonical anywhere. `6e6eab9`
+
+**The blog** got a site-wide default card in `build.mjs`. `main` is protected,
+so it went through [`product-diary#40`](https://github.com/itrimble/product-diary/pull/40),
+squash-merged as `cab48c4` and published with `./deploy.sh` — the blog pushes
+`dist/` to `gh-pages` by hand, it is not deployed by CI.
+
+**The academy was two months stale and nobody knew.** It gained `robots.ts`,
+`sitemap.ts`, per-page canonicals and a social card (`ee8978f`), but the push
+deployed nothing: **the Vercel project had no Git connection**, so all three of
+its production deployments were manual CLI uploads and the newest was from
+**2 August**. Deployed with `vercel --prod`; the rendered page came back RMSE 0
+against the build it replaced, so two and a half months of commits went live
+without changing anything a visitor sees.
+
+That deploy then exposed a second fault. `NEXT_PUBLIC_ACADEMY_URL` had been set
+in Production 80 days earlier, pointing at the `.vercel.app` origin — correct
+when the project was made, stale from the moment the custom domain was attached
+on 13 October. It overrode the deliberate fallback in `src/lib/config.ts`, so
+the first deploy published a canonical, an `og:image` and a `Sitemap:` line all
+naming the wrong domain, which is worse than having none. The variable was
+removed rather than corrected, so the origin is written down in one place.
+
+Ian then added a GitHub Login Connection at `vercel.com/account/authentication`
+— the account had been created with an email address, so no Git provider was
+ever attached — and `vercel git connect` now records
+`link: {type: github, org: itrimble, repo: remnant-academy, productionBranch:
+main}`. **Academy pushes deploy on their own from here.**
+
+**Still open: `prismshift.` has no Open Graph tags at all.** A 1200x630 card was
+built and verified but not installed — writes to `prismshift-site` are refused
+by the permission classifier as a shared resource, consistent with the
+ownership note above. The card is at `scratchpad/build/prismshift-og.png`.
+
+Docs: `322bc38`, `7e92d49`, `e88ae08`.
 
 ## Branches
 
