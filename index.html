@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ffcc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'/></svg>" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0F14" />
     <meta name="description" content="Build a portfolio-first cybersecurity career with Remnant Security. Create a free 90-day plan, download the 2026 roadmap, and learn with practical defender tools—not random tutorials." />
     <meta name="keywords" content="cybersecurity career, 90 day cybersecurity plan, SOC analyst training, portfolio labs, Security+, penetration testing, career path, Remnant Security" />
     <meta name="author" content="Remnant Security" />
@@ -15,21 +16,116 @@
     <meta property="og:title" content="Remnant Security — Portfolio-First Cybersecurity Training" />
     <meta property="og:description" content="Choose a lane, build proof, and ship a 90-day cybersecurity plan you can actually execute." />
     <meta property="og:site_name" content="Remnant Security" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://remnantsecurity.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Remnant Security — Find your way into cybersecurity. Free 90-day career plan, 2026 roadmap, portfolio labs." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Remnant Security — Portfolio-First Cybersecurity Training" />
     <meta name="twitter:description" content="Choose a lane, build proof, and ship a 90-day cybersecurity plan you can actually execute." />
+    <meta name="twitter:image" content="https://remnantsecurity.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Remnant Security — Find your way into cybersecurity." />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Fonts are self-hosted via @fontsource-variable (see src/main.tsx):
+         Public Sans, Bricolage Grotesque and JetBrains Mono. There is deliberately
+         no Google Fonts request here - it was render-blocking and fetched a family
+         (Space Grotesk) that no stylesheet references. -->
 
     <title>Remnant Security — 90-Day Cybersecurity Career Plan</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://remnantsecurity.com/#organization",
+          "name": "Remnant Security",
+          "url": "https://remnantsecurity.com/",
+          "email": "iantrimble@remnantsecurity.com",
+          "description": "Portfolio-first cybersecurity career guidance, roadmaps, apps and books.",
+          "image": "https://remnantsecurity.com/og-image.png",
+          "founder": { "@id": "https://remnantsecurity.com/#ian" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://remnantsecurity.com/#ian",
+          "name": "Ian Trimble",
+          "jobTitle": "Insider Threat Manager",
+          "worksFor": { "@type": "Organization", "name": "Google" },
+          "url": "https://remnantsecurity.com/",
+          "image": "https://remnantsecurity.com/images/ian-trimble-960.jpg",
+          "sameAs": [
+            "https://github.com/itrimble",
+            "https://www.linkedin.com/in/itrimble/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://remnantsecurity.com/#website",
+          "url": "https://remnantsecurity.com/",
+          "name": "Remnant Security",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://remnantsecurity.com/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://remnantsecurity.com/#webpage",
+          "url": "https://remnantsecurity.com/",
+          "name": "Remnant Security \u2014 90-Day Cybersecurity Career Plan",
+          "isPartOf": { "@id": "https://remnantsecurity.com/#website" },
+          "about": { "@id": "https://remnantsecurity.com/#organization" },
+          "primaryImageOfPage": "https://remnantsecurity.com/og-image.png",
+          "description": "Build a portfolio-first cybersecurity career. Create a free 90-day plan, download the 2026 roadmap, and learn with practical defender tools."
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width:60rem;margin:0 auto;padding:3rem 1.25rem;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#F1F4F7;background:#0A0F14;line-height:1.6">
+        <p style="letter-spacing:.25em;font-size:.8rem;color:#AAB2BB;margin:0 0 1.5rem">REMNANT SECURITY</p>
+        <h1 style="font-size:2.5rem;line-height:1.1;margin:0 0 1rem">Find your way into cybersecurity.</h1>
+        <p style="font-size:1.125rem;color:#AAB2BB;margin:0 0 2rem">
+          Cybersecurity career roadmaps, apps, and books by Ian Trimble, Insider Threat Manager at
+          Google. Start with the free roadmap for the role you want.
+        </p>
+        <p><strong>This site needs JavaScript for the interactive 90-day plan builder.</strong>
+          The links below work without it.</p>
+
+        <h2 style="font-size:1.5rem;margin:2.5rem 0 .75rem">Free resources</h2>
+        <ul>
+          <li><a style="color:#59E9CE" href="/Cybersecurity-Career-Roadmap-2026.pdf">The 2026 Cybersecurity Career Roadmap (PDF)</a></li>
+          <li><a style="color:#59E9CE" href="https://academy.remnantsecurity.com/">Remnant Security Academy</a> — courses and the career-plan API</li>
+          <li><a style="color:#59E9CE" href="https://blog.remnantsecurity.com/">Blog</a></li>
+        </ul>
+
+        <h2 style="font-size:1.5rem;margin:2.5rem 0 .75rem">Apps</h2>
+        <ul>
+          <li><a style="color:#59E9CE" href="https://apps.remnantsecurity.com/">All apps</a></li>
+          <li><a style="color:#59E9CE" href="https://snapdog.remnantsecurity.com/">SnapDog</a> — capture, record and annotate from your Mac's menu bar</li>
+          <li><a style="color:#59E9CE" href="https://lectern.remnantsecurity.com/">Lectern AI</a> — turns decks into instructor-ready teaching packages</li>
+          <li><a style="color:#59E9CE" href="https://cybersim.remnantsecurity.com/">CyberSim</a> — cert exam practice for iOS</li>
+          <li><a style="color:#59E9CE" href="https://plumberpuzzle.remnantsecurity.com/">Plumber Puzzle: Pipe Flow</a></li>
+          <li><a style="color:#59E9CE" href="https://lightfence.remnantsecurity.com/">Lightfence</a></li>
+          <li><a style="color:#59E9CE" href="https://prismshift.remnantsecurity.com/">Prism Shift</a></li>
+        </ul>
+
+        <h2 style="font-size:1.5rem;margin:2.5rem 0 .75rem">Books</h2>
+        <ul>
+          <li><a style="color:#59E9CE" href="https://books.remnantsecurity.com/">Books by Ian Trimble</a></li>
+        </ul>
+
+        <p style="margin-top:2.5rem;color:#AAB2BB">Contact:
+          <a style="color:#59E9CE" href="mailto:iantrimble@remnantsecurity.com">iantrimble@remnantsecurity.com</a>
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
