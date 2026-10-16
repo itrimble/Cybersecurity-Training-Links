@@ -6,13 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A cybersecurity career path landing page built with React 19, TypeScript, Vite, and Tailwind CSS v4. Deployed to GitHub Pages via GitHub Actions on push to `main`.
 
-**Before touching DNS, adding a subdomain, or deploying, read [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md).** This repo is one of thirteen properties under `remnantsecurity.com`, and the DNS write tool replaces the entire zone — including the records that carry email. [`docs/estate.json`](docs/estate.json) is the machine-readable inventory. [`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md) has the prerequisites that make any of it actionable — `gh`, Node, and the Namecheap MCP server, including how to add and authenticate it per CLI. Read that first in a relocated or fresh clone.
+**Before touching DNS, adding a subdomain, or deploying, read [`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md).** This repo is one of fourteen properties under `remnantsecurity.com`, and the DNS write tool replaces the entire zone — including the records that carry email. [`docs/estate.json`](docs/estate.json) is the machine-readable inventory. [`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md) has the prerequisites that make any of it actionable — `gh`, Node, and the Namecheap MCP server, including how to add and authenticate it per CLI. Read that first in a relocated or fresh clone.
 
 Reproducing the deployed bundle locally requires the env var CI passes, or the hash will differ for identical source:
 
 ```bash
 VITE_ACADEMY_URL=https://academy.remnantsecurity.com npm run build
 ```
+
+**Designing or redesigning any product (app or game) site:** use the shared kit and standard in `~/projects/site-templates` (`docs/WEB-DESIGN.md`, `docs/SHOWCASE-PLAYBOOK.md`, `docs/CATALOG.md`). This repo is the apex only.
 
 ## Commands
 

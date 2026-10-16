@@ -2,7 +2,7 @@
 
 ## Start here
 
-This repo is one property in a larger estate: one apex plus twelve subdomains,
+This repo is one property in a larger estate: one apex plus thirteen subdomains,
 spread across separate GitHub Pages repos and one Vercel app.
 **[`docs/WEB-ESTATE.md`](docs/WEB-ESTATE.md)** maps all of it — which repo serves
 which hostname, how each deploys, and the operations that cause damage a
@@ -20,6 +20,14 @@ it first if this folder has been moved, cloned, or handed to a new machine.
 
 The GitHub repo is `itrimble/Cybersecurity-Training-Links`; the local folder is
 `~/projects/remnantsecurity.com`. That mismatch is expected.
+
+## Site templates
+
+New product (app or game) sites and redesigns of the existing `*.remnantsecurity.com` sites start from the shared
+kit in `~/projects/site-templates`, not from this repo. **`~/projects/site-templates/docs/WEB-DESIGN.md`** is the design, conversion and showcase standard
+(honest status labels, real screenshots and video, accessibility, performance budgets, the per-site gap list);
+`docs/SHOWCASE-PLAYBOOK.md` covers loops and sizzle reels; `docs/CATALOG.md` lists each product's assets and what
+must not be published. The deploy, DNS and SEO rules in this repo's docs still apply to every site built from it.
 
 ## Project Structure & Module Organization
 
