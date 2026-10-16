@@ -4,7 +4,7 @@ Split out of `WEB-ESTATE.md` §12 on 2026-10-15 when that file reached its
 500-line limit. Read `WEB-ESTATE.md` first for the estate itself — hostnames,
 repos, DNS and TLS. This file covers only how the estate is found.
 
-Baseline first checked across all thirteen hostnames on 2026-10-14.
+Baseline first checked across all thirteen hostnames on 2026-10-14. `statbar.` joined the estate on 2026-10-15 as the fourteenth.
 
 ## What every property must have
 
@@ -69,7 +69,7 @@ difference); headless render against live **RMSE 0, pixel-identical**.
 
 ## Estate status, 2026-10-15
 
-Re-audited live after the day's deploys. **All 13 hostnames pass every item in
+Re-audited live after the day's deploys. **All 14 hostnames pass every item in
 the table above.** Nothing is outstanding.
 
 | Property | Was wrong | Fixed |
@@ -81,6 +81,7 @@ the table above.** Nothing is outstanding.
 | `lectern.` | favicon declared `image/png` for an SVG; SVG apple-touch-icon; no OG on inner pages | real 180x180 PNG, correct types, OG on all 4 pages |
 | `academy.` | no robots, sitemap, canonical or OG at all | `src/app/robots.ts`, `src/app/sitemap.ts`, per-page canonicals, social card |
 | `blog.` | no `og:image`; `twitter:card` was `summary` | site-wide default card in `build.mjs` |
+| `statbar.` | nothing — it launched 2026-10-15 already compliant | n/a; added to the estate inventory, not changed |
 
 ### What the two deploys each required
 
@@ -132,6 +133,16 @@ the table above.** Nothing is outstanding.
   `link: {type: github, org: itrimble, repo: remnant-academy,
   productionBranch: main}`, so pushes to `main` deploy on their own. Note the
   account is on **Hobby**, which allows only one login connection per service.
+
+### `statbar.` shipped compliant
+
+The fourteenth hostname went live on 2026-10-15 from `itrimble/statbar-site`
+and needed nothing: `robots.txt`, `sitemap.xml` with two URLs, a self-canonical
+on `/` and `/guide/`, a 1200x630 raster `og:image` and `twitter:card` were all
+present at launch. Recorded here so a later audit does not read its absence
+from this file as a gap. Its site source is `~/projects/statbar/site`, built
+and rsynced into the `~/projects/statbar-site` clone; see
+[`WEB-ESTATE.md`](WEB-ESTATE.md) §1.
 
 ### `prismshift.` was finished by the Codex session
 

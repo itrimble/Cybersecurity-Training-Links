@@ -28,7 +28,7 @@ Everything else here is recoverable.
 
 ## 1. The map
 
-One apex, twelve subdomains. Eleven live, two broken (§8).
+One apex, thirteen subdomains. All live.
 
 | Host | Repo | Deploys from | Notes |
 |---|---|---|---|
@@ -45,6 +45,7 @@ One apex, twelve subdomains. Eleven live, two broken (§8).
 | `books.` | `books-site` | branch `main` | |
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
 | `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
+| `statbar.` | `statbar-site` | branch `main` | Added 2026-10-15. Source is `~/projects/statbar/site`, built then rsynced into the clone at `~/projects/statbar-site`. |
 
 ### Naming traps
 
@@ -155,7 +156,7 @@ Release gate for the funnel, after deploying:
 
 ## 4. DNS
 
-Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`. 20 records.
+Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`. 22 records (2026-10-15, after adding `statbar`).
 
 **The zone carries Ian's email.** `MX @ -> SMTP.GOOGLE.COM`, plus the DKIM and
 site-verification TXT records.
@@ -167,7 +168,9 @@ takes down email.
 
 Procedure:
 
-1. `dns_records_get` and save the result to `~/backups/remnant-dns/<stamp>.json`.
+**Rule: back up before every DNS change, no exceptions.**
+
+1. `dns_records_get` (`take: 500`) and save the result to `~/dns-backups/<domain>-<date>-<reason>.json`, outside any site repo (pushing to those deploys). Confirm the item count equals `total`. Also keep a `dig` copy of the answers.
 2. Build the target set as *every existing record, verbatim* + your new one.
 3. Save, passing the complete array.
 4. Verify against the authoritative server, not a cache:
@@ -175,6 +178,8 @@ Procedure:
    dig +short @dns1.registrar-servers.com CNAME <host>.remnantsecurity.com
    ```
 5. Confirm MX and DKIM still resolve.
+
+Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I) and the `_github-pages-challenge-itrimble` TXT name literally includes the domain; both are pre-existing, leave them. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
 
 Codex refuses this tool in `codex exec` — it is marked approval-required and
 exec runs with `approval: never`. The only override also disables sandboxing
@@ -371,7 +376,7 @@ These cost real time on this fleet.
 ## 10. Open items
 
 Done 2026-10-14: `alttab` certificate repaired and `tilepilot` wired up (§8).
-Every hostname in §1 now serves 200 behind a valid certificate, and all twelve
+Every hostname in §1 now serves 200 behind a valid certificate, and all thirteen
 Pages repos report `https_enforced=true` with `cert=approved`.
 
 > **Ownership:** the Prism Shift web app is being worked on in a separate Codex

@@ -1,6 +1,6 @@
 {
   "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file; toolchain prerequisites and the Namecheap MCP setup are in TOOLCHAIN.md. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
-  "verified": "2026-10-14",
+  "verified": "2026-10-15",
   "apex": "remnantsecurity.com",
   "github_owner": "itrimble",
   "contact_email": "iantrimble@remnantsecurity.com",
@@ -224,6 +224,20 @@
       "status": "live",
       "content": "A complete marketing site: index, features, pricing, changelog, privacy, support. Built 2026-07-18 and left unwired until 2026-10-14.",
       "note": "Was dangling - Pages held the custom domain but no DNS record existed, so no certificate could be issued. Ian added the CNAME on 2026-10-14 and the section 5 procedure brought it up. All six pages serve 200."
+    },
+    {
+      "domain": "statbar.remnantsecurity.com",
+      "repo": "itrimble/statbar-site",
+      "app_repo": "itrimble/statbar",
+      "app_local_path": "~/projects/statbar",
+      "site_source": "~/projects/statbar/site",
+      "local_path": "~/projects/statbar-site",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "note": "Added 2026-10-15. The site source lives in the app repo at ~/projects/statbar/site; `cd site && bash scripts/local-build.sh`, then rsync dist/ into the ~/projects/statbar-site clone (excluding .git and CNAME) and push - pushing deploys. Paid app, $9.95 one-time via Gumroad at /l/statbar. Shipped already meeting the full SEO checklist."
     }
   ],
   "tls": {
@@ -337,7 +351,8 @@
         "lectern.remnantsecurity.com": "favicon type mismatch, SVG apple-touch-icon, OG on inner pages",
         "academy.remnantsecurity.com": "robots.ts, sitemap.ts, per-page canonicals, OG/Twitter metadata and og-card.png. Deployed by hand with `vercel --prod` because the Vercel project has no Git connection (all prior production deployments were manual uploads, newest 2026-08-02). Removed the stale Production env var NEXT_PUBLIC_ACADEMY_URL, which pointed at the old .vercel.app origin and overrode the correct fallback in src/lib/config.ts, publishing a canonical that named the wrong domain. Verified: all routes 200, zero vercel.app references, rendered page RMSE 0 against the build it replaced. Auto-deploy fixed the same day: Ian added a GitHub Login Connection at vercel.com/account/authentication (the account had been created with an email address, so no Git provider was ever attached), and `vercel git connect` then recorded link={type:github, org:itrimble, repo:remnant-academy, productionBranch:main}. Pushes to main now deploy on their own.",
         "blog.remnantsecurity.com": "default og:image for every page; PR #40 squash-merged as cab48c4 and published with ./deploy.sh on 2026-10-15. Verified live: og-card.png 200 image/png, og:image and twitter:card present.",
-        "prismshift.remnantsecurity.com": "Had a canonical and description but no Open Graph tags at all. Fixed by the Codex session that owns prismshift-site, in b8ffcde, with a social card built from actual gameplay. Writes from this session were correctly refused as a shared resource. Verified live: og:image 200 image/png 1200x630, og:url, og:type, alt and twitter:card."
+        "prismshift.remnantsecurity.com": "Had a canonical and description but no Open Graph tags at all. Fixed by the Codex session that owns prismshift-site, in b8ffcde, with a social card built from actual gameplay. Writes from this session were correctly refused as a shared resource. Verified live: og:image 200 image/png 1200x630, og:url, og:type, alt and twitter:card.",
+        "statbar.remnantsecurity.com": "Nothing to fix. Launched 2026-10-15 already carrying robots.txt, sitemap.xml (2 URLs), self-canonicals on both pages, a 1200x630 raster og:image and twitter:card. Added to the estate inventory here rather than changed."
       },
       "open": {}
     },
@@ -351,7 +366,7 @@
       "A Vercel project listing does not show custom domains. Use list_project_domains before concluding a project does not serve a hostname.",
       "A Vercel project with no Git connection ignores every push. Deployments with empty meta and no commit SHA were manual uploads - check that before assuming a push will deploy."
     ],
-    "hosts_clean": 13,
-    "hosts_total": 13
+    "hosts_clean": 14,
+    "hosts_total": 14
   }
 }

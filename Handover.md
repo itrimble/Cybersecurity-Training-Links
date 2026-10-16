@@ -105,7 +105,7 @@ Let's Encrypt certificate, and all twelve Pages repos report
 
 An estate-wide SEO and discoverability pass. Full detail, including the per-
 property checklist and the traps, is in [`docs/SEO.md`](docs/SEO.md); this is
-the summary. **All 13 hostnames now pass every item.**
+the summary. **All 14 hostnames now pass every item** — thirteen audited plus `statbar.`, which launched the same day already compliant.
 
 **The apex is prerendered.** `npm run build` gained two steps: it builds
 `src/entry-server.tsx` with Vite's SSR mode, then `scripts/prerender.mjs`
@@ -167,6 +167,15 @@ shared resource, consistent with the ownership note above — and that refusal
 was right: the Codex session shipped `b8ffcde` with a card made from actual
 gameplay. Live and verified. When a repo has another owner, the block is
 information, not an obstacle.
+
+**A fourteenth hostname appeared the same day.**
+`statbar.remnantsecurity.com` went live from `itrimble/statbar-site` — a paid
+Mac menu-bar app, $9.95 one-time via Gumroad. It needed no SEO work; it shipped
+with robots, sitemap, canonicals and a raster card already in place. It is now
+in `docs/WEB-ESTATE.md` §1 and `docs/estate.json`. Its site source is
+`~/projects/statbar/site`, built and rsynced into the `~/projects/statbar-site`
+clone, and the Namecheap `CNAME statbar -> itrimble.github.io.` was added the
+same day following the §4 backup-first procedure.
 
 Docs: `322bc38`, `7e92d49`, `e88ae08`.
 
