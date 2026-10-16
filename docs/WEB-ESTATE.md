@@ -24,6 +24,12 @@ perform any of them without reading the named section first.
 
 Everything else here is recoverable.
 
+**Break-glass recovery runbook:** `docs/RECOVERY.md` in the **private**
+`remnant-academy` repo. It covers what each layer actually protects against,
+how to restore any hostname, the runtime configuration git does not hold, and
+the location of the frozen `git bundle` snapshots. It is private because this
+repo is public.
+
 ---
 
 ## 1. The map
@@ -156,7 +162,11 @@ Release gate for the funnel, after deploying:
 
 ## 4. DNS
 
-Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`. 22 records (2026-10-15, after adding `statbar`).
+Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`.
+Full zone export, 24 records, captured 2026-10-16 from the authoritative
+nameservers: `~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json`
+(with a `.txt` twin). That is a point-in-time export, not a live mirror —
+re-export after every change.
 
 **The zone carries Ian's email.** `MX @ -> SMTP.GOOGLE.COM`, plus the DKIM and
 site-verification TXT records.
@@ -179,7 +189,8 @@ Procedure:
    ```
 5. Confirm MX and DKIM still resolve.
 
-Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I) and the `_github-pages-challenge-itrimble` TXT name literally includes the domain; both are pre-existing, leave them. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
+Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I) and the `_github-pages-challenge-itrimble` TXT name literally includes the domain; `lightfence` is pre-existing and harmless. The challenge TXT is **not** —
+see the open items in the private `RECOVERY.md` before touching or re-adding it. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
 
 Codex refuses this tool in `codex exec` — it is marked approval-required and
 exec runs with `approval: never`. The only override also disables sandboxing
