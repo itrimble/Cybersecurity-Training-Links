@@ -1,6 +1,6 @@
 {
   "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file; toolchain prerequisites and the Namecheap MCP setup are in TOOLCHAIN.md. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
-  "verified": "2026-10-15",
+  "verified": "2026-10-16",
   "apex": "remnantsecurity.com",
   "github_owner": "itrimble",
   "contact_email": "iantrimble@remnantsecurity.com",
@@ -11,7 +11,7 @@
       "dns1.registrar-servers.com",
       "dns2.registrar-servers.com"
     ],
-    "record_count": 20,
+    "record_count": 24,
     "carries_email": true,
     "email_records": [
       {
@@ -75,7 +75,21 @@
       "185.199.109.153",
       "185.199.110.153",
       "185.199.111.153"
-    ]
+    ],
+    "latest_export": "~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json",
+    "pages_domain_verification": {
+      "state": "verified",
+      "verified_on": "2026-10-16",
+      "covers": "the apex and every immediate subdomain - 13 Pages hostnames in one action",
+      "record": {
+        "type": "TXT",
+        "host": "_github-pages-challenge-itrimble",
+        "purpose": "GitHub Pages domain verification"
+      },
+      "never_delete": "Removing this TXT un-verifies the whole estate and reopens every hostname to takeover.",
+      "history": "Until 2026-10-16 this record sat at the doubled name _github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com, because the domain had been typed into Namecheap's Host field, which appends the zone itself. All 13 hostnames read protected_domain_state=unverified until the Host was corrected.",
+      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
+    }
   },
   "properties": [
     {
@@ -364,7 +378,8 @@
       "metadataBase falling back to localhost publishes localhost canonicals if the env var is unset in production.",
       "A Production-only env var pinning an origin (NEXT_PUBLIC_ACADEMY_URL) outlives the domain change that made it wrong and silently overrides a correct code fallback. Prefer deleting it so the origin is written down in exactly one place.",
       "A Vercel project listing does not show custom domains. Use list_project_domains before concluding a project does not serve a hostname.",
-      "A Vercel project with no Git connection ignores every push. Deployments with empty meta and no commit SHA were manual uploads - check that before assuming a push will deploy."
+      "A Vercel project with no Git connection ignores every push. Deployments with empty meta and no commit SHA were manual uploads - check that before assuming a push will deploy.",
+      "A DNS Host field takes the host, not the FQDN. Namecheap and GitHub both show the zone greyed-out beside the input, which invites typing it in and silently produces a doubled name. A record can exist, hold the correct value, and still be at the wrong name - verify by querying the name the consumer queries, not by reading the provider's UI back."
     ],
     "hosts_clean": 14,
     "hosts_total": 14

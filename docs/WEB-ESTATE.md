@@ -164,9 +164,10 @@ Release gate for the funnel, after deploying:
 
 Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`.
 Full zone export, 24 records, captured 2026-10-16 from the authoritative
-nameservers: `~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json`
-(with a `.txt` twin). That is a point-in-time export, not a live mirror —
-re-export after every change.
+nameservers *after* the Pages challenge fix below:
+`~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json` (with a `.txt`
+twin). That is a point-in-time export, not a live mirror — re-export after
+every change. All thirteen Pages hostnames are `verified` as of that capture.
 
 **The zone carries Ian's email.** `MX @ -> SMTP.GOOGLE.COM`, plus the DKIM and
 site-verification TXT records.
@@ -189,8 +190,13 @@ Procedure:
    ```
 5. Confirm MX and DKIM still resolve.
 
-Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I) and the `_github-pages-challenge-itrimble` TXT name literally includes the domain; `lightfence` is pre-existing and harmless. The challenge TXT is **not** —
-see the open items in the private `RECOVERY.md` before touching or re-adding it. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
+Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I); pre-existing and harmless. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
+
+Run 2026-10-16 (Pages domain verification), web UI, single-field edit: the `_github-pages-challenge-itrimble` TXT had been entered with the domain included in the Host field. Namecheap appends the zone itself, so the record had been sitting at the doubled name `_github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com` — present, holding the correct token, and invisible to GitHub. All thirteen Pages hostnames read `protected_domain_state: unverified` as a result, which leaves a custom domain open to takeover whenever its Pages config lapses.
+
+Host corrected, value untouched, verified at <https://github.com/settings/pages>. Verifying the apex covers every immediate subdomain, so one action moved all thirteen to `verified`. **Never delete that TXT record** — removing it un-verifies the whole estate. The edit was done in the web UI precisely to avoid a replace-all zone write for a one-field change; MX, DKIM, apex A and the site-verification TXT were re-checked afterwards and are intact.
+
+The general lesson: a Host field takes the host, not the FQDN, and both Namecheap and GitHub show the zone greyed-out beside the input, which is what invites typing it in. A record can exist, hold the right value, and still be at the wrong name. Verify by querying the name the *consumer* queries, not by reading the provider's UI back.
 
 Codex refuses this tool in `codex exec` — it is marked approval-required and
 exec runs with `approval: never`. The only override also disables sandboxing
