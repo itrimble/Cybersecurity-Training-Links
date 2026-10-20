@@ -1,38 +1,44 @@
 {
-  "source_commit": "3ba45b8d7d6d1f8532eb8121936c1a4c440583f8",
-  "capture_utc": "2026-10-15T15:29:15.996823+00:00",
+  "source_commit": "b44337d36fdc850b0d5968f67faedd3ff04b95e0",
+  "capture_utc": "2026-10-20T04:23:39.942047+00:00",
   "kind": "actual SpriteKit gameplay, Debug seeded QA autoplay; tide suppressed",
   "platform": "iphone",
+  "captureHost": "MacBook Pro",
   "nativeDimensions": [
+    1206,
+    2622
+  ],
+  "publishedIndividualDimensions": [
     750,
-    1334
+    1631
   ],
   "installedBuildSHA256": {
-    "PrismShift": "26622db78cdcbcb091e72699535fbb325af25aa8988e4d4558e4080233fe34fa",
-    "PrismShift.debug.dylib": "0c05cd3cd78564ba849799d9d7592563d61383ce632f7c0bc47e20d2b56300dc",
-    "Assets.car": "fb5a7bb8b2f1c127c4b87c2ec34f26d777862ec5b029b29d27e7e09e1bde2726",
-    "Info.plist": "ea4f15bad7406a812734196ba874966955e9b0ea426e5b8e3f70d0ad9c1e7259"
+    "PrismShift": "d291f976f3e23a7e89af85b62ca5e93de9a2109081953d5aed25c890756270cf",
+    "PrismShift.debug.dylib": "bc7662b4355cdf64559b3cb0339829291fff3423d1827d30f0532b178bf16269",
+    "Assets.car": "56e84e763f18b1e9dc66c184a01cbc5e862856de1114673332a16119b8477f12",
+    "Info.plist": "00ed79d191e804fe3f50ff6297b55551a2117f3a5b15b7cb700b72c9e4b40f1d"
   },
-  "websiteVersion": "4223abdd2bf4",
+  "websiteVersion": "6a4645b14457",
   "publishedSHA256": {
-    "assets/awakening.webp": "45485d6e15a394df451a6997fb08c841654f2a36d092773704f9b7525229b082",
-    "assets/all-15-skins.webp": "31aced5d854ba1b086809f977165aed3e60c7c45b36c1bd2b7361c7dd6b86c01",
-    "assets/skins/01-awakening.webp": "45485d6e15a394df451a6997fb08c841654f2a36d092773704f9b7525229b082",
-    "assets/skins/02-ripples.webp": "766805c721ba99828c5daf373592ffbd7a4a9f4cc47b2615da4eba9ab8b26fe1",
-    "assets/skins/03-biolume.webp": "d6a6c2116776a15cedc3ae3f31392a141bdfb9f97582ac206c229c42eaf94536",
-    "assets/skins/04-pulse.webp": "54eb46cde7b3538ba6a9c1b4297d520afb91bb9cb7ce6865c13cb93f0fbd98c8",
-    "assets/skins/05-cosmic.webp": "3db174903d68cd0226cba45454a31a194b785a14ca28b092ebd795fe197ee1f0",
-    "assets/skins/06-voltage.webp": "7748dfeb0fe5f65ab1f77ea3b65073a310e8359280b3dce4438bbbefcc8d9a27",
-    "assets/skins/07-origami.webp": "ee68688a0e03962a98575d60fb1680962f4df44bd2856ce5480b70c0869e1caa",
-    "assets/skins/08-cyber-hive.webp": "a69439a39497bd706c9b0d265646fd96f49b88d3dd9090aa55b2dc1fc5af725d",
-    "assets/skins/09-magma.webp": "795607518888c484fcb120009b0d3f37aa6a1ce94871593390f0137560f376f6",
-    "assets/skins/10-blackout.webp": "32ceb86a8f49f53f0016a70372a57a949e127de1aa709ededc827798b2ca150b",
-    "assets/skins/11-echo.webp": "1f073e6f032ebe366d75553f2631653991611785c7e3da97a6835e771e7ae642",
-    "assets/skins/12-facet.webp": "6bd0cf25fc22bea5f52b968532d087985baaba52a0b58e7344f162e4c26f7ff8",
-    "assets/skins/13-retro-arcade.webp": "5d7a0a3af92732e455d0a5c420ccdd63ea8b48994af3d4adc4fbd321db9b3ea0",
-    "assets/skins/14-toy-brick.webp": "3cff217bb80ad7a8c5f8ebbcad35cf647459ce418bed5ea24ba9904dd856dc33",
-    "assets/skins/15-stained-glass.webp": "16319c021e770e4bb0376cbedde7dd85968a5b4ce417133e32dc983ea48f9846"
+    "assets/awakening.webp": "e94da953a75e7492299bc100bc4ee050900f395cb6d705a09d1424abd5872991",
+    "assets/all-15-skins.webp": "b63340110a96e7bebe3a2250cd8fde82373dc9ee2e090ebf3e359e07a868b955",
+    "assets/skins/01-awakening.webp": "e94da953a75e7492299bc100bc4ee050900f395cb6d705a09d1424abd5872991",
+    "assets/skins/02-ripples.webp": "346b91cf6013e1ba5dedfe277e2effdc76913c01e0f81f6155452cb3349be90f",
+    "assets/skins/03-biolume.webp": "3c4045e028cd83519503cca61103161239a0ff54dad7e07e6f97a9d4442f16c6",
+    "assets/skins/04-pulse.webp": "81ba637c79a5b77c4dd4be8c23d22417edff98f5d33448a51d32e5f09bc2d6d2",
+    "assets/skins/05-cosmic.webp": "9f0ab207254c8e5aaebd155364a879794de0e9ffe81ffedf82fd5bc9b086fabe",
+    "assets/skins/06-voltage.webp": "995c70d660ac32bea7ea91aca599007269209c37b99f95019556ec62d7b4feca",
+    "assets/skins/07-origami.webp": "ed750d4a029579233fee3f984c94b53f39020c7117112b7c156c953aea77a0d4",
+    "assets/skins/08-cyber-hive.webp": "3a579352ec88af2a08307b30e1c69c84f946063d1759a8742ba34d6421295dfb",
+    "assets/skins/09-magma.webp": "dfb1858ff8fe1798339b68a12a2acd2db500ae3caa65d43c163538ca23eda4a4",
+    "assets/skins/10-blackout.webp": "1138d6f289e055a8b5a68c11834aeedeca9e57729d7b980d7c3c7955e5a53ee8",
+    "assets/skins/11-echo.webp": "63013565a98eda2f2d9e3297a6a4624405aad8c4cb7b29d2611ef04a691646d5",
+    "assets/skins/12-facet.webp": "b601b8c6766842367989a5887fc89b575e47868de07469acc6bba0a406d26fe9",
+    "assets/skins/13-retro-arcade.webp": "8501cad1e32e004be758c92df59789c9174352fb4926183782e88d157ab0fe7f",
+    "assets/skins/14-toy-brick.webp": "06ff58bd0e37dbdd00c0d4435998e8ca4c64423084eea60d55037d3dd70c0192",
+    "assets/skins/15-stained-glass.webp": "47395ede20eb10d6f456cbf205a614210541729665302b4bc37325a0b9dbb393"
   },
+  "scope": "Actual DEBUG seeded development gameplay; tide suppressed. Static images do not establish motion, music quality or hardware performance. Awakening replaced by a calmer frame from the same binary; original retained in private provenance.",
   "captures": [
     {
       "catalog_index": 0,
@@ -45,15 +51,16 @@
         "-autoPlaySeed",
         "11",
         "-autoPlayCadence",
-        "0.40",
+        "1.0",
         "-noTide",
         "-campaignAudit"
       ],
       "readiness_identifier": "readyLevel_firstLight-1",
       "readiness_log": "01-readiness.log",
-      "captured_utc": "2026-10-15T15:29:25.822476+00:00",
-      "sha256": "f70102eb215219433473ad34d8410eacb1381b784ea183bcd4a7f641c91e31d8",
-      "pixel_sha256": "f440283fd6d3314bf3893a7378819f13d6338ef1f22a4b0a1f9d83ef377a065e"
+      "captured_utc": "2026-10-20T04:28:36.954033+00:00",
+      "sha256": "17e10d693a5df88d1a1d88ec2cc6c2ad30252dad7bfa04ec2db362ca9c2ba816",
+      "pixel_sha256": "79183a80cf4b64afa2c35e54b0a088e5ad3c4a5a1c0831ba3a4e583f221a4322",
+      "settle_seconds_after_readiness": 0
     },
     {
       "catalog_index": 1,
@@ -72,9 +79,9 @@
       ],
       "readiness_identifier": "readyLevel_firstLight-2",
       "readiness_log": "02-readiness.log",
-      "captured_utc": "2026-10-15T15:29:34.381478+00:00",
-      "sha256": "b2bb005b352ece0da3fb87e8b1b2a432f5416ac6c8021007c66ed0049ef91dec",
-      "pixel_sha256": "15d8e4e1e3fbc0306c2d5a875a426670865c164c70fd0afefab41a2c924c57fe"
+      "captured_utc": "2026-10-20T04:24:02.702725+00:00",
+      "sha256": "0bf8775c399c5188d8422ee02f157b1823ca50709089efc5142af10a1eb2690a",
+      "pixel_sha256": "b2e18a2083839042aae4f81227611e241d0902386439174da2d29e9d5e9fe51e"
     },
     {
       "catalog_index": 2,
@@ -93,9 +100,9 @@
       ],
       "readiness_identifier": "readyLevel_firstLight-3",
       "readiness_log": "03-readiness.log",
-      "captured_utc": "2026-10-15T15:29:42.990055+00:00",
-      "sha256": "b3e49ffaaaa2397eae22d5658d0a9a029df086b49e5b04418d221bfa0007c058",
-      "pixel_sha256": "dda023f7b4d85d80783a27572dbed5d53da15a56e9bbfb013d68bb8d2093bbfb"
+      "captured_utc": "2026-10-20T04:24:11.054095+00:00",
+      "sha256": "21a0b65b76b068ebc32919075e26e0585c49e62e3750e4ec899696ba8860f87a",
+      "pixel_sha256": "3b942a1fd5ee5fae8cae46b1b49f377d613aa1ec55b93ead4849176db6d7420b"
     },
     {
       "catalog_index": 3,
@@ -108,40 +115,15 @@
         "-autoPlaySeed",
         "11",
         "-autoPlayCadence",
-        "1.2",
+        "0.40",
         "-noTide",
         "-campaignAudit"
       ],
       "readiness_identifier": "readyLevel_firstLight-4",
-      "readiness_log": "04-readiness-retake.log",
-      "captured_utc": "2026-10-15T15:33:39.599416+00:00",
-      "sha256": "0060a7f7ad7ffa6f2dd60ee8bbfd2feb2cab240d49c3c591e536c962859f6d59",
-      "pixel_sha256": "82e05b0676866139f90eb977328b48cf200c40142e69ac3b301b1456467d55bb",
-      "previous_takes": [
-        {
-          "catalog_index": 3,
-          "material_skin": "Pulse",
-          "file": "rejected/04-pulse-flash.png",
-          "launch_args": [
-            "-autoPlay",
-            "-autoPlayLevelIndex",
-            "3",
-            "-autoPlaySeed",
-            "11",
-            "-autoPlayCadence",
-            "1.2",
-            "-noTide",
-            "-campaignAudit"
-          ],
-          "readiness_identifier": "readyLevel_firstLight-4",
-          "readiness_log": "rejected/04-readiness.log",
-          "captured_utc": "2026-10-15T15:29:52.974727+00:00",
-          "sha256": "2b35dda2e228cd2784a16b2469dc0b47e4559cb9768d78068d21a47c90d4e3c2",
-          "pixel_sha256": "4cb684db9cafa00ee7b6d4b4f5d7c279dd9faa9cb927ce53695ef47f90070242"
-        }
-      ],
-      "retake_reason": "Original sampled a large transient clear flash; use a fresh unedited material-readable native frame.",
-      "settle_seconds_after_readiness": 0
+      "readiness_log": "04-readiness.log",
+      "captured_utc": "2026-10-20T04:24:20.004391+00:00",
+      "sha256": "4928ea2210f22f5b7533a61b5b801e00d23fa0305d5cad64bb95d8028ddc5a95",
+      "pixel_sha256": "c6c0931822ff765b6e81eb11e84c87418bd336d933c94d4ac870e9d3415174c0"
     },
     {
       "catalog_index": 4,
@@ -160,9 +142,9 @@
       ],
       "readiness_identifier": "readyLevel_firstLight-5",
       "readiness_log": "05-readiness.log",
-      "captured_utc": "2026-10-15T15:30:01.482618+00:00",
-      "sha256": "976a52e621c49f7ea00e7372d947f028071ba6d544c0f082c47a61e9f28cfb01",
-      "pixel_sha256": "0e447baeb67b3c8ce26fbcfa77b9bc55f998d912bbacbbfe171c450bf7521053"
+      "captured_utc": "2026-10-20T04:24:30.919082+00:00",
+      "sha256": "63a430cc88c221f6e217ae7687aca00c03de91521b441b8895bc1c46f1ff8f77",
+      "pixel_sha256": "8b4de5cc01a5ab928e17def0cb5bb0c54c4ba500883ec343b7f3a3ca661ab057"
     },
     {
       "catalog_index": 5,
@@ -181,9 +163,9 @@
       ],
       "readiness_identifier": "readyLevel_neonDistrict-1",
       "readiness_log": "06-readiness.log",
-      "captured_utc": "2026-10-15T15:30:12.223050+00:00",
-      "sha256": "0bbe9438a1b45f72b118e5141ebbff3c03e9a781a0df24290680ef71ac53ebd8",
-      "pixel_sha256": "ba0c6e7e34b76b9bddcb0e226b433966b09ae4c5c3b68700312cf788ae3ceebd"
+      "captured_utc": "2026-10-20T04:24:40.293106+00:00",
+      "sha256": "5665d04ba8e2ed5ee6362016cd57f3620d440b849c5f17247a9eb5f2f73270f0",
+      "pixel_sha256": "4b083c9a3963e04469e826e69ef37d97c97741b434c104d6af41794872a28420"
     },
     {
       "catalog_index": 6,
@@ -202,9 +184,9 @@
       ],
       "readiness_identifier": "readyLevel_neonDistrict-2",
       "readiness_log": "07-readiness.log",
-      "captured_utc": "2026-10-15T15:30:20.763742+00:00",
-      "sha256": "0ae10c664a996a417016a124333a41ba7692eee0e0b68ab0bb02e3b9d3560ade",
-      "pixel_sha256": "a987b5c85b58f135ea3a387c1da24a0e841ba7c04db111885989e3d3923de75e"
+      "captured_utc": "2026-10-20T04:24:48.502700+00:00",
+      "sha256": "63a735e4a1f1063adeb4aab139288f9ea69ab6055a7267d0bfad92bae367136b",
+      "pixel_sha256": "ee23cba1381bb42fa45c22d7948225021fa853be0d36a3531d9df666852929c7"
     },
     {
       "catalog_index": 7,
@@ -223,9 +205,9 @@
       ],
       "readiness_identifier": "readyLevel_neonDistrict-3",
       "readiness_log": "08-readiness.log",
-      "captured_utc": "2026-10-15T15:30:30.271637+00:00",
-      "sha256": "ba0124abed372c3ed003610f06e59b0938d5e833af4aa34d453887a6255b254f",
-      "pixel_sha256": "5e40832de70f14adc86b7d9d5aaf2c5f9badc81896bb1df626fb99536710cceb"
+      "captured_utc": "2026-10-20T04:24:56.505477+00:00",
+      "sha256": "96bd412d6e85323c4c850efed99c88cb6b0c7ef4251e7a1c00b7de63c5c61faa",
+      "pixel_sha256": "e201062478000677f7c4998624b4c3a34d6a0c1447da812942c2935b156deda5"
     },
     {
       "catalog_index": 8,
@@ -244,9 +226,9 @@
       ],
       "readiness_identifier": "readyLevel_neonDistrict-4",
       "readiness_log": "09-readiness.log",
-      "captured_utc": "2026-10-15T15:30:40.090415+00:00",
-      "sha256": "57445c4ec528641c8d10ee2362135840596ba5477c358c1ec29d43a4c2e1af36",
-      "pixel_sha256": "85f8e77cc49cf9040da1b753b91d9da712bf4de2755fcb866540173a0c73ee4a"
+      "captured_utc": "2026-10-20T04:25:04.894772+00:00",
+      "sha256": "d33b0ba169d13a3e0fc9663482d52c5ed9f0ee9c97a269fb7f176bcbb908cbb3",
+      "pixel_sha256": "38878c9dacdc64ebd0ca10090edae9f2f708c2ac7d01487afcc50dc186c5c10a"
     },
     {
       "catalog_index": 9,
@@ -265,9 +247,9 @@
       ],
       "readiness_identifier": "readyLevel_neonDistrict-5",
       "readiness_log": "10-readiness.log",
-      "captured_utc": "2026-10-15T15:30:49.355463+00:00",
-      "sha256": "2312dd37cfaa8f23c2350643d7431a291029a6e89959f4601a5e58e9be1c12c8",
-      "pixel_sha256": "a8a0e53e8ac96f96cd7b008720263e053b571bf51e5c6abf5cf1b7fc915d26ff"
+      "captured_utc": "2026-10-20T04:25:14.924789+00:00",
+      "sha256": "3ba99ac80fbf1e4ad53758dd87a5705886cf18c67aa35d0ce2c55a40e4a97c8b",
+      "pixel_sha256": "c650a21f7a42fdac99acdcb7a114ca2d36d594e03f7c460267392fecf307a673"
     },
     {
       "catalog_index": 10,
@@ -286,9 +268,9 @@
       ],
       "readiness_identifier": "readyLevel_crystalCaverns-1",
       "readiness_log": "11-readiness.log",
-      "captured_utc": "2026-10-15T15:30:58.975914+00:00",
-      "sha256": "3c10517c89651e8faaf0bf24d0f5c1d7602cb3520ea4f8e497f2c835267ac885",
-      "pixel_sha256": "2fefaf1ab80221f41659fc2211e3130b73a6a9c9eb1681390e8c34d5ac68f25e"
+      "captured_utc": "2026-10-20T04:25:23.906831+00:00",
+      "sha256": "09fcff1cfb094cc8b59277e7102e74ed2d2ce6700c8d250a5131efc7bc43360e",
+      "pixel_sha256": "abd7d0a5884e3722dbd4ed9873eba109a23463b489f2bd446c480f726440be39"
     },
     {
       "catalog_index": 11,
@@ -307,9 +289,9 @@
       ],
       "readiness_identifier": "readyLevel_crystalCaverns-2",
       "readiness_log": "12-readiness.log",
-      "captured_utc": "2026-10-15T15:31:08.490044+00:00",
-      "sha256": "e54b9e42dc19c0e6b25257cec252577aa2567d6dd174170b49b5e563b2d15b4b",
-      "pixel_sha256": "ed921bc721e645b8077ca88e8ee3a3e53b756c34b9225962500fe4c61bd11b50"
+      "captured_utc": "2026-10-20T04:25:35.981621+00:00",
+      "sha256": "e8350c82f194c7a52ad75110704d4ac1151a1da1ba6a7ea0fb2d86679a580edd",
+      "pixel_sha256": "3567838a1e857ba2af357d4306128be2567a60c96d99ce0a2683f91d1eeb8e75"
     },
     {
       "catalog_index": 12,
@@ -328,9 +310,9 @@
       ],
       "readiness_identifier": "readyLevel_crystalCaverns-3",
       "readiness_log": "13-readiness.log",
-      "captured_utc": "2026-10-15T15:31:19.376940+00:00",
-      "sha256": "8dfc294ef9c5ca40ee18e3cd91e9ee8361858188bd2285d4ddf3ba03de0d5132",
-      "pixel_sha256": "b003490b94eb5220d11acc46acda445a28bd91b08ee6ccbb769198b41ab88916"
+      "captured_utc": "2026-10-20T04:25:44.815147+00:00",
+      "sha256": "f1d03d40bdcdaee5817b5d4716437358a949c335767d80506bf15d96b19206fc",
+      "pixel_sha256": "c547293c935cf05e8b6ca0684a899e01b0b99e95dd81fad0126544a7b12162ca"
     },
     {
       "catalog_index": 13,
@@ -349,9 +331,9 @@
       ],
       "readiness_identifier": "readyLevel_crystalCaverns-4",
       "readiness_log": "14-readiness.log",
-      "captured_utc": "2026-10-15T15:31:29.171690+00:00",
-      "sha256": "d1fd3e5f9f6f91f2fb67e0dad40f7605f29a7a3f7a35541bc4ddcad620cb6de3",
-      "pixel_sha256": "08cd352a794a327408cffaf13ae5fb1475f8ec8a818045203a5acfa4f7a477ed"
+      "captured_utc": "2026-10-20T04:25:55.625183+00:00",
+      "sha256": "6219f2b126208c8516064d8683cfc7843b5c2d0180fc5c7753f10b11e9d45ff8",
+      "pixel_sha256": "5a3dd7bdc9540f99f011f1ead564f140f9eeb446c27a69a0003125f54db65df5"
     },
     {
       "catalog_index": 14,
@@ -370,9 +352,9 @@
       ],
       "readiness_identifier": "readyLevel_crystalCaverns-5",
       "readiness_log": "15-readiness.log",
-      "captured_utc": "2026-10-15T15:31:37.705453+00:00",
-      "sha256": "0e866b72be16837bc88c592ed959b102f6c4986164c31f0ec98ade2be7a36a4a",
-      "pixel_sha256": "20f22549de0d1324fcced4923279fd8da865aefa0281ffc2be622b419db57680"
+      "captured_utc": "2026-10-20T04:26:04.221809+00:00",
+      "sha256": "b73f07f854c624edbd6d610e1256ec52fa7b9f421a82ff14167311b71ac76eb6",
+      "pixel_sha256": "bbaac870070243c81a25ba9253355a254f0b008c65db7d9e78a1217eda99e62c"
     }
   ],
   "composition": {
@@ -381,10 +363,10 @@
     "rows": 3,
     "dimensions": [
       2408,
-      2850
+      3396
     ],
     "edits": "Uniform thumbnail scaling only; labels outside original screenshots. No generated game pixels.",
-    "sha256": "227b2da5e637704f904eca12903d0d7054f0a3ec9f0209833c9c928fc59ec844"
+    "sha256": "6a4645b1445702495f22ae028baf3a305213552f011d69fd60090d40dcb2f5df"
   },
-  "edits": "Native captures encoded as WebP quality86; combined sheet uses uniform scaling with labels outside original game frames. No generated game pixels."
+  "edits": "Uniform thumbnail scaling and WebP encoding only; labels outside source screenshots. No generated or replaced game pixels. Awakening calm recapture is from the same installed binary; prior flash frame retained privately."
 }
