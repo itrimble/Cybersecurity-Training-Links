@@ -34,7 +34,7 @@ repo is public.
 
 ## 1. The map
 
-One apex, thirteen subdomains. All live.
+One apex, fourteen subdomains. All live. (`aibudgetbuilder` was added 2026-11-05; the 2026-10 verification and certificate audits below cover the original thirteen.)
 
 | Host | Repo | Deploys from | Notes |
 |---|---|---|---|
@@ -52,6 +52,7 @@ One apex, thirteen subdomains. All live.
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
 | `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
 | `statbar.` | `statbar-site` | branch `main` | Added 2026-10-15. Source is `~/projects/statbar/site`, built then rsynced into the clone at `~/projects/statbar-site`. |
+| `aibudgetbuilder.` | `aibudgetbuilder-site` | branch `main` | Added 2026-11-05. Free web tool (not an app); source is `~/projects/aibudgetbuild`, `npm run stage` writes the Pages-ready `stage/` folder (index.html, CNAME, .nojekyll) that is copied into the site repo. Pushing deploys. Listed on apps. and in `sites.ts`. |
 
 ### Naming traps
 

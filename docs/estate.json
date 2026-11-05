@@ -11,7 +11,7 @@
       "dns1.registrar-servers.com",
       "dns2.registrar-servers.com"
     ],
-    "record_count": 24,
+    "record_count": 25,
     "carries_email": true,
     "email_records": [
       {
@@ -88,7 +88,7 @@
       },
       "never_delete": "Removing this TXT un-verifies the whole estate and reopens every hostname to takeover.",
       "history": "Until 2026-10-16 this record sat at the doubled name _github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com, because the domain had been typed into Namecheap's Host field, which appends the zone itself. All 13 hostnames read protected_domain_state=unverified until the Host was corrected.",
-      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
+      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site aibudgetbuilder-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
     }
   },
   "properties": [
@@ -252,6 +252,17 @@
       "https_enforced": true,
       "status": "live",
       "note": "Added 2026-10-15. The site source lives in the app repo at ~/projects/statbar/site; `cd site && bash scripts/local-build.sh`, then rsync dist/ into the ~/projects/statbar-site clone (excluding .git and CNAME) and push - pushing deploys. Paid app, $9.95 one-time via Gumroad at /l/statbar. Shipped already meeting the full SEO checklist."
+    },
+    {
+      "domain": "aibudgetbuilder.remnantsecurity.com",
+      "repo": "itrimble/aibudgetbuilder-site",
+      "app_local_path": "~/projects/aibudgetbuild",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "note": "Added 2026-11-05. A free web tool, not an app. `npm run stage` in ~/projects/aibudgetbuild writes stage/ (index.html, CNAME, .nojekyll); copy that into the site repo and push - pushing deploys. The CNAME was added in the Namecheap web UI (zone 24 to 25 records; backups ~/dns-backups/remnantsecurity.com-2026-11-05-before/after-aibudgetbuilder.json). The custom domain was first set before DNS existed so no certificate was requested; the section 5 clear-and-reset repair issued one (Let's Encrypt, valid to 2027-02-03). Listed on apps.remnantsecurity.com and in src/data/sites.ts."
     }
   ],
   "tls": {
