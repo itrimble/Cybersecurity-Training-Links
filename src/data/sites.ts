@@ -30,6 +30,11 @@ export const bookSites: SiteLink[] = [
 export const contactEmail = "iantrimble@remnantsecurity.com";
 export const contactHref = `mailto:${contactEmail}`;
 
+// TODO(sponsors): set SPONSORS_LIVE = true once https://github.com/sponsors/itrimble is live.
+export const SPONSORS_LIVE = false;
+export const sponsorsUrl = "https://github.com/sponsors/itrimble";
+export const sponsorMailto = `mailto:${contactEmail}?subject=Remnant%20Security%20sponsorship`;
+
 // Build notes and write-ups. One destination rather than a collection, so it sits
 // in the nav as a plain link alongside Contact rather than becoming a dropdown.
 export const blogHref = "https://blog.remnantsecurity.com/";
