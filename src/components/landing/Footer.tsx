@@ -1,4 +1,4 @@
-import { appSites, bookSites, contactEmail, contactHref, gumroadLinks, gumroadStore } from "@/data/sites";
+import { appSites, bookSites, contactEmail, contactHref, gumroadLinks, gumroadStore, SPONSORS_LIVE, sponsorsUrl, sponsorMailto } from "@/data/sites";
 import { Github, Mail } from "lucide-react";
 import { Mark } from "./Mark";
 
@@ -56,6 +56,22 @@ export function Footer() {
             </a>
           </div>
         </div>
+
+        <section aria-labelledby="sponsors-strip" className="mb-12 flex flex-col items-start gap-4 rounded-lg border border-dashed border-border p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 id="sponsors-strip" className="font-sans text-sm font-semibold text-foreground" style={{ fontSize: "0.875rem" }}>Sponsors</h2>
+            <p className="mt-1 text-[0.9375rem] text-muted-foreground">
+              Remnant Security is one person: no ads, no venture money. Sponsors and buyers keep it independent. No sponsors yet.
+            </p>
+          </div>
+          <a
+            href={SPONSORS_LIVE ? sponsorsUrl : sponsorMailto}
+            {...(SPONSORS_LIVE ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="shrink-0 whitespace-nowrap rounded-md text-[0.9375rem] font-semibold text-primary underline decoration-primary/40 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            Become our first sponsor
+          </a>
+        </section>
 
         <nav aria-label="Footer" className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {footerLinks.map((section) => (
