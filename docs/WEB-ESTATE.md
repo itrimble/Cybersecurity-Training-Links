@@ -4,9 +4,9 @@ Authoritative map of every Remnant Security web property, how each one deploys,
 and the specific ways agents have broken them. Machine-readable twin:
 [`estate.json`](./estate.json).
 
-Verified **2026-10-14** against the GitHub Pages API, the Namecheap zone, and
-live HTTP from a second machine. Re-verify with the commands in
-`estate.json → verification` before trusting any row.
+Verified **2026-11-23** against the Namecheap Advanced DNS web UI (full record
+set), the GitHub Pages API, and live HTTP from this Mac. Re-verify with the
+commands in `estate.json → verification` before trusting any row.
 
 ---
 
@@ -34,25 +34,35 @@ repo is public.
 
 ## 1. The map
 
-One apex, fourteen subdomains. All live. (`aibudgetbuilder` was added 2026-11-05; the 2026-10 verification and certificate audits below cover the original thirteen.)
+One apex, **eighteen public subdomains**. All live as of 2026-11-23. (`aibudgetbuilder` was added 2026-11-05; `aimodels`, `letmeretire`, `wiki` and `comfygolf` were added after the 2026-10 audit. `prismshift` is retired and its site now serves `nightchorus`.)
 
 | Host | Repo | Deploys from | Notes |
 |---|---|---|---|
 | `remnantsecurity.com` + `www` | `Cybersecurity-Training-Links` | **GitHub Actions** on `main` | This repo. Vite build. |
 | `academy.` | `remnant-academy` *(private)* | **Vercel** | Serves the APIs the apex calls. |
-| `blog.` | `product-diary` | branch **`gh-pages`** | The only one not on `main`. |
+| `aimodels.` | `aimodels-site` | branch `main` | Added 2026-11-23. Local-AI model archive: model catalog, fleet-fit matrix and recipes. |
+| `blog.` | `product-diary` | branch **`gh-pages`** | Deploys from `gh-pages`, not `main`; `wiki` is the other. |
 | `apps.` | `apps-site` | branch `main` | Portfolio index. Editorial rules in §7. |
 | `lightfence.` | `lightfence-site` | branch `main` | App source is `~/projects/qix-swift`. |
-| `prismshift.` | `prismshift-site` | branch `main` | App source is `~/projects/prismshift`. See §8. |
+| `nightchorus.` | `prismshift-site` | branch `main` | Night Chorus. The repo still says `prismshift-site`; the app source is `~/projects/prismshift` (GitHub repo `night-chorus`). The old `prismshift.` host is retired. |
 | `snapdog.` | `snapdog-site` | branch `main` | Shipped. |
 | `lectern.` | `lectern-site` | branch `main` | Shipped. |
+| `letmeretire.` | `letmeretire-site` | branch `main` | Added 2026-11-23. Retirement planning site. |
 | `cybersim.` | `cybersim-site` | branch `main` | Shipped. |
 | `plumberpuzzle.` | `plumberpuzzle-site` | branch `main` | Shipped. |
 | `books.` | `books-site` | branch `main` | |
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
 | `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
 | `statbar.` | `statbar-site` | branch `main` | Added 2026-10-15. Source is `~/projects/statbar/site`, built then rsynced into the clone at `~/projects/statbar-site`. |
+| `wiki.` | `grokbot-wiki` | branch **`gh-pages`** | Added 2026-11-23. Live Grok Bot wiki for `grokbot-docs`; deploys from `gh-pages`, like `blog`. |
 | `aibudgetbuilder.` | `aibudgetbuilder-site` | branch `main` | Added 2026-11-05. Free web tool (not an app); source is `~/projects/aibudgetbuild`, `npm run stage` writes the Pages-ready `stage/` folder (index.html, CNAME, .nojekyll) that is copied into the site repo. Pushing deploys. Listed on apps. and in `sites.ts`. |
+| `comfygolf.` | `comfygolf-site` | branch `main` | Added 2026-11-23. Marketing site plus playable browser demo at `/play/`; source overlay `~/projects/site-templates/sites/comfygolf`, game `~/projects/golfprompt/minimax`. |
+
+**Not public web properties.** `prismshift.remnantsecurity.com` is retired
+(its site is now `nightchorus.`). `leavingkentucky.remnantsecurity.com` has a
+Pages custom domain in `leavingkentucky-site` but no DNS record, so it is not
+live. `deepseek.` and `hermes.` are A records for Tailscale-only services, not
+public sites.
 
 ### Naming traps
 
@@ -66,6 +76,10 @@ One apex, fourteen subdomains. All live. (`aibudgetbuilder` was added 2026-11-05
   were wrong for months; do not reintroduce their claims.
 - A second folder, `~/projects/Cybersecurity-Training-Links`, is a stale
   fallback copy. It is not the working tree.
+- **`prismshift-site` is Night Chorus.** The repo name and its GitHub description
+  still say Prism Shift; its Pages custom domain is `nightchorus.remnantsecurity.com`.
+  The old `prismshift.` host has no DNS record. Do not add it back.
+- **`grokbot-wiki` is `wiki.`** It deploys from `gh-pages`, not `main`.
 
 ---
 
@@ -164,18 +178,19 @@ Release gate for the funnel, after deploying:
 ## 4. DNS
 
 Namecheap BasicDNS. Nameservers `dns1`/`dns2.registrar-servers.com`.
-Full zone export, 24 records, captured 2026-10-16 from the authoritative
-nameservers *after* the Pages challenge fix below:
-`~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json` (with a `.txt`
-twin). That is a point-in-time export, not a live mirror — re-export after
-every change. All thirteen Pages hostnames are `verified` as of that capture.
+Full zone export, 29 records (28 host + MX), captured 2026-11-23 from the
+authoritative nameservers *after* the Pages challenge fix below:
+`~/dns-backups/remnantsecurity.com-2026-11-23-post-comfygolf.json` (the
+pre-change backup is next to it). That is a point-in-time export, not a live
+mirror — re-export after every change. All eighteen Pages hostnames are
+`verified` as of that capture.
 
 **The zone carries Ian's email.** `MX @ -> SMTP.GOOGLE.COM`, plus the DKIM and
 site-verification TXT records.
 
 The Namecheap MCP tool `dns_records_save(domainName, records, force)` takes the
 **whole record array and replaces the zone**, mirroring Namecheap's `setHosts`
-API. Calling it with only the record you want to add deletes the other 19 and
+API. Calling it with only the record you want to add deletes the other 28 and
 takes down email.
 
 Procedure:
@@ -193,11 +208,20 @@ Procedure:
 
 Last run, 2026-10-15 (`statbar` CNAME): backup of 21 records, then saved all 21 plus the new record (22 saved), re-read the zone (22, identical), dig verified MX, apex A/TXT, DKIM and existing CNAMEs. The save did not remove records here, but keep sending the full set. `lightfence` is stored as `Itrimble.github.io.` (capital I); pre-existing and harmless. In zsh, split `"TYPE name"` strings with `${=var}`, or dig returns empty and looks like an outage.
 
-Run 2026-10-16 (Pages domain verification), web UI, single-field edit: the `_github-pages-challenge-itrimble` TXT had been entered with the domain included in the Host field. Namecheap appends the zone itself, so the record had been sitting at the doubled name `_github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com` — present, holding the correct token, and invisible to GitHub. All thirteen Pages hostnames read `protected_domain_state: unverified` as a result, which leaves a custom domain open to takeover whenever its Pages config lapses.
+Run 2026-10-16 (Pages domain verification), web UI, single-field edit: the `_github-pages-challenge-itrimble` TXT had been entered with the domain included in the Host field. Namecheap appends the zone itself, so the record had been sitting at the doubled name `_github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com` — present, holding the correct token, and invisible to GitHub. All thirteen Pages hostnames then in the estate read `protected_domain_state: unverified` as a result, which leaves a custom domain open to takeover whenever its Pages config lapses.
 
-Host corrected, value untouched, verified at <https://github.com/settings/pages>. Verifying the apex covers every immediate subdomain, so one action moved all thirteen to `verified`. **Never delete that TXT record** — removing it un-verifies the whole estate. The edit was done in the web UI precisely to avoid a replace-all zone write for a one-field change; MX, DKIM, apex A and the site-verification TXT were re-checked afterwards and are intact.
+Host corrected, value untouched, verified at <https://github.com/settings/pages>. Verifying the apex covers every immediate subdomain, so one action moved all thirteen then-existing Pages hostnames to `verified`. **Never delete that TXT record** — removing it un-verifies the whole estate. The edit was done in the web UI precisely to avoid a replace-all zone write for a one-field change; MX, DKIM, apex A and the site-verification TXT were re-checked afterwards and are intact.
 
 The general lesson: a Host field takes the host, not the FQDN, and both Namecheap and GitHub show the zone greyed-out beside the input, which is what invites typing it in. A record can exist, hold the right value, and still be at the wrong name. Verify by querying the name the *consumer* queries, not by reading the provider's UI back.
+
+Run 2026-11-23 (`comfygolf` CNAME): the pre-change backup held 27 host records
++ MX; one CNAME was added in the Namecheap web UI (per-record, no replace-all);
+the re-read held 28 host + MX, and `dig @dns1` returned `itrimble.github.io.`.
+MX, DKIM and apex/www were re-checked. Backups:
+`~/dns-backups/remnantsecurity.com-2026-11-23-{pre,post}-comfygolf.*`.
+The local Tailscale resolver (100.100.100.100) then held the old NXDOMAIN for its
+3601 s SOA minimum; public resolvers and Pages were correct, so flush
+`dscacheutil`/`mDNSResponder` or restart Tailscale rather than changing DNS.
 
 Codex refuses this tool in `codex exec` — it is marked approval-required and
 exec runs with `approval: never`. The only override also disables sandboxing

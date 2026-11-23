@@ -1,6 +1,6 @@
 {
-  "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file; toolchain prerequisites and the Namecheap MCP setup are in TOOLCHAIN.md. Verified 2026-10-14 against GitHub Pages API, the Namecheap zone, and live HTTP from a second machine.",
-  "verified": "2026-10-16",
+  "$comment": "Machine-readable inventory of the Remnant Security web estate. Prose, procedures and traps are in WEB-ESTATE.md next to this file; toolchain prerequisites and the Namecheap MCP setup are in TOOLCHAIN.md. Verified 2026-11-23 against the Namecheap Advanced DNS web UI, the GitHub Pages API, and live HTTP from this Mac.",
+  "verified": "2026-11-23",
   "apex": "remnantsecurity.com",
   "github_owner": "itrimble",
   "contact_email": "iantrimble@remnantsecurity.com",
@@ -11,7 +11,7 @@
       "dns1.registrar-servers.com",
       "dns2.registrar-servers.com"
     ],
-    "record_count": 25,
+    "record_count": 29,
     "carries_email": true,
     "email_records": [
       {
@@ -76,20 +76,33 @@
       "185.199.110.153",
       "185.199.111.153"
     ],
-    "latest_export": "~/dns-backups/remnantsecurity.com-2026-10-16-full-zone.json",
+    "latest_export": "~/dns-backups/remnantsecurity.com-2026-11-23-post-comfygolf.json",
     "pages_domain_verification": {
       "state": "verified",
       "verified_on": "2026-10-16",
-      "covers": "the apex and every immediate subdomain - 13 Pages hostnames in one action",
+      "covers": "the apex and every immediate subdomain - 18 Pages hostnames in one action",
       "record": {
         "type": "TXT",
         "host": "_github-pages-challenge-itrimble",
         "purpose": "GitHub Pages domain verification"
       },
       "never_delete": "Removing this TXT un-verifies the whole estate and reopens every hostname to takeover.",
-      "history": "Until 2026-10-16 this record sat at the doubled name _github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com, because the domain had been typed into Namecheap's Host field, which appends the zone itself. All 13 hostnames read protected_domain_state=unverified until the Host was corrected.",
-      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site aibudgetbuilder-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
-    }
+      "history": "Until 2026-10-16 this record sat at the doubled name _github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com, because the domain had been typed into Namecheap's Host field, which appends the zone itself. All 13 hostnames then in the estate read protected_domain_state=unverified until the Host was corrected.",
+      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site aibudgetbuilder-site aimodels-site letmeretire-site grokbot-wiki comfygolf-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
+    },
+    "backup_dir": "~/dns-backups/",
+    "private_a_records": [
+      {
+        "host": "deepseek",
+        "address": "100.98.101.19",
+        "note": "Tailscale-only service; not a public website."
+      },
+      {
+        "host": "hermes",
+        "address": "100.120.153.82",
+        "note": "Tailscale-only service; not a public website."
+      }
+    ]
   },
   "properties": [
     {
@@ -130,7 +143,7 @@
       "branch": "gh-pages",
       "https_enforced": true,
       "status": "live",
-      "note": "Deploys from gh-pages, NOT main. The only property in the estate that does."
+      "note": "Deploys from gh-pages, NOT main. Two properties do: this one and grokbot-wiki (wiki.remnantsecurity.com)."
     },
     {
       "domain": "apps.remnantsecurity.com",
@@ -157,17 +170,17 @@
       "note": "The app's folder is qix-swift and its Xcode project and bundle id are QixForge / com.iantrimble.qixforge. The shipping name is Lightfence."
     },
     {
-      "domain": "prismshift.remnantsecurity.com",
+      "domain": "nightchorus.remnantsecurity.com",
       "repo": "itrimble/prismshift-site",
-      "app_repo": null,
+      "app_repo": "itrimble/night-chorus",
       "app_local_path": "~/projects/prismshift",
       "host": "github-pages",
       "deploy": "branch",
       "branch": "main",
       "https_enforced": true,
       "status": "live",
-      "app_status": "submitting to App Store Connect 2026-10-14",
-      "note": "The app repo has no git remote. A competing, undeployed microsite for this same domain exists at microsites/prismshift in the apex repo - see WEB-ESTATE.md 'Known conflicts'."
+      "role": "Night Chorus marketing site; the game was previously called Prism Shift",
+      "note": "Added to the map 2026-11-23. The repo and its GitHub description still say prismshift-site / Prism Shift, but the Pages custom domain is nightchorus.remnantsecurity.com. The old prismshift.remnantsecurity.com host has no DNS record. The app source folder is ~/projects/prismshift; the GitHub app repo is night-chorus. See WEB-ESTATE.md 'Naming traps'."
     },
     {
       "domain": "snapdog.remnantsecurity.com",
@@ -263,6 +276,52 @@
       "https_enforced": true,
       "status": "live",
       "note": "Added 2026-11-05. A free web tool, not an app. `npm run stage` in ~/projects/aibudgetbuild writes stage/ (index.html, CNAME, .nojekyll); copy that into the site repo and push - pushing deploys. The CNAME was added in the Namecheap web UI (zone 24 to 25 records; backups ~/dns-backups/remnantsecurity.com-2026-11-05-before/after-aibudgetbuilder.json). The custom domain was first set before DNS existed so no certificate was requested; the section 5 clear-and-reset repair issued one (Let's Encrypt, valid to 2027-02-03). Listed on apps.remnantsecurity.com and in src/data/sites.ts."
+    },
+    {
+      "domain": "aimodels.remnantsecurity.com",
+      "repo": "itrimble/aimodels-site",
+      "local_path": "~/projects/aimodels-site",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "role": "local AI model archive: model catalog, fleet-fit matrix, recipes",
+      "note": "Added 2026-11-23; the site repo was first pushed 2026-11-21."
+    },
+    {
+      "domain": "letmeretire.remnantsecurity.com",
+      "repo": "itrimble/letmeretire-site",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "role": "retirement planning site",
+      "note": "Added 2026-11-23. Site title: LET ME RETIRE - I have a dream. It costs $1,000,000."
+    },
+    {
+      "domain": "wiki.remnantsecurity.com",
+      "repo": "itrimble/grokbot-wiki",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "gh-pages",
+      "https_enforced": true,
+      "status": "live",
+      "role": "live Grok Bot wiki for grokbot-docs",
+      "note": "Added 2026-11-23. Deploys from gh-pages, not main; one of two properties that do."
+    },
+    {
+      "domain": "comfygolf.remnantsecurity.com",
+      "repo": "itrimble/comfygolf-site",
+      "local_path": "~/projects/comfygolf-site",
+      "host": "github-pages",
+      "deploy": "branch",
+      "branch": "main",
+      "https_enforced": true,
+      "status": "live",
+      "role": "Comfy Golf marketing site and playable browser demo at /play/",
+      "note": "Added 2026-11-23. Built from ~/projects/site-templates/sites/comfygolf; game source ~/projects/golfprompt/minimax. DNS CNAME added via the Namecheap web UI; Pages custom domain and HTTPS verified."
     }
   ],
   "tls": {
@@ -298,8 +357,8 @@
     "note": "Order matters only in that the certificate cannot be issued until DNS resolves. The repo may exist first."
   },
   "verification": {
-    "comment": "Run these from a machine other than Neo. Neo's mDNSResponder caches negative lookups for new hostnames, so curl reports 'could not resolve' long after dig succeeds.",
-    "all_endpoints": "for s in '' www. academy. blog. apps. lightfence. prismshift. snapdog. lectern. cybersim. plumberpuzzle. books.; do printf '%-34s %s\\n' \"${s}remnantsecurity.com\" \"$(curl -s -o /dev/null -w %{http_code} -L --max-time 12 https://${s}remnantsecurity.com/)\"; done",
+    "comment": "Run these from another machine or through a public resolver. Tailscale MagicDNS at 100.100.100.100 (the default on this Mac) caches negative lookups for a new hostname for the SOA minimum (3601 s), so curl reports 'could not resolve' long after the authoritative and public resolvers have the record.",
+    "all_endpoints": "for s in '' www. academy. aimodels. aibudgetbuilder. alttab. apps. blog. books. comfygolf. cybersim. lectern. letmeretire. lightfence. nightchorus. plumberpuzzle. snapdog. statbar. tilepilot. wiki.; do printf '%-34s %s\\n' \"${s}remnantsecurity.com\" \"$(curl -s -o /dev/null -w %{http_code} -L --max-time 12 https://${s}remnantsecurity.com/)\"; done",
     "apex_reproduce_ci_build": "VITE_ACADEMY_URL=https://academy.remnantsecurity.com npm run build",
     "apex_live_bundle": "curl -s https://remnantsecurity.com/ | grep -o '/assets/index-[A-Za-z0-9_-]*\\.js'",
     "dns_authoritative": "dig +short @dns1.registrar-servers.com CNAME <host>.remnantsecurity.com",
@@ -393,6 +452,17 @@
       "A DNS Host field takes the host, not the FQDN. Namecheap and GitHub both show the zone greyed-out beside the input, which invites typing it in and silently produces a doubled name. A record can exist, hold the correct value, and still be at the wrong name - verify by querying the name the consumer queries, not by reading the provider's UI back."
     ],
     "hosts_clean": 14,
-    "hosts_total": 14
-  }
+    "hosts_total": 14,
+    "note_2026_11_23": "The inventory now lists 18 public subdomains. The status_2026_10_15 audit is the snapshot for the 13 hostnames that existed then; the 2026-11 additions (aimodels, letmeretire, wiki, comfygolf) and nightchorus were not re-audited."
+  },
+  "retired_hosts": [
+    {
+      "domain": "prismshift.remnantsecurity.com",
+      "reason": "Retired. The prismshift-site repo now serves nightchorus.remnantsecurity.com; no prismshift CNAME exists."
+    },
+    {
+      "domain": "leavingkentucky.remnantsecurity.com",
+      "reason": "leavingkentucky-site still has a Pages custom domain, but no DNS record exists; it is not live."
+    }
+  ]
 }
