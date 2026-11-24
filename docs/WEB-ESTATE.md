@@ -54,7 +54,7 @@ One apex, **eighteen public subdomains**. All live as of 2026-11-23. (`aibudgetb
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
 | `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
 | `statbar.` | `statbar-site` | branch `main` | Added 2026-10-15. Source is `~/projects/statbar/site`, built then rsynced into the clone at `~/projects/statbar-site`. |
-| `wiki.` | `grokbot-wiki` *(private)* + `grokbot-wiki-public` | private build; Pages on the notice | **Private since 2026-11-23.** The full wiki (systems, home network, agents, routines) is not published. The public host serves only a neutral private notice from `grokbot-wiki-public`; Pages and `gh-pages` are disabled on the private source repo. |
+| `wiki.` | `grokbot-wiki` *(private)* | A `100.120.153.82` + Caddy `:8447` | **Tailnet-only custom domain since 2026-11-23.** The full wiki is served by Caddy on the Mac mini at `https://wiki.remnantsecurity.com:8447/`; the A record is the mini's Tailscale IP, so the public internet cannot route to it. The old GitHub Pages notice is retired. |
 | `aibudgetbuilder.` | `aibudgetbuilder-site` | branch `main` | Added 2026-11-05. Free web tool (not an app); source is `~/projects/aibudgetbuild`, `npm run stage` writes the Pages-ready `stage/` folder (index.html, CNAME, .nojekyll) that is copied into the site repo. Pushing deploys. Listed on apps. and in `sites.ts`. |
 | `comfygolf.` | `comfygolf-site` | branch `main` | Added 2026-11-23. Marketing site plus playable browser demo at `/play/`; source overlay `~/projects/site-templates/sites/comfygolf`, game `~/projects/golfprompt/minimax`. |
 

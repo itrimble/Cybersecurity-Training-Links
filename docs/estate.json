@@ -304,13 +304,14 @@
       "domain": "wiki.remnantsecurity.com",
       "repo": "itrimble/grokbot-wiki",
       "repo_visibility": "private",
-      "public_notice_repo": "itrimble/grokbot-wiki-public",
-      "host": "github-pages",
-      "deploy": "private build; public notice only",
+      "host": "mac-mini-tailnet",
+      "address": "100.120.153.82",
+      "port": 8447,
+      "tls": "Let's Encrypt via acme.sh DNS-01",
       "https_enforced": true,
       "status": "private",
-      "role": "private shop wiki; the public host serves a neutral notice",
-      "note": "2026-11-23 security change: the full wiki (systems, home network, agents, routines and decisions) was taken off the public internet. Pages and gh-pages were disabled on grokbot-wiki, the repo is private, and the public host now serves a neutral notice from grokbot-wiki-public. The full wiki is built locally or on the tailnet only."
+      "role": "full private wiki on the Mac mini, tailnet only",
+      "note": "2026-11-23: the A record points to the mini's Tailscale IP; Caddy serves /Users/ian/projects/grokbot-wiki/dist behind Tailscale Serve 8447. Public DNS resolves to a private IP, so it is not reachable off the tailnet. The old GitHub Pages notice is retired."
     },
     {
       "domain": "comfygolf.remnantsecurity.com",
