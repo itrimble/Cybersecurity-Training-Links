@@ -41,7 +41,7 @@ One apex, **eighteen public subdomains**. All live as of 2026-11-23. (`aibudgetb
 | `remnantsecurity.com` + `www` | `Cybersecurity-Training-Links` | **GitHub Actions** on `main` | This repo. Vite build. |
 | `academy.` | `remnant-academy` *(private)* | **Vercel** | Serves the APIs the apex calls. |
 | `aimodels.` | `aimodels-site` | branch `main` | Added 2026-11-23. Local-AI model archive: model catalog, fleet-fit matrix and recipes. |
-| `blog.` | `product-diary` | branch **`gh-pages`** | Deploys from `gh-pages`, not `main`; `wiki` is the other. |
+| `blog.` | `product-diary` | branch **`gh-pages`** | The only public site not on `main`. |
 | `apps.` | `apps-site` | branch `main` | Portfolio index. Editorial rules in §7. |
 | `lightfence.` | `lightfence-site` | branch `main` | App source is `~/projects/qix-swift`. |
 | `nightchorus.` | `prismshift-site` | branch `main` | Night Chorus. The repo still says `prismshift-site`; the app source is `~/projects/prismshift` (GitHub repo `night-chorus`). The old `prismshift.` host is retired. |
@@ -54,7 +54,7 @@ One apex, **eighteen public subdomains**. All live as of 2026-11-23. (`aibudgetb
 | `alttab.` | `alttab-site` | branch `main` | Cert repaired 2026-10-14 (§8) |
 | `tilepilot.` | `tilepilot-site` | branch `main` | Wired up 2026-10-14 (§8) |
 | `statbar.` | `statbar-site` | branch `main` | Added 2026-10-15. Source is `~/projects/statbar/site`, built then rsynced into the clone at `~/projects/statbar-site`. |
-| `wiki.` | `grokbot-wiki` | branch **`gh-pages`** | Added 2026-11-23. Live Grok Bot wiki for `grokbot-docs`; deploys from `gh-pages`, like `blog`. |
+| `wiki.` | `grokbot-wiki` *(private)* + `grokbot-wiki-public` | private build; Pages on the notice | **Private since 2026-11-23.** The full wiki (systems, home network, agents, routines) is not published. The public host serves only a neutral private notice from `grokbot-wiki-public`; Pages and `gh-pages` are disabled on the private source repo. |
 | `aibudgetbuilder.` | `aibudgetbuilder-site` | branch `main` | Added 2026-11-05. Free web tool (not an app); source is `~/projects/aibudgetbuild`, `npm run stage` writes the Pages-ready `stage/` folder (index.html, CNAME, .nojekyll) that is copied into the site repo. Pushing deploys. Listed on apps. and in `sites.ts`. |
 | `comfygolf.` | `comfygolf-site` | branch `main` | Added 2026-11-23. Marketing site plus playable browser demo at `/play/`; source overlay `~/projects/site-templates/sites/comfygolf`, game `~/projects/golfprompt/minimax`. |
 
@@ -79,7 +79,7 @@ public sites.
 - **`prismshift-site` is Night Chorus.** The repo name and its GitHub description
   still say Prism Shift; its Pages custom domain is `nightchorus.remnantsecurity.com`.
   The old `prismshift.` host has no DNS record. Do not add it back.
-- **`grokbot-wiki` is `wiki.`** It deploys from `gh-pages`, not `main`.
+- **`grokbot-wiki` is private.** The full wiki is not published; the public host is a neutral notice in `grokbot-wiki-public`. Do not re-enable Pages or push a full build to `gh-pages`.
 
 ---
 

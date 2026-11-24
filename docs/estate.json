@@ -88,7 +88,7 @@
       },
       "never_delete": "Removing this TXT un-verifies the whole estate and reopens every hostname to takeover.",
       "history": "Until 2026-10-16 this record sat at the doubled name _github-pages-challenge-itrimble.remnantsecurity.com.remnantsecurity.com, because the domain had been typed into Namecheap's Host field, which appends the zone itself. All 13 hostnames then in the estate read protected_domain_state=unverified until the Host was corrected.",
-      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site aibudgetbuilder-site aimodels-site letmeretire-site grokbot-wiki comfygolf-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
+      "check": "for r in Cybersecurity-Training-Links product-diary apps-site lightfence-site prismshift-site snapdog-site lectern-site cybersim-site plumberpuzzle-site books-site alttab-site tilepilot-site statbar-site aibudgetbuilder-site aimodels-site letmeretire-site grokbot-wiki-public comfygolf-site; do gh api repos/itrimble/$r/pages -q '.cname + \"  \" + .protected_domain_state'; done"
     },
     "backup_dir": "~/dns-backups/",
     "private_a_records": [
@@ -143,7 +143,7 @@
       "branch": "gh-pages",
       "https_enforced": true,
       "status": "live",
-      "note": "Deploys from gh-pages, NOT main. Two properties do: this one and grokbot-wiki (wiki.remnantsecurity.com)."
+      "note": "Deploys from gh-pages, NOT main. The only public property that does; the private wiki used gh-pages before it was taken private."
     },
     {
       "domain": "apps.remnantsecurity.com",
@@ -303,13 +303,14 @@
     {
       "domain": "wiki.remnantsecurity.com",
       "repo": "itrimble/grokbot-wiki",
+      "repo_visibility": "private",
+      "public_notice_repo": "itrimble/grokbot-wiki-public",
       "host": "github-pages",
-      "deploy": "branch",
-      "branch": "gh-pages",
+      "deploy": "private build; public notice only",
       "https_enforced": true,
-      "status": "live",
-      "role": "live Grok Bot wiki for grokbot-docs",
-      "note": "Added 2026-11-23. Deploys from gh-pages, not main; one of two properties that do."
+      "status": "private",
+      "role": "private shop wiki; the public host serves a neutral notice",
+      "note": "2026-11-23 security change: the full wiki (systems, home network, agents, routines and decisions) was taken off the public internet. Pages and gh-pages were disabled on grokbot-wiki, the repo is private, and the public host now serves a neutral notice from grokbot-wiki-public. The full wiki is built locally or on the tailnet only."
     },
     {
       "domain": "comfygolf.remnantsecurity.com",
@@ -453,7 +454,7 @@
     ],
     "hosts_clean": 14,
     "hosts_total": 14,
-    "note_2026_11_23": "The inventory now lists 18 public subdomains. The status_2026_10_15 audit is the snapshot for the 13 hostnames that existed then; the 2026-11 additions (aimodels, letmeretire, wiki, comfygolf) and nightchorus were not re-audited."
+    "note_2026_11_23": "The inventory now lists 18 public subdomains. The status_2026_10_15 audit is the snapshot for the 13 hostnames that existed then; the 2026-11 additions (aimodels, letmeretire, wiki, comfygolf) and nightchorus were not re-audited. The full Grok Bot Wiki was made private on 2026-11-23; the public host is a neutral notice."
   },
   "retired_hosts": [
     {
